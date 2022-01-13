@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>스마트 비즈 카페 </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/import.css'}" />
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery-1.7.1.min.js'}"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	var boardCode = "${boardCode}";
+	var error = "${fileError}";	
+	errorMessage(error,boardCode);
+});
+
+function errorMessage(error , boardCode){
+	var msg = "";
+	if(error == "size"){
+		msg = "파일 사이즈가 너무 큽니다";
+	}
+	
+	if(error == "mine"){
+		msg = "업로드 가능한 파일 형식이 아닙니다.";
+	}
+	alert(msg);
+	document.location.href="/admin/board/"+boardCode;
+}
+//-->
+</script>
+
+</head>
+<body></body>
+</html>

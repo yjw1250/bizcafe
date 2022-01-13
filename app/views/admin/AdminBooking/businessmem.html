@@ -1,0 +1,165 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'비즈니스 미팅공간 예약관리 > 예약 내역 보기' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery.validate.min.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/calendar2.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/reservation.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/businessbooking.js'}"></script>
+#{/set}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="22" />
+
+<h3>등록</h3>
+				<div class="breadcrumb">
+					<ul><li class="home"><a href="/admin">홈</a></li><li><a href="/admin/booking/businessmem">비즈니스 미팅공간 예약관리</a></li><li class="current">등록</li></ul>
+				</div><!-- //breadcrumb -->
+
+				<div class="tab">
+					<ul>
+						<li class="selected"><a href="/admin/booking/businessmem"><span>기존회원 등록</span></a></li>
+						<li class=" "><a href="/admin/booking/businessnomem"><span>비회원 등록</span></a></li>
+					</ul>
+				</div><!-- //tab -->
+				
+				
+				
+				<div class="tabContent">
+					<div class="booking_write">
+						<table cellspacing="0" border="0" summary="검색">
+						<colgroup><col width="120px" /><col width="" /><col width="120px" /><col width="" /></colgroup>
+						<tr>
+							<th class="tit">이름</th>
+							<td><span id="username"></span><a href="javascript:;" id="btnMember" class="innerBtn"><span>회원검색</span></a></td>
+							<th class="tit">전화번호</th>
+							<td><span id="userphone"></span></td>
+						</tr>
+						<tr>
+							<th class="tit">예약일</th>
+							<td>
+								<span class="input_cal">
+									<input type="text" style="ime-mode:active;width:100px" name="resdate" id="resdate" class="input_txt"><img src="@{'/public/admin/images/ico_calender.gif'}" alt="달력" id="btnCalendar">
+								</span>
+							</td>
+							<th class="tit">이용인원</th>
+							<td>
+								<select name="resPerson" id="resPerson" style="ime-mode:active;width:60px;">
+								#{list items:resRoomList,as:'roomNumber' }
+								<option value="${roomNumber}">${roomNumber}</option> 
+								#{/list}
+							</select>
+							</td>
+						</tr>
+						</table>
+						
+						<div class="booking_expn">
+						<ul>
+							<li>* 현재 시간을 기준으로 1시간 이후부터 선택 가능합니다. </li>
+							<li>* 30분 단위로 선택이 가능합니다. (10분전 퇴실)</li>
+							<li>* 공휴일은 운영하지 않습니다.</li>
+							<li>* 1인실은 기본 1시간 , 2인실 이상은 기본 2시간을  같은 부스로 선택하셔야 합니다.</li>
+						</ul>
+						</div><!-- /booking_expn -->
+					</div><!-- /board_view -->
+
+					<div class="board_btnarea">
+						<a class="inputBtn" id="search_resever"><span style="width:50px;">검색하기</span></a>
+					</div><!-- //btnArea -->
+				</div><!-- //tabContent -->
+				
+				<div class="tbl_booking" id="booking"></div>
+				<div id="resever_table" style="display:none;">
+					<div class="tbl_bookingTop">
+						<p class="dateSelection">
+							<img id="prevday" src="@{'/public/images/booking/ico_date_prev.gif'}" alt="이전" style="cursor:pointer;">
+							<span id="showdate"></span>
+							<img id="nextday" src="@{'/public/images/booking/ico_date_next.gif'}" alt="다음" style="cursor:pointer;">
+						</p>
+						<ul class="expn">
+							<li><img src="@{'/public/images/booking/ex_booking1.gif'}" alt="예약불가">예약불가</li>
+							<li><img src="@{'/public/images/booking/ex_booking2.gif'}" alt="예약가능">예약가능</li>
+							<li><img src="@{'/public/images/booking/ex_booking3.gif'}" alt="선택완료">선택완료</li>
+							<li><img src="@{'/public/images/booking/ex_booking4.gif'}" alt="현재시간">현재시간</li>
+						</ul>
+					</div><!-- //tbl_bookingTop -->
+					
+					<form id="frmRegist">
+					
+					<div class="tbl_bookingcash">
+						<table cellspacing="0" border="1" summary="예약테이블">
+						<input type="hidden" name="userType" id="userType" value="Y"><!--  Y: 회원, N:비회원 -->
+						<input type="hidden" name="resType" id="resType" value="BZ"><!--  BZ : 비즈니스룸, OF: 소호룸 -->
+						<input type="hidden" name="start_time" id="start_time">
+						<input type="hidden" name="end_time" id="end_time">
+						<input type="hidden" name="room_cnt" id="room_cnt">
+						<input type="hidden" name="room_title" id="room_title">
+						<input type="hidden" name="room_code" id="room_code">
+						<input type="hidden" name="sel_time" id="sel_time">
+						<input type="hidden" name="adminchk" id="adminchk" value="1"><!-- 1: 관리자, 0: 사용자 -->
+						<input type="hidden" name="room_user" id="room_user"><!--  룸예약자수 -->
+						<input type="hidden" name="account_unit" id="account_unit"><!-- 30분당 단가  2인실이상 : 1500원, 1인실 : 2000원  -->
+						<input type="hidden" name="payment" id="payment">
+						<input type="hidden" name="resRoom" id="resRoom">
+						<input type="hidden" name="snscertifyNo" id="snscertifyNo"><!--  휴대폰 인증 번호 -->
+						<!--  회원정보 -->
+						<input type="hidden" name="userName" id="userName" value="">
+						<input type="hidden" name="userID" id="userID" value="">
+						<input type="hidden" name="Phone" id="Phone" value="">
+						<colgroup>
+						<col width="144px"><col width="*"><col width="180px"></colgroup>
+						<tbody>
+						<tr>
+							<th>비용산정</th>
+							<td>
+								<div class="booking_amount">
+									<dl class="boo_monmy">
+										<dt class="b_tit">1인당 요금</dt>
+										<dd class="b_cash"><span id="cashunit"></span></dd>
+										<dd class="b_unit">원(\)</dd>
+										<dd class="b_ex">(현재 2인실 이상 요금 기준)</dd>
+									</dl>
+									<dl class="boo_time">
+										<dt class="b_tit">시간</dt>
+										<dd class="b_mark"><img src="@{'/public/images/booking/ico_multi.gif'}" alt="곱하기"></dd>
+										<dd class="b_cash"><span id="cashhour"></span></dd>
+										<dd class="b_unit">시간</dd>
+										<dd class="b_ex">(1인실은 기본 1시간, 2인실 이상은 기본 2시간)</dd>
+									</dl>
+									<dl class="boo_people">
+										<dt class="b_tit">인원</dt>
+										<dd class="b_mark"><img src="@{'/public/images/booking/ico_multi.gif'}" alt="곱하기"></dd>
+										<dd class="b_cash"><span id="cashuser"></span></dd>
+										<dd class="b_unit">명</dd>
+									</dl>
+									<dl class="boo_amonut">
+										<dt class="b_tit">총 결제예정금액 (후불제)</dt>
+										<dd class="b_cash"><span id="totalcash"></span></dd>
+										<dd class="b_unit">원(\)</dd>
+									</dl>
+								</div><!-- //booking_amount -->
+							</td>
+							<td class="infomation">
+								<dl>
+									<dt>* 기본요금</dt>
+									<dd>1시간당 1인실 기본 4,000원</dd>
+									<dd>2시간당 2인실 이상 기본 6,000원</dd>
+								</dl>
+								<dl>
+									<dt>* 추가시간 (30분 단위)</dt>
+									<dd>1인실 인당 2,000원씩 추가</dd>
+									<dd>2인실 인당 1,500원씩 추가</dd>
+								</dl>
+							</td>
+						</tr>
+						</tbody>
+						</table>
+						
+						</form>
+					</div><!-- //tbl_bookingIn -->
+					
+					<div class="board_btnarea">
+					<a class="inputBtn" id="btnSubmit"><span style="width:50px;">예약등록</span></a>
+					</div>
+					<!-- //booking_btnarea -->
+					
+					</div>

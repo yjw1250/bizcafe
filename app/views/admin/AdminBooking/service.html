@@ -1,0 +1,184 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'사이트관리 > 서비스 만족도' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery.validate.min.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/service.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/user.js'}"></script>
+#{/set}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="42" />
+
+<h3>서비스 만족도</h3>
+				<div class="breadcrumb">
+					<ul><li class="home"><a href="/admin">홈</a></li><li><a href="/admin/service">사이트 관리</a></li><li class="current">서비스 만족도</li></ul>
+				</div><!-- //breadcrumb -->
+
+				<div id="print_page">
+				<!-- 한줄표현 작업시 -->
+				<div class="listHead">
+					<img src="@{'/public/admin/images/ico_date_prev.gif'}" id="prevyear" alt="이전"><span id="showyear"></span>년<img src="@{'/public/admin/images/ico_date_next.gif'}" id="nextyear" alt="다음">
+					<img src="@{'/public/admin/images/ico_date_prev.gif'}" id="prevmonth" alt="이전"><span id="showmonth"></span>월<img src="@{'/public/admin/images/ico_date_next.gif'}" id="nextmonth" alt="다음">
+			
+					
+					<div class="msearch">금월 서비스 총점: <em><span id="totalScore"></span></em></div>
+				</div><!-- //listHead -->
+				<!-- 한줄표현 작업시 -->
+				
+				
+				<div class="board_list">
+					<table cellspacing="0" cellpadding="0" summary="온라인학습 현황 리스트">
+						<colgroup><col width="*" /><col width="12%" /><col width="12%" /><col width="12%" /><col width="20%" /></colgroup>
+						<thead>
+						<tr>
+							<th>월/구분</th>
+							<th>만족(+1점)</th>
+							<th>불만(-1점)</th>
+						    <th>서비스점수</th>
+					        <th>전월 서비스점수</th>
+				          </tr>
+						</thead>
+						<tbody id="surveylist">
+					   </tbody>
+					   </table>
+				</div><!-- //board_list -->
+				
+				<!-- Template -->
+					<textarea id="templateList" style="display: none;">
+					{for survey in surveylist}
+					<tr class="bg0">
+							<td class="cs_title">＄{survey.itemNum}. ＄{survey.itemTitle}</td>
+							<td class="tc cs_num"><span class="cs_plus">＄{survey.Good}</span></td>
+							<td class="tc cs_num"><span class="cs_minus">＄{survey.Bad}</span></td>
+							<td class="tc cs_num"><span class="cs_zero">＄{survey.Score}</span></td>
+						    <td class="tc cs_tot"><span class="cs_plus">＄{survey.PrevScore}</span></td>
+					</tr>
+					{forelse}
+						<!-- 검색결과 및 데이타 없음 코멘트 -->
+						<tr><td class="comment" colspan="5">검색결과가 없습니다.</td></tr>
+						<!-- //검색결과 및 데이타 없음 코멘트 -->
+					{/for}
+					</textarea>
+				</div>	
+				<div class="board_btnarea">
+					<a class="inputBtn" href="javascript:$.print('admin');"><span style="width:50px;">출력하기</span></a>
+					<a class="inputBtn" href="javascript:$.excelDown();"><span style="width:80px;">Excel로 저장</span></a>
+				</div><!-- //btnArea -->
+				
+				<!-- 한줄표현 작업시 -->
+				<div class="listHead">
+					참여수: <em><span id="totalcount"></span></em>
+				</div><!-- //listHead -->
+				<!-- 한줄표현 작업시 -->
+				
+				<div class="board_list">
+					<table class="th60" cellspacing="0" cellpadding="0" summary="서비스 만족도 리스트">
+						<colgroup><col width="8%" /><col width="10%" /><col width="10%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="*" /></colgroup>
+						<thead>
+						<tr>
+							<th rowspan="2">번호</th>
+						  <th rowspan="2">아이디</th>
+							<th rowspan="2">이름</th>
+							<th colspan="6">만족도 체크 내용</th>
+						    <th rowspan="2">기타의견</th>
+					      </tr>
+						<tr>
+						  <th class="th2">1</th>
+						  <th class="th2">2</th>
+						  <th class="th2">3</th>
+						  <th class="th2">4</th>
+						  <th class="th2">5</th>
+						  <th class="th2">6</th>
+						  </tr>
+						</thead>
+						<tbody id="surveytotallist">
+					   </tbody>
+					   </table>
+					</div><!-- //board_list -->
+					
+					<div class="pagenavi" id="pageNavi"></div>
+					<!-- //pagenavi -->
+					
+					<!-- Template -->
+					<textarea id="templateList2" style="display: none;">
+					{for survey in surveytotallist}
+					{var idx = count - ((page -1 ) * listNo) - survey_index}
+					<tr class="bg0">
+							<td class="num tc cs_tt">＄{idx}</td>
+							<td class="tc cs_tt"><a id="＄{survey.regID}" href="javascript:;" onclick="$.userReadview('＄{survey.regID}',this,-100,-100)">＄{survey.regID}</a></td>
+							<td class="tc cs_tt">＄{survey.regName}</td>
+							<td class="tc">
+							{if survey.item1 == "1"} 
+							<span class="cs_good">만족</span>
+							{/if}
+							{if survey.item1 == "-1"} 
+							<span class="cs_bad">불만</span>
+							{/if}
+							</td>
+							<td class="tc">
+							{if survey.item2 == "1"} 
+							<span class="cs_good">만족</span>
+							{/if}
+							{if survey.item2 == "-1"} 
+							<span class="cs_bad">불만</span>
+							{/if}
+							</td>
+							<td class="tc">
+							{if survey.item3 == "1"} 
+							<span class="cs_good">만족</span>
+							{/if}
+							{if survey.item3 == "-1"} 
+							<span class="cs_bad">불만</span>
+							{/if}
+							</td>
+							<td class="tc">
+							{if survey.item4 == "1"} 
+							<span class="cs_good">만족</span>
+							{/if}
+							{if survey.item4 == "-1"} 
+							<span class="cs_bad">불만</span>
+							{/if}
+							</td>
+							<td class="tc">
+							{if survey.item5 == "1"} 
+							<span class="cs_good">만족</span>
+							{/if}
+							{if survey.item5 == "-1"} 
+							<span class="cs_bad">불만</span>
+							{/if}
+							</td>
+							<td class="tc">
+							{if survey.item6 == "1"} 
+							<span class="cs_good">만족</span>
+							{/if}
+							{if survey.item6 == "-1"} 
+							<span class="cs_bad">불만</span>
+							{/if}
+							</td>
+							<td class="tc cs_con">
+							<input type="hidden" name="＄{survey.resIdx}_etcComment" id="＄{survey.resIdx}_etcComment" value="＄{survey.etcFullComment}">
+							<a href="javascript:;"  onclick="$.etcReview('＄{survey.resIdx}')" >＄{survey.etcComment}</a></td>
+					</tr>
+					{forelse}
+						<!-- 검색결과 및 데이타 없음 코멘트 -->
+						<tr><td class="comment" colspan="10">검색결과가 없습니다.</td></tr>
+						<!-- //검색결과 및 데이타 없음 코멘트 -->
+					{/for}
+					</textarea>
+					
+					#{include 'user/memberinfo.html'/}
+					
+					<!-- 기타의견보기 팝업 -->
+<div class="pop_wrap" id="surveyInfo" style="display:none;position:absolute;left:200px;top:400px;width:500px;">
+	<div class="pop">
+		<h1><strong>기타 의견 보기</strong></h1>
+		<p class="popBtn"><a href="javascript:;" id="surveybtnClose"><img src="@{'/public/admin/images/btn_x.gif'}" alt="닫기" /></a></p>
+		<div class="popCon">
+			<div class="innerTextbox">
+			<span id="etcText"></span>
+			</div><!-- //innerTextbox -->
+			<p class="btn_pop2"><a class="inputBtn" href="javascript:;" id="surveybtnCloseBic"><span style="width:50px;">닫기</span></a></p><!-- //btn -->
+		</div><!-- popCon -->
+	</div><!-- //pop -->
+</div><!-- //pop_wrap -->
+					

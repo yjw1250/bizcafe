@@ -1,0 +1,69 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'관리자 > 테스트' /} 
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<script type="text/javascript" src="@{'/public/admin/javascripts/board.js'}"></script>
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form action="/admin/board/${boardCode}/update" name="proceForm" id="proceForm" method="post" enctype="multipart/form-data">
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="${adminMenuNum}" />
+<input type="hidden" name="idx" id="idx" value="${jeiView.idx}" />
+<h3>${boardCodeName} 관리</h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="">홈</a></li><li><a href="">고객관리</a></li><li class="current">${boardCodeName} 관리</li></ul>
+</div><!-- //breadcrumb -->
+<h4>${boardCodeName} 등록</h4>
+<div class="board_vWrite">
+	<textarea name="contents" id="contents" style="display:none"></textarea>
+	<table cellspacing="0" border="0" summary="공지사항 등록 하기">
+	<colgroup><col width="160px"><col width=""></colgroup>
+	<tbody>
+		<tr>
+			<th class="tit">제목<span class="must"><span class="blind">*</span></span></th>
+			<td>
+				<input class="input_txt" type="text" name="title" id="title" value="${jeiView.title}" style="ime-mode:active;width:200px">
+			</td>
+		</tr>
+		#{list items:readFile, as:'file'}
+		<tr>
+			<th class="tit">
+				${fileTitle[i++]}
+				<span class="must"><span class="blind">*</span></span>
+			</th>
+			<td>
+				<input type="file" name="userfile" class="input_file" id="userfile" />
+				<input type="hidden" name="fileIdx" id="fileIdx" value="${file.idx}" class="fileIdx" />
+				<p class="note_attach">파일명 : ${file.fileRealName}</p><!-- 가로세로 사이즈 미확정 -->
+				<p class="note_attach">사이즈와 규격을 맞춰주세요.</p><!-- 가로세로 사이즈 미확정 -->
+			</td>
+		</tr>
+		#{/list}
+	</tbody>
+	</table>
+</div><!-- //board_vWrite -->
+<div class="board_btnarea">
+	<a class="inputBtn" href="javascript:_onSubmit();" id="btnAdminWrite"><span style="width:50px;">등록</span></a>
+	<a class="inputBtn" href="/admin/board/${boardCode}"><span style="width:50px;">취소</span></a>
+</div><!-- //btnArea -->
+</form>
+<script type="text/javascript">
+		
+		_onSubmit = function(){
+		var title = $.trim($('#title').val());
+		if(title == ""){
+			alert("제목을 입력해주세요");
+			return;
+		}
+		
+		var userfile = $('#userfile').val();
+		var fileIdx = null;
+		$('.input_file').each(function(i){
+			var fileVal = $(this).val();
+			if(fileVal == ""){
+				$('.fileIdx').eq(i).val("");
+			}
+		});
+		
+		$('#proceForm').submit();
+		
+	}
+			
+</script>

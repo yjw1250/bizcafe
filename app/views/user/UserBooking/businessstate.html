@@ -1,0 +1,97 @@
+#{extends 'user/sub.html' /} 
+#{set title:'비즈니스 예약현황' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/business_statebooking.js'}"></script>
+#{/set}	
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="menuNum" id="menuNum" value="341" />	
+<input type="hidden" name="usercount" id="usercount" value="${usercount}" />
+
+				<!-- sub title -->
+				<div class="sub_title">
+					<h3 class="st4">
+						<strong><span class="blind">예약 현황</span></strong>
+						<p><span class="blind">비즈니스미팅공간 예약 현황입니다.</span></p>
+					</h3>
+					<ul class="breadcrumb">
+						<li class="home"><a href="/">Home</a></li>
+						<li><a href="/booking/business">예약</a></li>
+						<li><a href="/booking/businesstate">예약 현황</a></li>
+						<li class="current">비즈니스미팅공간</li>
+					</ul>
+				</div>
+				<!-- //sub title -->
+
+				<div class="contents">
+
+
+					#{if usercount >= 1 }
+					<!-- 나의 예약 내역보기 -->
+					<input type="hidden" name="userID" id="userID" value="${user.userID}" />
+					<div class="booking_status">
+						<strong>${user.userName}</strong>님의 예약 내역입니다. <input class="input_btn" type="image" id="business_totallist" alt="전체 예약현황보기" src="@{'/public/images/booking/btn_allbooking.gif'}">
+					</div>
+
+					<div class="board_list booking_list">
+						<table cellspacing="0" border="0" summary="예약 현황">
+						<colgroup><col width="60"><col width="100"><col width="160"><col width="40"><col width="150"><col width="80"><col width="*"></colgroup>
+						<thead>
+						<tr>
+							<th scope="col"><img src="@{'/public/images/board/th_txt_num.gif'}" alt="번호"></th>
+							<th scope="col"><img src="@{'/public/images/board/th_txt_applyDate.gif'}" alt="신청일시"></th>
+							<th scope="col"><img src="@{'/public/images/board/th_txt_bookingDate.gif'}" alt="예약일시"></th>
+							<th scope="col"><img src="@{'/public/images/board/th_txt_persons.gif'}" alt="인원"></th>
+							<th scope="col"><img src="@{'/public/images/board/th_txt_booth.gif'}" alt="부스"></th>
+							<th scope="col"><img src="@{'/public/images/board/th_txt_bookingNum.gif'}" alt="예약번호"></th>
+							<th scope="col"><img src="@{'/public/images/board/th_txt_status.gif'}" alt="현황&내역보기"></th>
+						</tr>
+						</thead>
+						<tbody id="listHeader">
+						</tbody>
+						</table>
+					</div><!-- //board_list -->
+					<!-- //나의 예약 내역보기 -->
+					
+					<div class="pagenavi" id="pageNavi"></div>
+					<!-- //pagenavi -->
+					
+					<!-- Template -->
+					<textarea id="templateList" style="display: none;">
+					{for business in businessList}
+					{var idx = count - ((page -1 ) * listNo) - business_index}
+						<tr>
+							<td class="num tc">＄{idx}</td>
+							<td class=""><span class="date">＄{business.regDate}</span><strong> (＄{business.regDatetime})</strong></td>
+							<td class=""><span class="date">＄{business.resDate}</span><strong> (＄{business.resStartHour} ~ ＄{business.resEndHour})</strong></td>
+							<td class="">＄{business.resPerson}</td>
+							<td class="">＄{business.resRoom}</td>
+							<td class="">＄{business.resIdx}</td>
+							{if business.stateCD == "0"} 
+							<td class="reserve">＄{business.stateName}
+							<br />
+							
+							{if business.BizState == "0"}
+							<input class="input_btn" onclick="javascript:$.modifyReserver('＄{business.resIdx}');" type="image" alt="수정" src="@{'/public/images/booking/btn_modify.gif'}">
+							<input class="input_btn" onclick="javascript:$.cancelReserver('＄{business.idx}');" type="image" alt="취소" src="@{'/public/images/booking/btn_cancel.gif'}">
+							{/if}
+							
+							</td>
+							{elseif business.stateCD == "1" }
+							<td>＄{business.stateName}
+							<br /><input class="input_btn" onclick="javascript:$.showReserver('＄{business.resIdx}');" type="image" alt="이용내역" src="@{'/public/images/booking/btn_view.gif'}">
+							</td>
+							{else}
+							<td>＄{business.stateName}</td>
+							{/if}
+						</tr>
+					{forelse}	
+						<tr>
+						<td class="comment tc" colspan="7">검색결과가 없습니다.</td>
+						</tr>
+					{/for}
+					</textarea>					
+					#{/if}
+					
+				</div><!-- //contents -->
+				

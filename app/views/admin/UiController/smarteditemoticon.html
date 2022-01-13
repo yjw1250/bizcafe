@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+<meta http-equiv="cache-control" content="no-cache, must-revalidate">
+<meta http-equiv="pragma" content="no-cache">
+<title>이모티콘삽입</title>
+<link rel="stylesheet" type="text/css" href="/public/javascripts/smarteditor/css/editor.css" />
+<style type="text/css">
+  body { margin:0; padding:0; }
+  a img{border:none;}
+</style>
+<script language="javascript">
+var capaHTML = 0;
+var isGecko = 0;
+
+if ( navigator.product == "Gecko" ) {
+  capaHTML = 1;
+  isGecko = 1;
+}
+
+function submitImageUploadForm(uploadForm, seq)
+{
+	fileName = "imo_"+seq+ ".gif";
+
+	parent.parent.$.insertEmoticonIMG('${id}',fileName);
+	parent.parent.oEditors.getById["${id}"].exec("SE_TOGGLE_EMOTICON_LAYER");
+}
+
+function closeWin() {	 
+  parent.parent.oEditors.getById["${id}"].exec("SE_TOGGLE_EMOTICON_LAYER");
+  return false;
+}
+
+</script>
+</head>
+<body>
+<div id="naver_common_editor" style="padding:10px 0 0 6px;">
+  <form id="editor_emoticon" name="editor_emoticon" action="" method="post">
+  <input type="hidden" name="imagepath">
+  <input type="hidden" name="id" value="${id}">
+  <div class="pic_content" style="border:none;">
+    <p class="search"></p>
+    <div class="pic_area" id="update_image_view" style="padding:0 0 10px 0;">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_01.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'01');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_02.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'02');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_03.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'03');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_04.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'04');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_05.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'05');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_06.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'06');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_07.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'07');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_08.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'08');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_09.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'09');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_10.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'10');">		
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_11.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'11');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_12.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'12');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_13.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'13');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_14.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'14');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_15.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'15');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_16.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'16');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_17.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'17');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_18.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'18');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_19.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'19');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_20.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'20');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_21.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'21');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_22.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'22');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_23.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'23');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_24.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'24');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_25.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'25');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_26.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'26');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_27.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'27');">
+		<img src="/public/javascripts/smarteditor/img/emoticon/imo_28.gif" alt="" width="15" height="15" style="cursor:pointer; _cusor:hand;" onClick="submitImageUploadForm(document.getElementById('editor_emoticon'),'28');">								
+	</div>
+    <div class="btn_box" style=" text-align:center;">
+      <img src="/public/javascripts/smarteditor/img/btn_layer_cancel.gif" alt="취소" width="38" height="21" border="0" style="cursor:pointer; _cusor:hand;" onClick="closeWin();">
+    </div>
+  </div>
+  </form>
+</div>
+</body>
+</html>

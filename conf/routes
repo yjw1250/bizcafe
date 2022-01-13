@@ -1,0 +1,238 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /		                                controllers.user.Application.index
+# 준비중 GET     /	                            controllers.user.Application.indexReady
+
+# U/I 공통모듈 샘플
+GET		/admin/ui								controllers.admin.UiController.index
+GET		/admin/ui/validation					controllers.admin.UiController.validation
+GET		/admin/ui/smartedit						controllers.admin.UiController.smartedit
+POST	/admin/ui/smarteditok					controllers.admin.UiController.smarteditok
+GET		/admin/ui/smarteditemoticon/{id}		controllers.admin.UiController.smarteditemoticon
+GET		/admin/ui/smarteditimgupload/{id}		controllers.admin.UiController.smarteditimgupload
+POST	/admin/ui/smarteditimguploadpro			controllers.admin.UiController.smarteditimguploadpro
+GET		/admin/ui/photos/{id}					controllers.admin.UiController.filePhoto
+
+# 회원 : 유재헌
+GET		/user									controllers.user.UserManager.index
+POST	/user									controllers.user.UserManager.create
+PUT		/user									controllers.user.UserManager.update
+GET		/user/modify							controllers.user.UserManager.modify
+GET		/user/{uid}.json						controllers.user.UserManager.read
+
+GET		/user/join								controllers.user.UserManager.index
+POST	/user/join								controllers.user.UserManager.join
+
+# 회원 : 탈퇴
+GET		/user/out								controllers.user.UserOutManager.index
+POST	/user/outProcess						controllers.user.UserOutManager.out
+
+GET		/user/zipcode							controllers.user.UserManager.zipcode
+GET		/user/zipcode/zipcode.json				controllers.user.UserManager.zipcodeSearch
+GET		/user/idcheck							controllers.user.UserManager.userIDcheck
+GET	 	/user/searchIdPassword					controllers.user.UserManager.searchIdPassword
+POST	/user/searchId							controllers.user.UserManager.searchId
+POST	/user/searchPassword					controllers.user.UserManager.searchPassword
+GET		/user/newpassword						controllers.user.UserManager.newPassword
+
+GET		/user/new/newid.json					controllers.user.UserGuest.userIdCreate
+
+# 회원 : 로그인 : 유재헌
+GET		/user/login								controllers.user.UserLogin.index
+POST	/user/login								controllers.user.UserLogin.loginProcess
+POST	/user/loginTest							controllers.user.UserLogin.loginProcessTest
+GET		/user/logout							controllers.user.UserLogin.logoutProcess
+
+# 회원 : 메일수신거부 : 정보라
+GET		/user/emailDeny/{email}					controllers.user.UserManager.emailDeny
+
+# 예약관련 : 유정운(front)
+GET		/booking/businessallinfo.json			controllers.user.UserBooking.businessallinfoJSON
+GET		/booking/businessreserver.json			controllers.user.UserBooking.businessreserverJSON
+GET		/booking/business/{date}/{person}		controllers.user.MemberBooking.business
+GET		/booking/business						controllers.user.MemberBooking.business
+GET		/booking/complete/{id}					controllers.user.UserBooking.complete
+GET		/booking/info							controllers.user.UserBooking.info
+GET		/booking/roominfo.json					controllers.user.MemberBooking.roominfoJSON
+POST 	/booking/roomsave.json					controllers.user.MemberBooking.roomsaveJSON
+POST 	/booking/businessroomsave.json			controllers.user.MemberBooking.roomupdateJSON
+GET		/booking/reserver.json					controllers.user.MemberBooking.reserverJSON
+GET 	/booking/sohoreserver.json				controllers.user.MemberBooking.sohoreserverJSON
+GET		/booking/reserveruser.json				controllers.user.MemberBooking.reserverUserJSON
+GET		/booking/hoilday.json					controllers.user.UserBooking.holidayJSON
+
+GET 	/booking/businesstate					controllers.user.UserBooking.businessstate
+GET 	/booking/sohostate						controllers.user.MemberBooking.sohostate
+
+GET		/booking/service/complete/{id}			controllers.user.MemberBooking.servicecomplete
+POST	/booking/servicesave.json				controllers.user.MemberBooking.servicesave
+
+GET 	/booking/businesstatetotal				controllers.user.UserBooking.businessstatetotal
+GET 	/booking/sohostatetotal					controllers.user.UserBooking.sohostatetotal
+
+GET		/booking/businessdetail/{id}			controllers.user.MemberBooking.businessdetail
+GET		/booking/sohodetail/{id}				controllers.user.MemberBooking.sohodetail
+
+GET		/booking/businesslist.json				controllers.user.UserBooking.businessListJSON
+GET 	/booking/soho/complete/{id}				controllers.user.UserBooking.sohocomplete
+GET		/booking/soho/{date}/{person}			controllers.user.MemberBooking.soho
+GET 	/booking/soho							controllers.user.MemberBooking.soho
+
+PUT		/booking/businessroomcancel.json		controllers.user.MemberBooking.businessroomcancelJSON
+PUT		/booking/sohoroomcancel.json			controllers.user.MemberBooking.sohoroomcancelJSON
+
+
+# 예약관련 : 유정운(admin)
+GET		/admin/booking/roominfo.json			controllers.admin.AdminBooking.roominfoJSON
+GET		/admin/booking/reserver.json			controllers.admin.AdminBooking.reserverJSON
+
+GET		/admin/booking/businesstate				controllers.admin.AdminBooking.businessstate
+GET		/admin/booking/businessdetail/{id}		controllers.admin.AdminBooking.businessdetail
+GET		/admin/booking/businessmem				controllers.admin.AdminBooking.businessmem
+GET		/admin/booking/businessnomem			controllers.admin.AdminBooking.businessnomem
+GET		/admin/booking/complete/{id}			controllers.admin.AdminBooking.complete
+GET		/admin/booking/businesslist/{id}		controllers.admin.AdminBooking.businesslist
+GET		/admin/booking/businessuserlist.json	controllers.admin.AdminBooking.businessUserListJSON
+
+
+GET		/admin/booking/soho						controllers.admin.AdminBooking.soho
+GET		/admin/booking/sohostate				controllers.admin.AdminBooking.sohostate
+GET 	/admin/booking/sohoreserver.json		controllers.admin.AdminBooking.sohoreserverJSON
+GET		/admin/booking/sohodetail/{id}		    controllers.admin.AdminBooking.sohodetail
+GET		/admin/booking/soho/complete/{id}		controllers.admin.AdminBooking.sohocomplete
+GET		/admin/booking/sohomem					controllers.admin.AdminBooking.sohomem
+GET		/admin/booking/sohonomem				controllers.admin.AdminBooking.sohonomem
+GET		/admin/booking/soholist/{id}			controllers.admin.AdminBooking.soholist
+GET		/admin/booking/sohouserlist.json	    controllers.admin.AdminBooking.sohoUserListJSON
+
+
+GET		/admin/booking/businessinfo				controllers.admin.AdminBooking.businessinfo
+GET		/admin/booking/businessroominfo.json	controllers.admin.AdminBooking.businessroominfoJSON
+GET		/admin/booking/businessallinfo.json		controllers.admin.AdminBooking.businessallinfoJSON
+POST 	/admin/booking/businessroomsave.json	controllers.admin.AdminBooking.businessroomsaveJSON
+GET		/admin/booking/businessreserver.json	controllers.admin.AdminBooking.businessreserverJSON
+GET		/admin/booking/businesshoilday.json		controllers.admin.AdminBooking.businessholidayJSON
+GET		/admin/booking/businesslist.json		controllers.admin.AdminBooking.businessListJSON
+
+
+
+PUT		/admin/booking/businessroomcancel.json	controllers.admin.AdminBooking.businessroomcancelJSON
+PUT		/admin/booking/businessroomconfirm.json	controllers.admin.AdminBooking.businessroomconfirmJSON
+PUT 	/admin/booking/businessroomauth.json    controllers.admin.AdminBooking.businessroomauthJSON
+
+GET		/admin/status/bizroomstate				controllers.admin.AdminBooking.BizRoomState
+GET		/admin/status/bizroomstate.json			controllers.admin.AdminBooking.BizRoomStateJSON
+GET		/admin/status/bizroomexcel				controllers.admin.AdminBooking.BizRoomEXCEL
+
+GET		/admin/status/sohoroomstate				controllers.admin.AdminBooking.SohoRoomState
+GET		/admin/status/sohoroomstate.json		controllers.admin.AdminBooking.SohoRoomStateJSON
+GET		/admin/status/sohoroomexcel				controllers.admin.AdminBooking.SohoRoomEXCEL
+
+# SMS 발송 : 유정운
+
+POST	/sms/sendsms.json						controllers.user.SmsManager.sendsmsJSON
+POST	/sms/certifysms.json					controllers.user.SmsManager.certifysmsJSON
+
+# JEI Biz 소개
+GET		/introduce								controllers.user.Introduce.index
+GET		/introduce/contact						controllers.user.Introduce.contact
+
+# 이용안내
+GET		/guide/business/chart					controllers.user.Guide.businessChart
+GET		/guide/business/space					controllers.user.Guide.businessSpace
+GET		/guide/soho/chart						controllers.user.Guide.sohoChart
+GET		/guide/soho/space						controllers.user.Guide.sohoSpace
+GET		/guide/cafe								controllers.user.Guide.cafe
+GET		/guide/useInfo							controllers.user.Guide.useInfo
+
+# 고객센터
+GET		/cs/siteMap								controllers.user.Cs.siteMap
+GET		/cs/rules								controllers.user.Cs.rules
+GET		/cs/privacy								controllers.user.Cs.privacy
+GET		/cs/emailCollect						controllers.user.Cs.emailCollect
+
+# 게시판 : BOKY
+GET		/board/{boardCode}						controllers.user.Board.list
+GET		/board/{boardCode}/read					controllers.user.Board.read
+GET		/board/{boardCode}/write				controllers.user.Board.write
+POST	/board/{boardCode}/create				controllers.user.Board.create
+POST	/board/{boardCode}/search				controllers.user.Board.list
+POST	/board/{boardCode}/modify				controllers.user.Board.modify
+POST	/board/{boardCode}/update				controllers.user.Board.update
+POST	/board/{boardCode}/delete				controllers.user.Board.delete
+POST	/board/{boardCode}/download				controllers.user.Board.download
+
+########## 관리자 ########## 
+
+# 로그인
+GET		/admin									controllers.admin.UserAdminLogin.index
+POST	/admin									controllers.admin.UserAdminLogin.loginProcess
+POST	/adminTest								controllers.admin.UserAdminLogin.loginProcessTest
+GET		/admin/logout							controllers.admin.UserAdminLogin.logoutProcess
+
+# 관리자 정보수정
+GET		/admin/modify							controllers.admin.UserAdminModify.index
+PUT		/admin/modify							controllers.admin.UserAdminModify.update
+
+# 통계
+GET		/admin/stats/visit						controllers.admin.StatsUserManager.visit
+POST	/admin/stats/visit						controllers.admin.StatsUserManager.visit
+GET		/admin/stats/type						controllers.admin.StatsUserManager.type
+GET		/admin/stats/visitexcel					controllers.admin.StatsUserManager.visitExcel
+
+# 회원관리 : 유재헌
+GET	  	/admin/user								controllers.admin.AdminUserManager.list
+GET	  	/admin/user/list.json					controllers.admin.AdminUserManager.listJson
+GET	  	/admin/user/list.json/{page}			controllers.admin.AdminUserManager.listJson
+GET		/admin/user/read/{userID}.json			controllers.admin.AdminUserManager.read
+DELETE	/admin/user/delete						controllers.admin.AdminUserManager.delete
+
+
+# 관리자 관리 : 유재헌
+GET		/admin/userAdmin						controllers.admin.AdminUserAdmin.list
+POST	/admin/userAdmin						controllers.admin.AdminUserAdmin.create
+PUT		/admin/userAdmin						controllers.admin.AdminUserAdmin.update
+GET		/admin/userAdmin/read/{adminID}			controllers.admin.AdminUserAdmin.read
+GET		/admin/userAdmin/join					controllers.admin.AdminUserAdmin.join
+
+GET		/admin/userAdmin/idcheck				controllers.admin.AdminUserAdmin.userAdminIDcheck
+
+# 회원검색 : 유정운
+GET		/admin/userAdmin/findmember				controllers.admin.AdminUserAdmin.findmember
+						
+# 예약관련 : 유정운(admin)
+GET		/admin/booking							controllers.admin.AdminBooking.index
+
+# 예약 서비스 만족도 관리 : 유정운
+GET		/admin/service							controllers.admin.AdminBooking.service
+GET		/admin/service/surveylist.json			controllers.admin.AdminBooking.surveylistJSON
+GET		/admin/service/surveyexcel				controllers.admin.AdminBooking.surveylistEXCEL
+GET		/admin/service/surveytotal.json			controllers.admin.AdminBooking.surveytotalJSON
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
+
+
+# 게시판
+GET		/admin/board/{boardCode}				controllers.admin.AdminBoard.list
+GET		/admin/board/{boardCode}/read			controllers.admin.AdminBoard.read
+GET		/admin/board/{boardCode}/write			controllers.admin.AdminBoard.write
+POST	/admin/board/{boardCode}/create			controllers.admin.AdminBoard.create
+POST	/admin/board/{boardCode}/search			controllers.admin.AdminBoard.list
+POST	/admin/board/{boardCode}/modify			controllers.admin.AdminBoard.modify
+POST	/admin/board/{boardCode}/update			controllers.admin.AdminBoard.update
+POST	/admin/board/{boardCode}/reply			controllers.admin.AdminBoard.reply
+POST	/admin/board/{boardCode}/delete			controllers.admin.AdminBoard.delete
+POST	/admin/board/{boardCode}/download		controllers.admin.AdminBoard.download
+
+

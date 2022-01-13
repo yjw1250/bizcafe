@@ -1,0 +1,159 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'홈 > 회원관리 > 회원리스트' /}
+#{set 'moreScripts' }
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/user.js'}"></script>
+#{/set}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="41" />
+
+<h3>회원 관리</h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="">홈</a></li><li><a href="">사이트 관리</a></li><li class="current">회원관리</li></ul>
+</div><!-- //breadcrumb -->
+
+<!-- 한줄표현 작업시 -->
+<div class="listHead">
+	회원수:<em>${userCount}</em>명<span class="bar">
+	<!-- |</span> -->
+	<!-- 탈퇴 회원수:<em>35.6%</em> -->
+	#{form @admin.AdminUserManager.list(), name:'searchForm',id:'searchForm'}
+		<fieldset class="msearch">
+			<legend>회원검색</legend>
+			<select name="searchKey" id="searchKey">
+				<option value="userName" #{if searchKey == "userName"} selected #{/if}>이름</option>
+				<option value="userID" #{if searchKey == "userID"} selected #{/if}">아이디</option>
+				<option value="phone" #{if searchKey == "phone"} selected #{/if}>연락처</option>
+				
+			</select>
+			<input class="input_txt" type="text" value="${searchVal}" name="searchVal" id="searchVal">
+			<a href="javascript:;" class="innerBtn" id="btnSearch"><span>검색</span></a>
+			#{if searchVal > "" }
+			<a href="/admin/user" class="innerBtn" id="btnInit"><span>초기화</span></a>
+			#{/if}
+		</fieldset>
+	
+	#{/form}
+</div><!-- //listHead -->
+<!-- 한줄표현 작업시 -->
+
+#{form @admin.AdminUserManager.list(), name:'userListForm',id:'userListForm'}
+<input type="hidden" name="page" id="page" value="${page}">
+<input type="hidden" name="searchKey" id="searchKey" value="${searchKey}">
+<input type="hidden" name="searchVal" id="searchVal" value="${searchVal}">
+<div class="board_list">
+	<table cellspacing="0" cellpadding="0" summary="faq리스트" id="adminUserList">
+		<colgroup><col width="8%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="*" /><col width="12%" /><col width="12%" /></colgroup>
+		<thead>
+		<tr>
+			<th rowspan="2">번호</th>
+			<th rowspan="2">아이디</th>
+			<th rowspan="2">회원명</th>
+			<th rowspan="2">연락처</th>
+			<th rowspan="2">이메일</th>
+		  <th colspan="2">이용안내</th>
+		</tr>
+		<tr>
+		  <th>미팅공간</th>
+		  <th>소호사무실</th>
+		</tr>
+		</thead>
+		<tbody>
+		#{list items:userList, as:"user"}
+		<tr class="bg0">
+			<td class="num tc">${countNumber--}</td>
+			<td class="tc"><a href="javascript:;" onclick="$.userRead('${user.userID}')">${user.userID}</a></td>
+			<td class="tc">${user.userName}</td>
+			<td class="tc">${user.phone}</td>
+			<td class="subj">${user.email}</td>
+			<td class="num tc"><a href="/admin/booking/businesslist/${user.userID}">${user.resBzCnt}</a></td>
+		    <td class="num tc"><a href="javascript:alert('준비중입니다.');">${user.resOfCnt}</a></td>
+		</tr>
+		#{/list}
+		
+		#{if userCount==0 }
+		<!-- 검색결과 및 데이타 없음 코멘트 -->
+		<tr><td class="comment" colspan="7">'${searchVal}' (으)로 <strong>검색된 사용자가 없습니다.</strong><br />검색어를 다시 확인해 주세요.</td></tr>
+		<!-- //검색결과 및 데이타 없음 코멘트 -->
+		#{/if}
+	   </tbody>
+	   </table>
+</div><!-- //board_list -->
+#{/form}
+
+<p class="note_attach star">아이디 클릭 시 회원정보를 확인할 수 있습니다.</p>
+<p class="note_attach star">이용내역 숫자 클릭 시 선택된 회원의 예약 내역을 확인할 수 있습니다.</p>
+
+
+<div class="pagenavi" id="pagenavi">
+	#{if userCount > 0}
+		<a class="first" href="javascript:;" onclick="$.page(1)"><img alt="처음" src="/public/admin/images/btn_pagenavi_fist.gif" id="btnPagenaviFirst"></a>	
+		#{if pagination.page > 1}
+	 		<a class="prev" href="javascript:;" onclick="$.page(${pagination.page - 1})"><img alt="이전" src="/public/admin/images/btn_pagenavi_prev.gif"></a>
+	 	#{/if}
+	 	#{else}
+	 		<img alt="이전" src="/public/admin/images/btn_pagenavi_prev.gif">
+	 	#{/else}
+		#{list items:pagination.firstPage + 1..pagination.lastPage, as:'i'}
+	 		#{if pagination.page != i}
+				<a href="javascript:;" onclick="$.page(${i})">${i}</a>
+			#{/if}
+			#{else}
+				<strong>${i}</strong>
+			#{/else}
+		#{/list}
+		#{if pagination.totalPage > pagination.page}
+			<a class="next" href="javascript:;" onclick="$.page(${pagination.page + 1})"><img alt="다음" src="/public/admin/images/btn_pagenavi_next.gif"></a>
+		#{/if}
+	 	#{else}
+	 		<img alt="다음" src="/public/admin/images/btn_pagenavi_next.gif">
+	 	#{/else}
+	 	
+	 	#{if pagination.block <= pagination.totalBlock}
+	 		<a class="end" href="javascript:;" onclick="$.page(${pagination.lastPage})"><img alt="끝" src="/public/admin/images/btn_pagenavi_end.gif"></a>
+		#{/if}
+		#{else}
+	 		<img alt="끝" src="/public/admin/images/btn_pagenavi_end.gif">
+	 	#{/else}
+	#{/if}
+	
+</div><!-- //pagenavi -->
+
+
+<!-- 회원정보 팝업 -->
+<div class="pop_wrap" id="readUserInfo" style="position:absolute;left:100px;top:100px;width:400px;display:none;">
+	<div class="pop">
+		<h1><strong>회원정보</strong></h1>
+		<p class="popBtn"><a href="javascript:;" id="btnClose"><img src="/public/admin/images/btn_x.gif" alt="닫기" /></a></p>
+		<div class="popCon">
+			<table cellspacing="0" border="1" summary="휴대폰 인증요청">
+			<colgroup><col width="80px" /><col width="" /></colgroup>
+			<tbody>
+			<tr>
+				<th class="tit">이름</th>
+				<td class="tl" id="readUserName">홍길동()</td>
+			</tr>
+			<tr>
+				<th class="tit">연락처</th>
+				<td class="tl" id="readUserPhone">0</td>
+			</tr>
+			<tr>
+				<th class="tit">주소</th>
+				<td class="tl" id="readme">
+				<span id="readUserZipCode">(우)</span>
+					<br /><span id="readUserAddress">주소</span></td>
+			</tr>
+			<tr>
+				<th class="tit">이용안내</th>
+				<td class="tl">
+					<p>비즈니스미팅공간: 총<strong id="readBzCnt">0</strong>회<a href="#" id="readBzLink" class="innerBtn"><span>내역보기</span></a></p>
+					<p>소호 사무실: 총<strong id="readSohoCnt">0</strong>회<a href="#" id="readSohoLink"  class="innerBtn"><span>내역보기</span></a></p>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			<p class="btn_pop"><a class="inputBtn" href="javascript:;" id="btnCloseBic"><span style="width:50px;">닫기</span></a></p><!-- //btn -->
+		</div><!-- popCon -->
+	</div><!-- //pop -->
+</div><!-- //pop_wrap -->
+
+

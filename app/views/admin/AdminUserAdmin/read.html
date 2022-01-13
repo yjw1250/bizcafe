@@ -1,0 +1,134 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'관리자 > 관리자 관리 > 관리자 등록' /}
+
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="/public/admin/javascripts/validation.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/jquery/jquery.validate.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/jeicommon.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/admin/javascripts/userAdmin.js"></script>
+#{/set}
+
+#{stylesheet 'member.css' /}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="51" />
+
+<h3>관리자 조회</h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="/admin/user">홈</a></li><li><a href="/admin/userAdmin">관리자 설정</a></li><li class="current">관리자 수정</li></ul>
+</div><!-- //breadcrumb -->
+
+#{form @admin.AdminUserAdmin.update(), name:'modifyForm',id:'modifyForm'}
+<input type="hidden" name="mode" id="mode" value="update">
+<div class="board_vWrite">
+<table cellspacing="0" border="0" summary="공지사항 등록 하기">
+	<colgroup><col width="160px"><col width="260"><col width="160px"><col width="260"></colgroup>
+	<tbody>
+	<tr>
+		<th class="tit">등록인</th>
+		<td>${userAdmin.regID}</td>
+		<th class="tit">등록일</th>
+		<td>${userAdmin.regDate}</td>
+	</tr>
+	
+	<tr>
+		<th class="tit">아이디<span class="must"><span class="blind">*</span></span></th>
+		<td colspan=3>${userAdmin.adminID}</td><input type="hidden" name="adminID" id="adminID" value="${userAdmin.adminID}">
+	</tr>
+	<tr>
+		<th class="tit">관리자 이름<span class="must"><span class="blind">*</span></span></th>
+		<td>${userAdmin.adminName}</td><input type="hidden" name="adminName" id="adminName" value="${userAdmin.adminName}">
+		<th class="tit">전화번호<span class="must"><span class="blind">*</span></span></th>
+		<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.tel}" name="tel" id="tel"></td>
+	</tr>
+	<tr>
+		<th class="tit">부서명</th>
+		<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.department}" name="department" id="department"></td>
+		<th class="tit">휴대폰<span class="must"><span class="blind">*</span></span></th>
+		<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.hp}" name="hp" id="hp"></td>
+	</tr>
+	<tr>
+		<th class="tit">직급</th>
+		<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.duty}" name="duty" id="duty"></td>
+		<th class="tit">이메일<span class="must"><span class="blind">*</span></span></th>
+		<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.email}" name="email" id="email"></td>
+	</tr>
+	<tr>
+		<th class="tit">관리자 등급<span class="must"><span class="blind">*</span></span></th>
+		<td>
+			<select name="adminLevel" id="adminLevel">
+				<option value="S" #{if userAdmin.adminLevel == "S"} selected #{/if}>시스템 관리자</option>
+				<option value="G" #{if userAdmin.adminLevel == "G"} selected #{/if}>일반관리자</option>
+			</select>
+		</td>
+		<th class="tit">소속사<span class="must"><span class="blind">*</span></span></th>
+		<td>
+			<select name="company" id="company">
+				<option value="1">재능교육</option>
+				<option value="2">재능e아카데미</option>
+			</select>
+		</td>
+	</tr>
+	
+
+	</tbody>
+</table>
+</div><!-- //board_vWrite -->
+
+<div class="board_vWrite">
+	<table cellspacing="0" border="0" summary="공지사항 등록 하기">
+		<colgroup><col width="160px"><col width="*"></colgroup>
+		<tbody>
+		<tr>
+			<th class="tit">통계</th>
+			<td>
+				<input type="checkbox" name="menuAutority[]" id="menu1_1" class="input_check" value="11" #{if menuMap.menu11 == "1"} checked #{/if} /><label>방문자수</label>
+				<input type="checkbox" name="menuAutority[]" id="menu1_2" class="input_check" value="12" #{if menuMap.menu12 == "1"} checked #{/if} /><label>매출현황</label>
+				<input type="checkbox" name="menuAutority[]" id="menu1_3" class="input_check" value="13" #{if menuMap.menu13 == "1"} checked #{/if} /><label>비즈니스 미팅공간 이용현황</label>
+				<input type="checkbox" name="menuAutority[]" id="menu1_4" class="input_check" value="14" #{if menuMap.menu14 == "1"} checked #{/if} /><label>소호사무실 이용현황</label>
+			</td>
+		</tr>
+		<tr>
+			<th class="tit">비즈니스 미팅공간<br />예약관리</th>
+			<td>
+				<input type="checkbox" name="menuAutority[]" id="menu2_1" class="input_check" value="21" #{if menuMap.menu21 == "1"} checked #{/if} /><label>현황관리</label>
+				<input type="checkbox" name="menuAutority[]" id="menu2_2" class="input_check" value="22" #{if menuMap.menu22 == "1"} checked #{/if} /><label>등록</label>
+			</td>
+		</tr>
+		<tr>
+			<th class="tit">소호사무실<br />예약관리</th>
+			<td>
+				<input type="checkbox" name="menuAutority[]" id="menu3_1" class="input_check" value="31" #{if menuMap.menu31 == "1"} checked #{/if} /><label>현황관리</label>
+				<input type="checkbox" name="menuAutority[]" id="menu3_2" class="input_check" value="32" #{if menuMap.menu32 == "1"} checked #{/if} /><label>등록</label>
+			</td>
+		</tr>
+		<tr>
+			<th class="tit">사이트관리</th>
+			<td>
+				<input type="checkbox" name="menuAutority[]" id="menu4_1" class="input_check" value="41" #{if menuMap.menu41 == "1"} checked #{/if} /><label>회원관리</label>
+				<input type="checkbox" name="menuAutority[]" id="menu4_2" class="input_check" value="42" #{if menuMap.menu42 == "1"} checked #{/if} /><label>메인관리</label>
+				<input type="checkbox" name="menuAutority[]" id="menu4_3" class="input_check" value="43" #{if menuMap.menu43 == "1"} checked #{/if} /><label>공지사항</label>
+				<input type="checkbox" name="menuAutority[]" id="menu4_4" class="input_check" value="44" #{if menuMap.menu44 == "1"} checked #{/if} /><label>채용</label>
+				<input type="checkbox" name="menuAutority[]" id="menu4_5" class="input_check" value="45" #{if menuMap.menu45 == "1"} checked #{/if} /><label>FAQ</label>
+				<input type="checkbox" name="menuAutority[]" id="menu4_6" class="input_check" value="46" #{if menuMap.menu46 == "1"} checked #{/if} /><label>1:1문의</label>
+				<input type="checkbox" name="menuAutority[]" id="menu4_7" class="input_check" value="47" #{if menuMap.menu47 == "1"} checked #{/if} /><label>갤러리</label>
+			</td>
+		</tr>
+		<tr>
+			<th class="tit">관리자 설정</th>
+			<td>
+				<input type="checkbox" name="menuAutority[]" id="menu5_1" class="input_check" value="51" #{if menuMap.menu51 == "1"} checked #{/if} /><label>관리자 조회</label>
+				<input type="checkbox" name="menuAutority[]" id="menu5_2" class="input_check" value="52" #{if menuMap.menu52 == "1"} checked #{/if} /><label>관리자 등록</label>
+				<input type="checkbox" name="menuAutority[]" id="menu5_3" class="input_check" value="53" #{if menuMap.menu53 == "1"} checked #{/if} /><label>책임자 설정</label>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div><!-- //board_vWrite -->
+
+<div class="board_btnarea">
+	<a class="inputBtn" href="javascript:;" id="btnAdminUpdate"><span style="width:50px;">수정</span></a>
+</div><!-- //btnArea -->
+	
+#{/form}
+
+

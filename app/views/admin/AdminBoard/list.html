@@ -1,0 +1,101 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'관리자 > 테스트' /} 
+<script type="text/javascript" src="@{'/public/admin/javascripts/board.js'}"></script>
+<h3>${boardCodeName} 관리 </h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="">홈</a></li><li><a href="">사이트 관리</a></li><li class="current">${boardCodeName}관리</li></ul>
+</div><!-- //breadcrumb -->
+<!-- 한줄표현 작업시 -->
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form id="listForm" name="listForm" method="post">
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="${adminMenuNum}" />
+<input type="hidden" name="page" id="page" value="${pagination.page}" />
+<div class="listHead" style="padding-bottom:10px">
+	<fieldset class="msearch">
+		<legend>리스트검색</legend>
+		<select name="searchKey" id="searchKey">
+			<option value="title" #{if searchKey == "title"} selected #{/if}>제목</option>
+			<option value="contents" #{if searchKey == "contents"} selected #{/if}>내용</option>
+			<option value="title|contents" #{if searchKey == "title|contents"} selected #{/if}>제목+내용</option>
+		</select>
+		<input class="input_txt" type="text" name="searchVal" id="searchVal" value="${urlDecodeSearchVal}" onkeypress='if (13 == event.keyCode) {return false;}' />
+		<a href="#" onclick="$.search();" class="innerBtn"><span>검색</span></a>
+		<a href="/admin/board/${boardCode}" class="innerBtn"><span>초기화</span></a>
+	</fieldset>
+</div><!-- //listHead -->
+<!-- 한줄표현 작업시 -->
+<div class="board_list">
+	<table cellspacing="0" cellpadding="0" summary="faq리스트">
+		<colgroup><col width="8%" /><col width="*" /><col width="12%" /><col width="15%" /></colgroup>
+		<thead>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>조회</th>
+			<th>등록일</th>
+		</tr>
+		</thead>
+		<tbody>
+		#{if boardTotalCount > 0}
+		#{list items:list, as:'board' }
+		<tr class="bg0">
+			<td class="num tc">${boardNumber--}</td>
+			<td class="subj">
+				<a href="/admin/board/${boardCode}/read?idx=${board.idx}&page=${pagination.page}">${board.title.length() > 90 ? (board.title[0..90]+'...') : board.title}</a>
+				#{if board.regDate == nowDate}
+				<img alt="new" src="/public/images/main/ico_new.gif" />
+				#{/if}
+			</td>
+			<td class="num tc">${board.hitNum}</td>
+			<td class="num tc">${board.regDate}</td>
+		</tr>
+		#{/list}
+		#{/if}
+		#{else}
+		<tr><td class="comment" colspan="7">결과가 없습니다.</td></tr>
+		#{/else}
+	   </tbody>
+	   </table>
+</div><!-- //board_list -->
+<div class="board_btnarea">
+	<a class="inputBtn" href="/admin/board/${boardCode}/write"><span style="width:50px;">글쓰기</span></a>
+</div><!-- //btnArea -->
+<div class="pagenavi">
+	#{if boardTotalCount > 0}
+		#{if pagination.page != 1}
+		<a class="first" href="#" onclick="$.page(1)"><img alt="처음" src="/public/admin/images/btn_pagenavi_fist.gif" id="btnPagenaviFirst"></a>
+		#{/if}
+		#{else}
+			<img alt="처음" src="/public/admin/images/btn_pagenavi_fist.gif" id="btnPagenaviFirst">
+		#{/else}	
+		#{if pagination.page > 1}
+	 		<a class="prev" href="#" onclick="$.page(${pagination.page - 1})"><img alt="이전" src="/public/admin/images/btn_pagenavi_prev.gif"></a>
+	 	#{/if}
+	 	#{else}
+	 		<img alt="이전" src="/public/admin/images/btn_pagenavi_prev.gif">
+	 	#{/else}
+		#{list items:pagination.firstPage + 1..pagination.lastPage, as:'i'}
+	 		#{if pagination.page != i}
+				<a href="#" onclick="$.page(${i})">${i}</a>
+			#{/if}
+			#{else}
+				<strong>${i}</strong>
+			#{/else}
+		#{/list}
+		#{if pagination.totalPage > pagination.page}
+			<a class="next" href="#" onclick="$.page(${pagination.page + 1})"><img alt="다음" src="/public/admin/images/btn_pagenavi_next.gif"></a>
+		#{/if}
+	 	#{else}
+	 		<img alt="다음" src="/public/admin/images/btn_pagenavi_next.gif">
+	 	#{/else}
+	 	
+	 	#{if pagination.block <= pagination.totalBlock}
+	 		<a class="end" href="#" onclick="$.page(${pagination.lastPage})"><img alt="끝" src="/public/admin/images/btn_pagenavi_end.gif"></a>
+		#{/if}
+		#{else}
+	 		<img alt="끝" src="/public/admin/images/btn_pagenavi_end.gif">
+	 	#{/else}
+	#{/if}
+</div><!-- //pagenavi -->
+</form>

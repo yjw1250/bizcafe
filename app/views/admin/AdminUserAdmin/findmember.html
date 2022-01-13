@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>#{get 'title' /} </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="@{'/public/admin/stylesheets/admin.css'}" />
+#{script '/jquery/jquery-1.7.1.min.js', charset:'UTF-8' /}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery.validate.js'}"></script>
+#{script '/jquery/select.js',charset:'UTF-8' /}
+#{script '/jquery/jquery.cookie.js',charset:'UTF-8' /}
+#{script '/jquery/trimpath-template-1.1.22-jei.js',charset:'UTF-8' /}
+#{script 'common.js',charset:'UTF-8' /}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/findmember.js'}"></script>
+</head>
+<body>
+<div class="pop_wrap" id="findmember">
+	<div class="pop">
+		<h1><strong>회원검색</strong></h1>
+		<p class="popBtn"><a href="javascript:;" id="btnClose"><img src="@{'/public/admin/images/btn_x.gif'}" alt="닫기" /></a></p>
+		
+		<div class="popCon">
+			<select name="searchKey" id="searchKey">
+				<option value="username">이름</option>
+				<option value="userID">아이디</option>
+				<option value="email">이메일</option>
+				<option value="phone">연락처</option>
+			</select>
+			<input type="text" style="ime-mode:active;width:124px" value="" name="searchVal" id="searchVal" class="input_txt" />
+			<a href="javascript:;" id="btnMemberSearch" class="innerBtn"><span>검색</span></a>
+		
+		<div class="result_wrap" style="display:none;">
+		<!-- [D] 결과값이 있을경우 -->
+		<p class="note_attach star">'<span id="searchText"></span>'(으)로 <strong>검색된 사용자가 <span id="userCount"></span>명</strong>있습니다..</p>
+		<div class="result_post">
+		<table border="1" cellspacing="0">
+			<colgroup><col width="20%" /><col width="20%" /><col width="" /><col width="30%" /></colgroup>
+			<tr>
+				<th>이름</th>
+				<th>아이디</th>
+				<th>전화번호</th>
+				<th>기능</th>
+			</tr>
+		</table>
+		<div class="post_table">
+		<table border="1" cellspacing="0" id="memberList">
+		
+		</table>
+		
+		<div class="pagenavi" id="pageNavi"></div>
+					
+		<!-- Template -->
+		<textarea id="templateRow" style="display:none;width:450px;height:300px">
+		<colgroup><col width="20%" /><col width="20%" /><col width="" /><col width="30%" /></colgroup>
+		{for userLists in userList}
+		<tr>
+				<td>＄{userLists.userName}</td>
+				<td>＄{userLists.userID}</td>
+				<td class="num">＄{userLists.phone}</td>
+				<td class="num"><a onclick="$.setMember('＄{userLists.userID}','＄{userLists.userName}','＄{userLists.phone}')" href="javascript:;" class="innerBtn"><span>선택</span></a><a onclick="$.readMember('＄{userLists.userID}')" href="javascript:;" class="innerBtn"><span>정보</span></a></td>
+		</tr>
+		{/for}
+		</textarea>
+		
+
+		</div>
+		</div><!-- //[D] 결과값이 있을경우 -->
+		</div><!-- result_wrap -->
+
+		<p class="btn_pop"><a class="inputBtn" href="javascript:;" id="btnClose1"><span style="width:50px;">닫기</span></a></p><!-- //btn -->
+		</div><!-- popCon -->
+		
+	</div><!-- //pop -->
+</div><!-- //pop_wrap -->
+
+<!-- 회원정보 팝업 -->
+<div class="pop_wrap" id="readUserInfo" style="display:none;">
+	<div class="pop">
+		<h1><strong>회원정보</strong></h1>
+		<p class="popBtn"><a href="javascript:;" id="btnClose"><img src="/public/admin/images/btn_x.gif" alt="닫기" /></a></p>
+		<div class="popCon">
+			<table cellspacing="0" border="1" summary="휴대폰 인증요청">
+			<colgroup><col width="80px" /><col width="" /></colgroup>
+			<tbody>
+			<tr>
+				<th class="tit">이름</th>
+				<td class="tl" id="readUserName"></td>
+			</tr>
+			<tr>
+				<th class="tit">연락처</th>
+				<td class="tl" id="readUserPhone"></td>
+			</tr>
+			<tr>
+				<th class="tit">주소</th>
+				<td class="tl" id="readme">
+				<span id="readUserZipCode"></span>
+					<br /><span id="readUserAddress"></span></td>
+			</tr>
+			<tr>
+				<th class="tit">이용안내</th>
+				<td class="tl">
+					<p>비즈니스미팅공간: 총<strong></strong>회<a href="" class="innerBtn"><span>내역보기</span></a></p>
+					<p>소호 사무실: 총<strong></strong>회<a href="" class="innerBtn"><span>내역보기</span></a></p>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			<p class="btn_pop"><a class="inputBtn" href="javascript:;" id="btnCloseBic"><span style="width:50px;">리스트로</span></a></p><!-- //btn -->
+		</div><!-- popCon -->
+	</div><!-- //pop -->
+</div><!-- //pop_wrap -->
+</body>
+</html>

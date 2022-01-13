@@ -1,0 +1,204 @@
+/********************************
+예약안내
+*********************************/
+.booking_info {overflow:hidden;margin-bottom:41px;}
+.booking_info  img{float:left;margin-right:19px;}
+.booking_info .bookingInfo_txt {float:left;vertical-align: middle;}
+.booking_info .bookingInfo_txt p{color:#666565;line-height:130%;}
+.booking_info .bookingInfo_txt p em{color:#4fb0bd;}
+.booking_info .bookingInfo_txt strong{display:block;height:14px;line-height:1%;}
+.booking_info .bt1 strong{margin:10px 0 7px;}
+.booking_info .bt2 strong{margin:26px 0 7px;}
+.booking_info .bt3 strong{margin:10px 0 7px;}
+.booking_info .bt4 strong{margin:20px 0 7px;}
+.booking_info .bookingInfo_txt p.btnarea{margin:8px 0 0 0;}
+
+
+/********************************
+예약하기
+*********************************/
+/* 예약테이블  */
+.tbl_booking{overflow:hidden;margin-bottom:20px;border-width:1px 1px 0 1px;border-style:solid;border-color:#a1a1a1 #c7c7c7 #fff #c7c7c7;}
+.tbl_booking table{ border-collapse: separate;width:100%;border:0;}
+.tbl_booking th,.tbl_booking td{color:#555;}
+.tbl_booking thead th{padding:9px 0 9px;background-color:#b8b8b8;border-right:1px solid #a1a1a1;border-bottom:1px solid #a1a1a1;font-size:11px;text-align:center;}
+.tbl_booking thead th.detail,.tbl_booking tbody td.detail{border-right:0;}
+.tbl_booking tbody th{border-width:0 1px 1px 0; border-style:solid;border-color:#d8d8d8;text-align:center;}
+.tbl_booking tbody th.th2, .tbl_booking tbody th.th3{width:100px;}
+.tbl_booking tbody td{width:22px;padding:0;border-width:0 1px 1px 0; border-style:solid;border-color:#c1c1c1;line-height:16px;text-align:center;background: #e6e6e6 url(../images/booking/bg_td_patten.gif) 0 0 repeat}
+.tbl_booking tbody td.detail{width:100px;background:#fff;text-align:center;line-height:33px;}
+.tbl_booking tbody td.detail a{display:inline;}
+.tbl_booking tbody td a{display:block;width:100%;height:33px;text-align:center;}
+.tbl_booking tbody td a.selectOut{cursor:default}
+.tbl_booking tbody td.td1{border-color:#b2b2b2 #d0d0d0;}
+.tbl_booking tbody td.td2{border-color:#b2b2b2 #c1c1c1;}
+.tbl_booking tbody td.rangeOut{border-color:#8f8f8f;}
+.tbl_booking thead th.booth{background:url(../images/booking/business_diagonal.gif) 50% 50% no-repeat;}
+.tbl_booking .booking_expn{border-left:0;border-bottom:1px solid #c7c7c7;}
+
+
+/* 오늘표시 */
+.tbl_booking thead th.ontime{background-color:#ffe745;}
+.tbl_booking tbody td.ontime{background: #ffe745 url(../images/booking/bg_td_patten.gif) 0 0 repeat}
+/* 관리자에서만 보이는 곳 (유저쪽 막음) */
+.tbl_booking tbody td.ontime a.select{background:#7eb3ff url(../images/booking/bu_booking_circle.png) 50% 50% no-repeat}
+.tbl_booking tbody td.ontime a.select:hover{background:#617aa8 url(../images/booking/bu_booking_circle.png) 50% 50% no-repeat}
+.tbl_booking tbody td.ontime a.selectOn, .tbl_booking tbody td.ontime a.selectOn:hover{background:#f38e8e url(../images/booking/bu_booking_circle.png) 50% 50% no-repeat}
+
+/* 예약가능 오늘중심 오른쪽 */
+.tbl_booking tbody td.range{background: #e6e6e6 url(../images/booking/bg_td_patten.gif) 0 0 repeat}
+.tbl_booking tbody td.range a.select{background:#7eb3ff url(../images/booking/bu_booking_circle.png) 50% 50% no-repeat}
+.tbl_booking tbody td.range a.select:hover{background:#617aa8 url(../images/booking/bu_booking_circle.png) 50% 50% no-repeat}
+.tbl_booking tbody td.range a.selectOn, .tbl_booking tbody td.range a.selectOn:hover{background:#f38e8e url(../images/booking/bu_booking_circle.png) 50% 50% no-repeat}
+
+/* 예약불가 오늘중심 왼쪽  */
+.tbl_booking tbody td.rangeOut{background: #737373 url(../images/booking/bg_td_patten.gif) 0 0 repeat}
+.tbl_booking tbody td.rangeOut .select{/*background:#7f7f7f;*/background:#989898;cursor:default}
+
+/* 예약시간 테이블 */
+.tbl_bookingIn {overflow:hidden;margin:0;padding:0;border:0;}
+.tbl_bookingIn dl{width:100%;border-collapse: separate;}
+.tbl_bookingIn dt, .tbl_bookingIn dd{float:left;font-size:12px;text-align:left; line-height:22px;}
+.tbl_bookingIn dt{width:127px;padding:8px 8px;background-color:#fff;color:#555;text-align:center;border-bottom:1px solid #d8d8d8;border-right:1px solid #d8d8d8;font-weight:bold;}
+.tbl_bookingIn dd{width:534px;padding:8px 0 8px 20px;background:#fff;border-bottom:1px solid #d8d8d8;}
+.tbl_bookingIn dd input{color: #4fb0bd;}
+.tbl_bookingIn .note_attach{background:none;font-size:11px;color:#b6b6b6;}
+.tbl_booking .booking_expn {padding: 15px 15px;}
+
+
+/* 예약테이블 위  */
+.tbl_bookingTop{position:relative;height:24px;color:#a6a6a6;}
+.tbl_bookingTop img {vertical-align:middle;}
+.tbl_bookingTop .dateSelection {font-weight:bold;color:#555;}
+.tbl_bookingTop .expn{position:absolute;right:0;top:4px;}
+.tbl_bookingTop .expn li{float:left;padding-left:10px;}
+.tbl_bookingTop .expn li img{margin-right:5px;}
+
+/* 예약보기테이블*/
+.booking_view {overflow:hidden;margin:0;padding:0;border:1px solid #d0d0d0;} 
+.booking_view table{width:100%;border-collapse: separate;}
+.booking_view table th, .booking_view table td, .booking_view table td a{font-size:11px;}
+.booking_view table th{padding:8px 8px;background-color:#d0d0d0;color:#fff;text-align:center;border-bottom:1px solid #e5e5e5;}
+.booking_view table td{padding:8px 0 8px 20px; line-height:20px;background:#fff;border-bottom:1px solid #e5e5e5;}
+.booking_view table td.tc{text-align:center;}
+.booking_view table td.tl{text-align:left;padding-left:20px;}
+.booking_view table td.tr{text-align:right;}
+ 
+ /* 예약쓰기테이블 */
+.booking_write {overflow:hidden;margin:0;padding:0;border-width:1px 1px 1px 0;border-style:solid;border-color:#c7c7c7;} 
+.booking_write table{width:100%;border-collapse: separate;}
+.booking_write table th, .booking_write table td, .booking_write table td a{font-size:12px;}
+.booking_write table th{padding:8px 8px;background-color:#fff;color:#666;text-align:center;border-bottom:1px solid #d8d8d8;border-right:1px solid #d8d8d8;border-left:1px solid #c7c7c7;}
+.booking_write table td{padding:8px 0 8px 20px; line-height:20px;background:#fff;border-bottom:1px solid #d8d8d8;}
+.booking_write table td.tc{text-align:center;}
+.booking_write table td.tl{text-align:left;padding-left:20px;}
+.booking_write table td.tr{text-align:right;}
+.booking_write table td input{border:1px solid #d4d4d4;height:20px;padding:0 4px;color:#4fb0bd;}
+.booking_write table td input[type="radio"]{border:none;}
+.booking_write table td img{vertical-align:middle;margin-left:5px;}
+.booking_write table td input, .board_view table td label {vertical-align: middle;}
+.booking_write table td label {padding-right: 15px;}
+.booking_write table td select {height: 20px;padding:1px;margin-top:0 !important;color:#4fb0bd;}
+.booking_write table td .textarea {padding:5px ;width:95%;border:1px solid #dedede;}
+.booking_write table td .input_cal{diaplay:block;padding:4px 3px;border:1px solid #d4d4d4;}
+.booking_write table td .input_cal input{border:0;height:16px; *height:12px;}
+#btnCalendar{*margin-left:0px}
+
+/* 테이블 아래 설명 */
+.booking_expn {padding:15px 15px 10px; border-left:1px solid #c7c7c7;}
+.booking_expn li{margin:0 0 5px 0;padding:0 18px;color:#959595;background:url(../images/common/bu_dot_star2.gif) no-repeat scroll 5px 3px;}
+.booking_expn p{text-align:center;}
+
+ /* 금액테이블 */
+.tbl_bookingcash {overflow:hidden;margin:0;padding:0;border:1px solid #c7c7c7;} 
+.tbl_bookingcash table{width:100%;border-collapse: separate;}
+.tbl_bookingcash table th, .tbl_bookingcash table td, .tbl_bookingcash table td a{font-size:12px;text-align:left;}
+.tbl_bookingcash table th{padding:20px 0;background-color:#fff;color:#555;text-align:center;border-right:1px solid #d8d8d8;}
+.tbl_bookingcash table td{padding:20px 10px 20px; line-height:20px;background:#fff;}
+.tbl_bookingcash table td.infomation{padding-bottom:0; line-height:20px;background:#fff;border-left:1px solid #d8d8d8;}
+.tbl_bookingcash .note_attach{background:none;font-size:11px;color:#b6b6b6;}
+.tbl_bookingcash table td.infomation dl{margin:0 0 30px 0;font-size:11px;}
+.tbl_bookingcash table td.infomation dt{margin-bottom:2px;font-weight:bold;color:#555;}
+.tbl_bookingcash table td.infomation dd{margin-left:6px;color:#a6a6a6;line-height:130%;}
+.booking_amount dl{margin:0 0 10px 0;overflow:hidden;}
+.booking_amount dt{padding:0 0 0 10px;color:#666;}
+.booking_amount dt, .booking_amount dd{float:left;color:#555;}
+.booking_amount dt.b_tit{width:150px;color:#666;}
+.booking_amount dd.b_cash{width:132px;color:#eb4f58;font-weight:bold;text-align:right;}
+.booking_amount dd.b_unit{width:40px;text-align:right;}
+.booking_amount dd.b_ex{width:331px;padding-right:10px;text-align:right;color:#b6b6b6;font-size:11px;}
+.booking_amount dl.boo_time dd.b_mark, .booking_amount dl.boo_people dd.b_mark{width:78px;text-align:right;}
+.booking_amount dl.boo_time dd.b_cash, .booking_amount dl.boo_people dd.b_cash{width:50px;color:#a6a6a6;}
+.booking_amount dl.boo_amonut{margin:0;padding:10px 0 0 0;border-top:1px solid #d8d8d8;}
+.booking_amount dl.boo_amonut dd.b_cash{font-size:17px;}
+
+/********************************
+버튼스타일
+*********************************/
+/* 버튼영역 */
+.booking_btnarea {position:relative;margin:0;text-align:center;height:26px;padding:10px 0 20px;}
+.booking_btnarea:after {visibility: hidden;height: 0; display: block;clear: both;content: ".";}
+
+/* 휴대폰인증요청 팝업*/
+.popCon table{width:100%;border:1px solid #d0d0d0;}
+.popCon table th, .popCon table td, .popCon table td a{font-size:11px;}
+.popCon table th{padding:8px 8px;background-color:#63b1c0;color:#fff;text-align:center;border-bottom:1px solid #e5e5e5;font-weight:normal;}
+.popCon table td{padding:8px 0 8px 20px; line-height:20px;background:#fff;border-bottom:1px solid #e5e5e5;}
+.popCon table td.tc{text-align:center;}
+.popCon table td.tl{text-align:left;padding-left:20px;}
+.popCon table td.tr{text-align:right;}
+.popCon table .last{border-bottom:0;}
+.popCon table td .phone{color:#666;margin-right:15px;}
+.popCon .user_modify{text-align:left;text-decoration:underline;margin:8px 0 0 8px;}
+
+/* 예약완료 */
+.board_complete{overflow:hidden;margin:0;padding:0;border:1px solid #d0d0d0;}
+.board_complete table{width:100%;border-collapse: separate;}
+.board_complete table th, .booking_view table td, .booking_view table td a{font-size:12px;}
+.board_complete table th{padding:8px 8px;background:#fff;color:#666;text-align:center;border-bottom:1px solid #e5e5e5;}
+.board_complete table td{padding:8px 0 8px 20px;line-height:20px;background:#fff;color:#666;border-bottom:1px solid #e5e5e5;border-left:1px solid #e5e5e5;}
+.board_complete table th.txt_complete{background:#969696;font-size:14px;color:#fff;text-align:left;padding:18px 0 18px 27px;}
+.board_complete table td.info{border:0;padding:18px 0 18px 20px;}
+.board_complete table .last th, .board_complete table .last td{border-bottom:0;}
+.board_complete .txt_blue{color:#4493ae;}
+.board_complete .txt_red{color:#eb4f58;font-size:17px;font-weight:bold;}
+.board_complete .txt_brown{color:#4fb0bd;font-weight:normal;margin-top:7px;}
+.sns_btnarea{text-align:right;margin-top:11px;height:29px;}
+.sns_btnarea .txt_grey{color:#666;}
+.sns_btnarea .sns{float:left;}
+.sns_btnarea .print{padding-top:5px;}
+.sns_btnarea .btn_txt{font-size:11px;}
+
+/* 소호사무실 예약테이블 */
+.soho_booking tbody td.range a.select{background:#fff;cursor:default;}
+.soho_booking tbody td.range a.select:hover{background:#fff;}
+.soho_booking tbody td a.selectOut_end{background:url(../images/booking/bg_soho_end.gif) 0 50% repeat-x;cursor:default;}
+.soho_booking tbody td a.selectOut_start{background:url(../images/booking/bg_soho_start.gif) 0 50% repeat-x;cursor:default;}
+.soho_booking thead th.booth{background:url(../images/booking/soho_diagonal.gif) 50% 50% no-repeat;}
+.soho_cash{margin-top:15px;}
+.soho_cash table th{border-bottom:0;}
+.soho_cash table td{border-bottom:0;}
+
+/* 예약 현황 */
+.booking_status{margin:15px 0;}
+.booking_status strong{font-size:14px;color:#3a3a3a;}
+.booking_status input{margin-bottom:4px;}
+.booking_list tbody td{font-size:11px;}
+.booking_list tbody td.reserve a{color:#4fb0bd;font-weight:bold;text-decoration:none;}
+.booking_list table td strong{color:#4FB0BD;font-weight:normal;}
+.booking_list table td strong.date{color:#000;}
+
+/* 서비스 이용완료 */
+.service_complete{overflow:hidden;margin:14px 0 0 0;padding:32px 25px;border:1px solid #d4d4d4;background-color:#f7f7f7;color:#666;line-height:18px}
+.service_complete h4{color:#000;}
+.service_complete .service_txt{margin:10px 0}
+.service_complete .service_txt2{margin:20px 0 0;text-align:center;}
+.c_check{display: inline-block;zoom:1; *display:inline;height:7px;vertical-align: middle;width:7px;margin: 0 4px 0 0;background: url(../images/booking/blt_check.gif) no-repeat scroll 0 0 transparent;}
+.service_complete table{width:100%;margin:0 0 15px 0;border-collapse: separate;border-right:1px solid #d4d4d4;}
+.service_complete table th, .booking_view table td{font-size:12px;text-align:center;}
+.service_complete table th{padding:12px 0;background:#f4f4f4;color:#000;text-align:center;border-top:1px solid #d4d4d4;border-bottom:1px solid #d4d4d4;border-left:1px solid #d4d4d4;}
+.service_complete table td{padding:8px 0;line-height:20px;background:#fff;color:#666;border-bottom:1px solid #d4d4d4;border-left:1px solid #d4d4d4;text-align:center;}
+.service_complete table td.subj{padding:8px 0 8px 20px; text-align:left;}
+.service_complete p .input_textarea{width:100%;margin:5px 0 0 0;}
+
+

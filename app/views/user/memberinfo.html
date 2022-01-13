@@ -1,0 +1,36 @@
+<!-- 회원정보 팝업 -->
+<div class="pop_wrap" id="readUserInfo" style="position:absolute;left:100px;top:100px;width:400px;display:none;">
+	<div class="pop">
+		<h1><strong>회원정보</strong></h1>
+		<p class="popBtn"><a href="javascript:;" id="btnClose"><img src="/public/admin/images/btn_x.gif" alt="닫기" /></a></p>
+		<div class="popCon">
+			<table cellspacing="0" border="1" summary="휴대폰 인증요청">
+			<colgroup><col width="80px" /><col width="" /></colgroup>
+			<tbody>
+			<tr>
+				<th class="tit">이름</th>
+				<td class="tl" id="readUserName">홍길동()</td>
+			</tr>
+			<tr>
+				<th class="tit">연락처</th>
+				<td class="tl" id="readUserPhone">0</td>
+			</tr>
+			<tr>
+				<th class="tit">주소</th>
+				<td class="tl" id="readme">
+				<span id="readUserZipCode">(우)</span>
+					<br /><span id="readUserAddress">주소</span></td>
+			</tr>
+			<tr>
+				<th class="tit">이용안내</th>
+				<td class="tl">
+					<p>비즈니스미팅공간: 총<strong id="readBzCnt">0</strong>회<a href="#" id="readBzLink" class="innerBtn"><span>내역보기</span></a></p>
+					<p>소호 사무실: 총<strong id="readSohoCnt">0</strong>회<a href="#" id="readSohoLink"  class="innerBtn"><span>내역보기</span></a></p>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			<p class="btn_pop"><a class="inputBtn" href="javascript:;" id="btnCloseBic"><span style="width:50px;">닫기</span></a></p><!-- //btn -->
+		</div><!-- popCon -->
+	</div><!-- //pop -->
+</div><!-- //pop_wrap -->

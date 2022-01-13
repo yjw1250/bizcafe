@@ -1,0 +1,146 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'관리자 > 통계 > 이용자현황 > 방문자별 ' /}
+
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="/public/admin/javascripts/validation.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/jquery/jquery.validate.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/jeicommon.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/calendar2.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/admin/javascripts/statsUser.js"></script>
+#{/set}
+
+#{stylesheet 'member.css' /}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="11" />
+
+
+<h3>이용자현황</h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="/admin">홈</a></li><li><a href="/admin/visit">통계</a></li><li class="current">방문자 수</li></ul>
+</div><!-- //breadcrumb -->
+
+<!-- 한줄표현 작업시 -->
+<div class="listHead">
+	Goole Analytics로 바로가기<a href="javascript:alert('준비중입니다.')" class="innerBtn"><span>바로가기</span></a>
+	#{form @admin.StatsUserManager.visit(), name:"visitSearchForm", id:"visitSearchForm"}
+		<fieldset class="msearch">
+			<legend>리스트검색</legend>
+			<input type="text" name="startDate" id="startDate" value="${startDate}">
+			<input type="text" name="endDate" id="endDate" value="${endDate}">
+			<a href="javascript:;" class="innerBtn" id="btnSearch"><span>검색</span></a>
+		</fieldset>
+	#{/form}
+	
+</div><!-- //listHead -->
+<!-- 한줄표현 작업시 -->
+<hr class="line" />
+
+<div class="tab">
+	<ul>
+		<li class="selected"><a href="/admin/stats/visit"><span>방문자별</span></a></li>
+		<li class=""><a href="/admin/stats/type"><span>유형별</span></a></li>
+	</ul>
+	<form action="sform" name="sform" method="">
+		<fieldset class="msearch">
+			<legend>리스트검색</legend>
+			<select name="viewType" id="viewType">
+				<option value="userLogin">방문자</option>
+				<option value="user">가입</option>
+				<option value="userOut">탈퇴</option>
+			</select>
+			<!-- <select name="noteType">
+				<option selected="" value="-1">월별</option>
+			</select>
+			-->
+		</fieldset>
+	</form>
+</div><!-- //tab -->
+<div class="tabContent">
+	<div class="graph_area">방문자수 그래프 들어가는 곳</div><!-- //graph_area -->
+
+	<div class="board_list2">
+		<table cellspacing="0" border="0" summary="방문자수"   id="userLogin">
+		<colgroup><col width="50%" /><col width="50%" /></colgroup>
+		<thead>
+		<tr>
+			<th>날짜</th>
+			<th>인원수</th>
+		</tr>
+		</thead>
+		<tfoot>
+		<tr>
+			<td>합계</td>
+			<td>${loginStatsSum}명</td>
+		</tr>
+		</tfoot>
+		#{if loginStatsSum > 0}
+		<tbody>
+		#{list items:loginStats, as:"login"}
+		<tr>
+			<td>${login.loginDate}</td>
+			<td>${login.cnt}</td>
+		</tr>
+		#{/list}
+		</tbody>
+		#{/if}
+		</table>
+		
+		<table cellspacing="0" border="0" summary="회원가입수" id="user" style="display:none">
+		<colgroup><col width="50%" /><col width="50%" /></colgroup>
+		<thead>
+		<tr>
+			<th>날짜</th>
+			<th>인원수</th>
+		</tr>
+		</thead>
+		<tfoot>
+		<tr>
+			<td>합계</td>
+			<td>${userStatsSum}명</td>
+		</tr>
+		</tfoot>
+		#{if userStatsSum > 0}
+		<tbody>		
+		#{list items:userStats, as:"user"}
+		<tr>
+			<td>${user.regDate}</td>
+			<td>${user.cnt}</td>
+		</tr>
+		#{/list}
+		</tbody>
+		#{/if}
+		</table>
+		
+		<table cellspacing="0" border="0" summary="회원탈퇴수" id="userOut" style="display:none">
+		<colgroup><col width="50%" /><col width="50%" /></colgroup>
+		<thead>
+		<tr>
+			<th>날짜</th>
+			<th>인원수</th>
+		</tr>
+		</thead>
+		<tfoot>
+		<tr>
+			<td>합계</td>
+			<td>${userOutStatsSum}명</td>
+		</tr>
+		</tfoot>
+		#{if userOutStatsSum > 0}
+		<tbody>
+		#{list items:userOutStats, as:"out1"}
+		<tr>
+			<td>${out1.regDate}</td>
+			<td>${out1.cnt}</td>
+		</tr>
+		#{/list}
+		</tbody>
+		#{/if}
+		</table>
+		
+	</div><!-- /board_view -->
+</div>
+
+<div class="board_btnarea">
+	<a class="inputBtn" href="javascript:alert('준비중입니다.')"><span style="width:50px;">출력하기</span></a>
+	<a class="inputBtn" id="btnVisitExcel"><span style="width:80px;">Excel로 저장</span></a>
+</div><!-- //btnArea -->

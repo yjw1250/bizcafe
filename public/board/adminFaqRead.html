@@ -1,0 +1,45 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'관리자 > 테스트' /} 
+<h3>${boardCodeName} 관리</h3>
+<script type="text/javascript" src="@{'/public/admin/javascripts/board.js'}"></script>
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form name="viewForm" id="viewForm" method="post">
+<input type="hidden" name="idx" id="idx" value="${jeiView.idx}" />
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="${adminMenuNum}" />
+<input type="hidden" name="page" id="page" value="${page}" />
+<div class="breadcrumb">
+	<ul><li class="home"><a href="">홈</a></li><li><a href="">고객관리</a></li><li class="current">${boardCodeName} 관리</li></ul>
+</div><!-- //breadcrumb -->
+<div class="board_vWrite">
+	<table cellspacing="0" border="0" summary="공지사항 상세보기">
+	<colgroup><col width="160px"><col width="260"><col width="160px"><col width="260"></colgroup>
+	<tbody>
+		<tr>
+			<th class="tit">제목</th>
+			<td colspan="3">${jeiView.title}</td>
+		</tr>
+		<tr>
+			<th class="tit">구분</th>
+			<td colspan="3">${jeiView.category}</td>
+		</tr>
+		<tr>
+			<th class="tit">작성일</th>
+			<td>${jeiView.regDate}</td>
+			<th class="tit">조회수</th>
+			<td>${jeiView.hitNum}</td>
+		</tr>
+		<tr>
+			<th class="tit">내용</th>
+			<td colspan="3" id="contents">
+				${jeiView.contents.nl2br()}
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</div><!-- //board_vWrite -->
+<div class="board_btnarea">
+	<a class="inputBtn" href="javascript:;" onclick="$.modify();"><span style="width:50px;">수정</span></a>
+	<a class="inputBtn" href="javascript:$.del()"><span style="width:50px;">삭제</span></a>
+	<a class="inputBtn" href="/admin/board/${boardCode}?page=${page}"><span style="width:50px;">목록</span></a>
+</div><!-- //btnArea -->
+</form>

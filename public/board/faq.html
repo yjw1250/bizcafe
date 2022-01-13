@@ -1,0 +1,104 @@
+#{extends 'user/sub.html' /} 
+#{set title:'홈 > 고객센터' /}
+<script type="text/javascript" src="@{'/public/javascripts/board.js'}"></script>
+<div class="sub_title">
+	<h3 class="st1">
+		<strong><span class="blind">FAQ</span></strong>
+		<p><span class="blind">고객님들이 자주 문의하시는 질문입니다.</span></p>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li><a href="/board/faq">고객센터</a></li>
+		<li class="current"><a href="#">FAQ</a></li>
+	</ul>
+</div>
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />	
+<form name="listForm" id="listForm">
+<input type="hidden" name="menuNum" id="menuNum" value="${menuNum}" />
+<input type="hidden" name="page" id="page" value="${page}" />
+<input type="hidden" name="idx" id="idx" />
+<div class="contents">
+	<div class="attend">
+		<p>찾으시는 정보가 없으신가요? <strong><a href="/board/qna">1:1 온라인문의</a></strong>로 문의해 보세요.</p>
+	</div><!-- //attend -->
+	<div class="board_list">
+		<table cellspacing="0" border="0" summary="FAQ">
+		<colgroup><col width="100"><col width="*"></colgroup>
+		<thead>
+			<tr>
+				<th scope="col"><img src="/public/images/board/th_txt_kinds.gif" alt="구분"></th>
+				<th scope="col"><img src="/public/images/board/th_txt_subject.gif" alt="제목"></th>
+			</tr>
+		</thead>
+		<tbody>
+			#{if boardTotalCount > 0}
+			#{list items:list, as:'board' }
+			<tr onmouseover="javascript:$(this).addClass('on');" onmouseout="javascript:$(this).removeClass('on');">
+				<td class="num">${board.category}</td>
+				<td class="subj">
+					<a href="#" onclick="$.view(${board.idx})">
+					${board.title.length() > 36 ? (board.title[0..36]+'...') : board.title}
+					</a>
+				</td>
+			</tr>
+			#{/list}
+			#{/if}
+			#{else}
+			<tr>
+				<td class="comment tc" colspan="4">결과가 없습니다.</td>
+			</tr>
+			#{/else}
+		</tbody>
+		</table>
+	</div><!-- //board_list -->
+	<div class="pagenavi">
+		#{if boardTotalCount > 0}
+			#{if pagination.page != 1}
+			<a class="first" href="#" onclick="$.page(1)">
+				<img alt="처음" src="/public/images/board/btn_pagenavi_fist.gif" />
+			</a>
+			#{/if}
+			#{if pagination.page > 1}
+			<a class="prev" href="#" onclick="$.page(${pagination.page - 1})">
+				<img alt="이전" src="/public/images/board/btn_pagenavi_prev.gif" />
+			</a>
+			#{/if}
+		 	#{list items:pagination.firstPage + 1..pagination.lastPage, as:'i'}
+		 		#{if pagination.page != i}
+					<a href="#" onclick="$.page(${i})">${i}</a>
+				#{/if}
+				#{else}
+					<strong>${i}</strong>
+				#{/else}
+			#{/list}
+			#{if pagination.totalPage > pagination.page}
+			<a class="next" href="#" onclick="$.page(${pagination.page + 1})">
+				<img alt="다음" src="/public/images/board/btn_pagenavi_next.gif" />
+			</a>
+			#{/if}
+			#{if pagination.block < pagination.totalBlock}
+			<a class="end" href="#" onclick="$.page(${pagination.lastPage})">
+				<img alt="끝" src="/public/images/board/btn_pagenavi_end.gif" />
+			</a>
+			#{/if}
+		#{/if}
+	</div><!-- //pagenavi -->
+	<div class="listSrch">
+		<fieldset class="msearch">
+			<legend>리스트검색</legend>
+			<select name="searchKey" id="searchKey">
+				<option value="title|contents" #{if searchKey == "title|contents"} selected #{/if}>전체+내용</option>
+				<option value="title" #{if searchKey == "title"} selected #{/if}>제목</option>
+				<option value="contents" #{if searchKey == "contents"} selected #{/if}>내용</option>
+			</select>
+			<span>
+				<input type="text" name="searchVal" id="searchVal" class="input_txt" style="width:240px;" value="${urlDecodeSearchVal}" onkeypress='if (13 == event.keyCode) {return false;}'/>
+			</span>
+			<img class="srh" tabindex="2" src="/public/images/board/btn_search.gif" alt="검색" onclick="$.search();" align="absmiddle" style="cursor:pointer"/>
+			#{if urlDecodeSearchVal != ""}
+			<a href="/board/${boardCode}"><img class="srh" src="/public/images/board/btn_search_clear.gif" alt="초기화" align="absmiddle" /></a>
+			#{/if}
+		</fieldset>
+	</div><!-- //listSrch -->
+</div><!-- //contents -->
+</form>

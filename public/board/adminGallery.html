@@ -1,0 +1,69 @@
+#{extends 'admin/adminMain.html' /} 
+<script type="text/javascript" src="@{'/public/admin/javascripts/board.js'}"></script>
+<h3>${boardCodeName} 관리 </h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="">홈</a></li><li><a href="">사이트 관리</a></li><li class="current">갤러리</li></ul>
+</div><!-- //breadcrumb -->
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form id="listForm" name="listForm">
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="${adminMenuNum}" />
+<input type="hidden" name="page" id="page" value="${pagination.page}" />
+<input type="hidden" name="idx" id="idx" />
+<ul class="gallery_list">
+	#{list items:data, as:'board' }
+	<li>
+		<a href="#"><img src="${fileUrl}/${board.thumbFileName}" alt="" width="137" height="115" /></a>
+		<a href="#" class="g_ttl">${board.title}</a>
+		<img src="${fileUrl}/${board.bigFileName}" style="display:none" alt="${board.idx}" class="bigImages" />
+	</li>
+	#{/list}
+</ul>
+<div class="pop_wrap" style="position:absolute;left:120px;top:89px;width:656px;display:none;">
+	<div class="pop" style="cursor:pointer" onclick="$.galleryClose();">
+		<h1><strong>BIZ 조감도</strong></h1>
+		<p class="popBtn"><a href="javascript:$.galleryClose();"><img src="/public/admin/images/btn_x.gif" alt="닫기" /></a></p>
+		<div class="popCon">
+			<p class="gallery_pop"><img src="" alt="" /></p>
+			<p class="btn_pop">
+				<a class="inputBtn" href="javascript:$.galleryClose();">
+					<span style="width:60px;">닫기</span>
+				</a>
+				<a class="inputBtn" href="javascript:$.galleryModify();">
+					<span style="width:60px;">수정</span>
+				</a>
+				<a class="inputBtn" href="javascript:$.galleryDelete();">
+					<span style="width:60px;">삭제</span>
+				</a>
+			</p><!-- //btn -->
+		</div><!-- popCon -->
+	</div><!-- //pop -->
+</div><!-- //pop_wrap -->
+<div class="board_btnarea">
+	<a class="inputBtn" href="/admin/board/${boardCode}/write"><span style="width:60px;">등록하기</span></a>
+</div><!-- //btnArea -->
+<div class="pagenavi">
+	#{if boardTotalCount > 0}
+		#{if pagination.page != 1}
+		<a class="first" href="#" onclick="$.page(1)"><img alt="처음" src="/public/admin/images/btn_pagenavi_fist.gif" id="btnPagenaviFirst"></a>
+		#{/if}
+		#{if pagination.page > 1}
+	 		<a class="prev" href="#" onclick="$.page(${pagination.page - 1})"><img alt="이전" src="/public/admin/images/btn_pagenavi_prev.gif"></a>
+	 	#{/if}
+	 	#{list items:pagination.firstPage + 1..pagination.lastPage, as:'i'}
+	 		#{if pagination.page != i}
+				<a href="#" onclick="$.page(${i})">${i}</a>
+			#{/if}
+			#{else}
+				<strong>${i}</strong>
+			#{/else}
+		#{/list}
+		#{if pagination.totalPage > pagination.page}
+			<a class="next" href="#" onclick="$.page(${pagination.page + 1})"><img alt="다음" src="/public/admin/images/btn_pagenavi_next.gif"></a>
+		#{/if}
+	 	#{if pagination.block <= pagination.totalBlock}
+	 		<a class="end" href="#" onclick="$.page(${pagination.lastPage})"><img alt="끝" src="/public/admin/images/btn_pagenavi_end.gif"></a>
+		#{/if}
+	#{/if}
+</div><!-- //pagenavi -->
+</form>

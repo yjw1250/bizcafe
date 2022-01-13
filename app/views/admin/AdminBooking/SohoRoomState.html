@@ -1,0 +1,77 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'소호사무실  > 이용 현황' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery.validate.min.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/calendar2.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/user.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/sohoroomstatus.js'}"></script>
+#{/set}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="13" />
+
+				<h3>소호사무실 이용현황</h3>
+				<div class="breadcrumb">
+					<ul><li class="home"><a href="/admin">홈</a></li><li><a href="/admin/status/sohoroomstate">통계</a></li><li class="current">소호사무실 이용현황</li></ul>
+				</div><!-- //breadcrumb -->
+
+
+				<div id="print_page">
+				<!-- 한줄표현 작업시 -->
+				<div class="listHead">
+					<img src="@{'/public/admin/images/ico_date_prev.gif'}" id="prevyear" alt="이전"><span id="showyear"></span>년<img src="@{'/public/admin/images/ico_date_next.gif'}" id="nextyear" alt="다음">
+					<div class="msearch">
+						예약율 <em><span id="totalresRate"></span>%</em><span class="bar">|</span>취소율 <em><span id="totalcancelRate"></span>%</em>
+					</div><!-- //msearch -->
+				
+				</div><!-- //listHead -->
+				<!-- 한줄표현 작업시 -->
+
+				<div class="board_list">
+					<table class="" cellspacing="0" cellpadding="0" summary="온라인학습 현황 리스트">
+						<colgroup><col width="8%" /><col width="8%" /><col width="8%" /><col width="*" /></colgroup>
+						<thead>
+						<tr>
+						  <th>월</th>
+						  <th class="th">예약율</th>
+						  <th class="th">취소율</th>
+						  <th class="th">이용자(예약자)</th>
+						  </tr>
+						</thead>
+						<tbody id="listHeader">
+						</tbody>
+						</table>
+				</div><!-- //board_list -->
+				
+				<!-- Template -->
+					<textarea id="templateList" style="display: none;">
+					{for room in roomstatus}
+						<tr class="bg0">
+							<td class="num tc">＄{room.month}</td>
+							<td class="tc booking_rate">＄{room.resrate}%</td>
+							<td class="tc cancle_rate">＄{room.cancelrate}%</td>
+							<td class="tc booking_user">{for user in room.resuser}
+							{if user.userid}
+							<a href="/admin/booking/soholist/＄{user.userid}" style="text-decoration: none;">＄{user.username}</a>,
+							{/if}
+							{if !user.userid}
+								<a href="javascript:;" style="text-decoration: none;">이용자가 없습니다.</a>
+							{/if}
+							
+							{/for}</td>
+						</tr>
+					{forelse}	
+						<!-- 검색결과 및 데이타 없음 코멘트 -->
+						<tr><td class="comment" colspan="5">검색결과가 없습니다.</td></tr>
+						<!-- //검색결과 및 데이타 없음 코멘트 -->
+					{/for}
+					</textarea>
+				</div>
+				
+				<form name="viewForm" id="viewForm">
+				</form>
+					
+				<div class="board_btnarea">
+					<a class="inputBtn" href="javascript:$.print();"><span style="width:50px;">출력하기</span></a>
+					<a class="inputBtn" href="javascript:$.excelDown();"><span style="width:80px;">Excel로 저장</span></a>
+				</div><!-- //btnArea -->

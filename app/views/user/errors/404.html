@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Not found</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}"/>   
+		<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/import.css'}" />         
+    </head>
+    <body>
+        #{if play.mode.name() == 'DEV'}
+            #{404 result /}
+        #{/if}
+        #{else}
+        	<!-- //
+            <h1>Not found</h1>
+            <p>
+                ${result.message}
+            </p>   //-->
+   
+			<div id="errorPageContainer">
+				<div class="errorPage1">
+					<h1><img src="@{'/public/images/common/txt_notFind1.gif'}" alt=""></h1>
+					<h2><img src="@{'/public/images/common/txt_notFind2.gif'}" alt=""></h2>
+					<div class="errorBox">
+						<ul>
+							<li><img src="@{'/public/images/common/txt_notFind3.gif'}" alt=""></li>
+							<li><img src="@{'/public/images/common/txt_notFind4.gif'}" alt=""></li>
+						</ul>
+					</div><!-- //errorBox -->
+					<p class="errorBtn">
+						<a href="/"><img src="@{'/public/images/common/btn_gotoMain.gif'}" alt="></a><a href="javascript:history.back();"><img src="@{'/public/images/common/btn_gotoBack.gif'}" alt=""></a>
+					</p><!-- /errorBtn -->
+				</div><!-- //errorPage1 -->
+				<div id="error_footer">
+					<div class="cp">
+						<p class="logo"><img src="@{'/public/images/common/footer_error1.gif'}" alt="JEI biz"></p>
+						<p class="copy"><img src="@{'/public/images/common/footer_error2.gif'}" alt="copyright(c) jei corporation. all rights reserved."></p>
+					</div>
+				</div><!-- //error_footer -->
+			</div><!-- //errorPageContainer -->                
+           
+        #{/else}
+    </body>
+</html>

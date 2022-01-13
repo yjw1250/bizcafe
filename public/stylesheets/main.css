@@ -1,0 +1,136 @@
+
+
+/********************************
+메인
+*********************************/
+/*  */
+.main #container{padding:8px 0 0;}
+legend{display:none;}
+
+/********************************
+메인 - 상단영역
+*********************************/
+.main_top{height:352px;border:7px solid #000;margin-bottom:32px;}
+
+/* 메인비주얼 */
+#visual{float:left;width:686px;height:352px;background:#eee;border-right:9px solid #000;}
+
+/* 로그인영역 */
+#loginBox{float:right;width:234px;height:333px;background:#fff;padding:19px 16px 0;}
+/* 로그인전 */
+#loginBox .loginCon{position:relative;font-size:11px;color:#838383;height:136px;}
+#loginBox .loginCon .txt_id{display:block;border:1px solid #777777;width:128px;padding:6px 5px 5px 5px;padding:6px 5px\9;*+padding:7px 5px;font-size:11px;font-family:"돋움","vedana";color:#e8e8e8;background-color:#969696;margin-bottom:5px;}
+#loginBox .loginCon .txt_pw{display:block;border:1px solid #777777;width:128px;padding:6px 5px 5px 5px;padding:6px 5px\9;*+padding:7px 5px;font-size:11px;font-family:"돋움","vedana";color:#e8e8e8;background-color:#969696;_margin-top:-2px;}
+#loginBox .loginCon .loginW p{margin-top:14px;}
+#loginBox .loginCon .loginW p span{margin:0 10px 0 4px;vertical-align:middle;}
+#loginBox .loginCon .idsave{width:13px;height:13px;vertical-align:middle;}
+#loginBox .loginCon .slogin{width:13px;height:13px;vertical-align:middle;}
+#loginBox .loginCon .btn_login{position:absolute;top:0;left:149px;}
+#loginBox .loginCon .btn_login a{display:inline-block;zoom:1; *display:inline;width:72px;height:52px;}
+#loginBox .loginCon .join{margin-top:13px;}
+/* 로그인후 */
+#loginBox .logoutCon{position:relative;color:#838383;height:135px;border-bottom:1px solid #f0f0f0;}
+#loginBox .logoutCon .user_name {padding-top:16px;}
+#loginBox .logoutCon .user_name span{font-size:14px;color:#000;font-weight:bold;}
+#loginBox .logoutCon .btn_logout{position:absolute;top:0;right:0;}
+#loginBox .logoutCon li{float:left;width:73px;height:83px;margin-left:7px;margin-top:13px;}
+#loginBox .logoutCon li.reserve_num{position:relative;margin-left:0;}
+#loginBox .logoutCon li.reserve_num a{display:block;width:73px;height:83px;background:url(../images/main/btn_reserveNum.gif) 0 0 no-repeat;margin-left:0;}
+#loginBox .logoutCon li.reserve_num span{position:absolute;top:60px;right:24px;font-size:11px;font-weight:bold;color:#4fb0bd;text-decoration:underline;cursor:pointer;}
+
+/* 공지사항 */
+.notice{position:relative;margin-top:14px;clear:left;}
+.notice h3{font-size:12px;color:#494949;margin-bottom:10px;}
+.notice h3 .more{position:absolute;right:3px;top:0;font-size:11px;font-weight:normal;letter-spacing:-1px;}
+.notice li{padding-left:8px;background:url(../images/main/bul_cross.gif) 0 4px no-repeat;margin-bottom:6px;}
+.notice li a{color:#838383;}
+.notice li a:hover{color:#4fb0bd;font-weight:bold;}
+.notice li .new{margin-left:3px;}
+
+/* 콜센터 */
+.callcenter{margin-top:18px;padding-top:15px;width:233px;height:68px;background:url(../images/main/callcenter_bg.gif) 0 0 no-repeat;}
+.callcenter .number{text-align:center;}
+.callcenter dl{display:none;margin-left:18px;font-size:11px;margin-top:12px;}
+.callcenter dt{font-weight:bold;color:#4fb0bd;margin-bottom:4px;}
+.callcenter dd{color:#6a6a6a;}
+
+
+/********************************
+메인 - 하단영역
+*********************************/
+.main_cont{height:293px;}
+
+/* 실시간예약 */
+#reserve{float:left;width:258px;height:278px;background:#434343;margin-top:15px;position:relative;}
+#reserve .round{position:absolute;top:-15px;left:0;width:258px;height:15px;background:url(../images/main/round_lt.gif) 0 0 no-repeat;}
+#reserve h3{height:15px;margin:0 15px 10px;position:relative;}
+#reserve h3 .more{position:absolute;right:0;bottom:0;font-size:11px;font-weight:normal;letter-spacing:-1px;}
+.reserve_box{border:1px solid #2d2d2d;margin:0 15px;background:#666;height:230px;}
+.reserve_box li{width:113px;height:32px;float:left;text-align:center;background:#383838;}
+.reserve_box li.selected{background:#666;}
+.reserve_box li img{margin-top:7px;}
+.reserve_box .business{clear:left;padding:14px 0 0;zoom:1;}
+.reserve_box .business .btn_search{margin:14px 0 12px 15px;}
+.reserve_box .business .info{border-top:1px solid #565656;margin:0 10px 0 14px;}
+.reserve_box .business .info .txt{border-top:1px solid #747474;padding-top:13px;font-size:11px;color:#b6b6b6;letter-spacing:-1px;background:url(../images/main/ico_info.gif) 0 14px no-repeat;padding-left:18px;line-height:130%;}
+.reserve_box dl{clear:both;height:23px;margin-bottom:5px;}
+.reserve_box dt{float:left;margin:4px 0 0 14px;}
+.reserve_box dd{float:right;margin-right:11px;width:145px;height:21px;border:1px solid #4e4e4e;background:#fff;position:relative;}
+.reserve_box dd .btn{position:absolute;top:0;right:0;}
+.reserve_box dd input{width:109px;height:21px;background:transparent;border:0;padding:0 7px;line-height:180%;}
+#TabMenuAdd li{cursor:pointer;}
+#TabMenuAdd li.tab_busi{background:#383838 url(../images/main/tab_business.gif) no-repeat 9px 7px;}
+#TabMenuAdd li.selected.tab_busi{background:#666 url(../images/main/tab_business_on.gif) no-repeat 9px 7px;}
+#TabMenuAdd li.tab_soho{background:#383838 url(../images/main/tab_soho.gif) no-repeat 27px 7px;}
+#TabMenuAdd li.selected.tab_soho{background:#666 url(../images/main/tab_soho_on.gif) no-repeat 27px 7px;}
+.reserve_box dd select{width:145px;border:0;background:#fff;padding:2px;height:22px;}
+
+/* 실시간예약-selectlayer */
+.selectlayer{position:relative;line-height:normal;display:inline-block;*display:inline;vertical-align:middle;background:#fff;*zoom:1;width:100%;}
+.selectlayer a.default{display:block;height:21px;padding:0 0 0 5px;color:#666566;line-height:21px;text-decoration:none;}
+.selectlayer a.default:hover{text-decoration:none;}
+.selectlayer ul{position:absolute;left:-1px;top:21px;display:none;width:100%;background:#fff;border:1px solid #46474b;}
+.selectlayer ul li{display:block;width:100%;background:#fff;height:18px;}
+.selectlayer ul li a{display:block;height:18px;padding:0 0 0 5px;color:#666566;line-height:20px;text-decoration:none;}
+.selectlayer ul li a:hover{background:#9b9c9c;color:#141517;text-decoration:none;}
+.selectlayer ul li a.selected{background:#9b9c9c;color:#141517;}
+.selectlayer .arrow{position:absolute;top:0;right:0;width:22px;height:21px;background:url(../images/main/btn_select.gif) 0 0 no-repeat;cursor:pointer;}
+
+/* 미팅공간 예약현황 */
+#reserve_status{float:left;width:422px;height:292px;background:#171717;border-top:1px solid #343434;}
+#reserve_status h3{height:15px;margin:14px 15px 10px;position:relative;}
+#reserve_status h3 .date{position:absolute;bottom:0;font-size:12px;font-weight:normal;color:#feffa0;margin-left:5px;}
+#reserve_status h3 .more{position:absolute;right:0;bottom:0;font-size:11px;font-weight:normal;letter-spacing:-1px;}
+.status_box{width:366px;height:221px;background:#e8e8e8;padding:10px 10px 0;margin:0 18px;}
+.status_box table{border:1px solid #bababa;background:#fff;width:100%;}
+.status_box table th{border-left:1px solid #dedede;background:#707070;color:#fff;font-weight:normal;text-align:center;font-size:11px;padding:12px 0;}
+.status_box table td{border-left:1px solid #dedede;border-top:1px solid #dedede;text-align:center;font-size:11px;}
+.status_box table th.divide{border:0;}
+.status_box table th.current{background:#ffe745;color:#707070;}
+.status_box table th.tit{width:82px;border-top:1px solid #dedede;border-left:0;background:#fff;color:#5d5d5d;font-weight:normal;padding:8px 0;}
+.status_box table td span.on{margin:0 auto;width:12px;height:12px;display:block;background:url(../images/main/ico_reserve_on.gif) 0 0 no-repeat;}
+.status_box table td span.off{margin:0 auto;width:12px;height:12px;display:block;background:url(../images/main/ico_reserve_off.gif) 0 0 no-repeat;}
+.status_box .btn{margin-top:11px;font-size:11px;color:#7a7a7a;}
+.status_box .btn img{vertical-align:middle;float:left;margin-right:3px;}
+.status_box .btn .info{float:right;padding-left:8px;background:url(../images/main/bul_cross.gif) 0 4px no-repeat;margin-top:5px;}
+
+/* 갤러리 */
+#gallery{float:left;width:295px;height:278px;background:#434343;margin-top:15px;position:relative;}
+#gallery .round{position:absolute;top:-15px;left:0;width:295px;height:15px;background:url(../images/main/round_rt.gif) 0 0 no-repeat;}
+#gallery h3{height:15px;margin:0 15px 10px;position:relative;}
+#gallery h3 .more{position:absolute;right:0;bottom:0;font-size:11px;font-weight:normal;letter-spacing:-1px;}
+#gallery .thumb{margin-left:15px;}
+#gallery .thumb li{position:relative;border:1px solid #2e2e2e;}
+#gallery .thumb li.thumb_l{width:263px;height:161px;margin-bottom:8px;}
+#gallery .thumb li.thumb_l p.tit{position:absolute;left:0;bottom:0;width:100%;height:19px;padding-top:9px;text-align:center;background:url(../images/main/bg_gallery.png) 0 0 repeat;color:#bababa;}
+#gallery .thumb li.thumb_s{float:left;width:78px;height:59px;margin-right:12px;}
+#gallery .thumb li.thumb_s p.tit{position:absolute;left:0;bottom:0;width:100%;height:15px;padding-top:3px;text-align:center;background:url(../images/main/bg_gallery.png) 0 0 repeat;font-size:11px;color:#bababa;}
+
+/* pop_wrap팝업 공통스타일*/
+.pop_wrap{width:100%;z-index:1000;}
+.pop_wrap .main_pop{position:relative;border:3px solid #000;background:url(../images/common/bg_popBot.gif) 0 bottom repeat-x;}
+.pop_wrap .main_pop .popBtn{position:absolute;top:11px;right:20px;}
+.pop_wrap h1.main_pop{height:42px;background:#000 url(../images/common/bg_popTop.gif) 0 bottom repeat-x;}
+.pop_wrap h1.main_pop strong{display:inline-block;margin:9px 12px;padding-left:17px;font-size:14px;color:#afa8a6;background: url(../images/common/bu_pop_ttl.gif) no-repeat 0 50%;}
+.main_pop .popCon{padding:15px;text-align:center;margin:0 auto;background-color:#fff;}
+.pop_wrap .main_pop .gallery_pop{width:438px;height:289px;border:1px solid #ddd;}

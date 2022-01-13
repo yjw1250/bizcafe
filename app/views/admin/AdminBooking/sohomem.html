@@ -1,0 +1,170 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'소호 사무실 예약관리 > 예약 내역 보기' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery.validate.min.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/calendar2.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/sohoreservation.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/sohobooking.js'}"></script>
+#{/set}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="32" />
+<h3>등록</h3>
+				<div class="breadcrumb">
+					<ul><li class="home"><a href="/admin">홈</a></li><li><a href="/admin/booking/sohomem">소호 사무실 예약관리</a></li><li class="current">등록</li></ul>
+				</div><!-- //breadcrumb -->
+
+				<div class="tab">
+					<ul>
+						<li class="selected"><a href="/admin/booking/sohomem"><span>기존회원 등록</span></a></li>
+						<li class=" "><a href="/admin/booking/sohonomem"><span>비회원 등록</span></a></li>
+					</ul>
+				</div><!-- //tab -->
+				
+				<div class="tabContent">
+					<div class="booking_write">
+						<table cellspacing="0" border="0" summary="검색">
+						<colgroup><col width="120px" /><col width="" /><col width="120px" /><col width="" /></colgroup>
+						<tr>
+							<th class="tit">이름</th>
+							<td><span id="username"></span><a href="javascript:;" id="btnMember" class="innerBtn"><span>회원검색</span></a></td>
+							<th class="tit">전화번호</th>
+							<td><span id="userphone"></span></td>
+						</tr>
+						<tr>
+							<th class="tit">예약일</th>
+							<td colspan="3">
+								<span class="input_cal">
+									<input type="text" style="ime-mode:active;width:100px" name="resdate" id="resdate" class="input_txt"><img src="@{'/public/admin/images/ico_calender.gif'}" alt="달력" id="btnCalendar">
+								</span>
+							</td>
+						</tr>
+						</table>
+						
+						<div class="booking_expn">
+						<ul>
+							<li>* 공휴일은 운영하지 않습니다.</li>
+						</ul>
+						</div><!-- /booking_expn -->
+					</div><!-- /board_view -->
+
+					<div class="board_btnarea">
+						<a class="inputBtn" id="search_resever"><span style="width:50px;">검색하기</span></a>
+					</div><!-- //btnArea -->
+				</div><!-- //tabContent -->
+				
+				<div id="resever_table" style="display:none;">
+				
+					<div class="board_list booking_list">
+						<table cellspacing="0" border="0" summary="예약 현황">
+						<colgroup><col width="10%" /><col width="15%" /><col width="40%" /><col width="10%" /><col width="*" /></colgroup>
+						<thead>
+						<tr>
+							<th>번호</th>
+							<th>신청일시</th>
+							<th>예약일시</th>
+							<th>인원</th>
+							<th>부스</th>
+						</tr>
+						</thead>
+						<tbody id="listHeader">
+						</tbody>
+						</table>
+					</div><!-- //board_list -->
+					<!-- //전체 예약 내역보기 -->
+					
+					<div class="pagenavi" id="pageNavi"></div>
+					<!-- //pagenavi -->
+					
+					
+					<!-- Template -->
+					<textarea id="templateList" style="display: none;">
+					{for business in businessList}
+					{var idx = count - ((page -1 ) * listNo) - business_index}
+						<tr>
+							<td class="num tc">＄{idx}</td>
+							<td class="">＄{business.regDate} (＄{business.regDatetime})</td>
+							<td class="">＄{business.resDate} 부터 ＄{business.resEndDate} 까지  (＄{business.resMonthNum} 개월간) </td>
+							<td class="">＄{business.resPerson}</td>
+							<td class="">＄{business.resRoom}</td>
+						</tr>
+					{forelse}	
+						<tr>
+						<td class="comment tc" colspan="6">검색결과가 없습니다.</td>
+						</tr>
+					{/for}
+					</textarea>
+				
+				<div class="tbl_bookingTop" style="display:none;">
+						<p class="dateSelection">
+							<img id="prevyear" src="@{'/public/images/booking/ico_date_prev.gif'}" alt="이전">
+							<span id="showyear"></span>
+							<img id="nextyear" src="@{'/public/images/booking/ico_date_next.gif'}" alt="다음">
+						</p>
+						<ul class="expn">
+							<li><img src="@{'/public/images/booking/ex_booking1.gif'}" alt="예약불가">예약불가</li>
+						</ul>
+				</div><!-- //tbl_bookingTop -->
+				
+				<div class="tbl_booking soho_booking" id="soho" style="display:none;"></div><!-- //tbl_booking -->
+					<form id="frmRegist">
+					<div class="booking_write">
+						<table cellspacing="0" border="1" summary="예약일선택">
+						<input type="hidden" name="userType" id="userType" value="Y"><!--  Y: 회원, N:비회원 -->
+						<input type="hidden" name="resType" id="resType" value="OF"><!--  BZ : 비즈니스룸, OF: 소호룸 -->
+						<input type="hidden" name="sel_time" id="sel_time">
+						<input type="hidden" name="room_title" id="room_title">
+						<input type="hidden" name="room_cnt" id="room_cnt">
+						<input type="hidden" name="adminchk" id="adminchk" value="1"><!-- 1: 관리자, 0: 사용자 -->
+						<input type="hidden" name="room_user" id="room_user"><!-- 이용자수(자동계산) -->
+						<input type="hidden" name="resEndHour" id="resEndHour"><!-- 예약개월수에 따른 종료일(자동계산) -->
+						<input type="hidden" name="resPhone" id="resPhone"><!--  연락처(자동계산) -->
+						<input type="hidden" name="snscertifyNo" id="snscertifyNo"><!--  휴대폰 인증 번호 -->
+						<!--  회원정보 -->
+						<input type="hidden" name="userName" id="userName" value="">
+						<input type="hidden" name="userID" id="userID" value="">
+						<input type="hidden" name="Phone" id="Phone" value="">
+						<colgroup><col width="112"><col width="202"><col width="112"><col width="202"></colgroup>
+						<tbody>
+						<tr>
+							<th class="tit">이용부스</th>
+							<td>
+								<select name="resRoom" id="resRoom">
+								<option value="" >-선택해주세요-</option>
+								#{list items:roomList,as:'roomlist' }
+								<option value="${roomlist.roomCode}">${roomlist.roomName}</option> 
+								#{/list}
+								</select>
+							</td>
+							<th class="tit">예약기간</th>
+							<td>
+								<select name="resMonthNum" id="resMonthNum">
+								<option value="" >-선택해주세요-</option>
+								<option value="1" >1개월</option>
+								<option value="2" >2개월</option>
+								<option value="3" >3개월</option>
+								<option value="4" >4개월</option>
+								<option value="5" >5개월</option>
+								<option value="6" >6개월</option>
+								<option value="7" >7개월</option>
+								<option value="8" >8개월</option>
+								<option value="9" >9개월</option>
+								<option value="10" >10개월</option>
+								<option value="11" >11개월</option>
+								<option value="12" >12개월</option>
+								</select>
+							</td>
+						</tr>
+						</tbody>
+						</table>
+						
+						</form>
+					</div><!-- //board_view  -->
+
+					
+					<div class="board_btnarea">
+					<a class="inputBtn" id="btnSubmit"><span style="width:50px;">예약등록</span></a>
+					</div>
+					<!-- //booking_btnarea -->
+					
+					</div>

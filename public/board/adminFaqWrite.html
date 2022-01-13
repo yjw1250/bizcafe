@@ -1,0 +1,91 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'관리자 > 테스트' /} 
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<script type="text/javascript" src="@{'/public/admin/javascripts/board.js'}"></script>
+<script type="text/javascript" src="/public/javascripts/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form action="/admin/board/${boardCode}/create" name="proceForm" id="proceForm" method="post" enctype="multipart/form-data">
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="${adminMenuNum}" />
+<h3>${boardCodeName} 관리</h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="">홈</a></li><li><a href="">고객관리</a></li><li class="current">${boardCodeName} 관리</li></ul>
+</div><!-- //breadcrumb -->
+<h4>${boardCodeName} 등록</h4>
+<div class="board_vWrite">
+	<textarea name="contents" id="contents" style="display:none"></textarea>
+	<table cellspacing="0" border="0" summary="공지사항 등록 하기">
+	<colgroup><col width="160px"><col width="260"><col width="160px"><col width="260"></colgroup>
+	<tbody>
+		<tr>
+			<th class="tit">구분<span class="must"><span class="blind">*</span></span></th>
+			<td colspan="3">
+				<input class="input_radio" type="radio" name="category" id="category" value="1" /><label>이용</label>
+				<input class="input_radio" type="radio" name="category" id="category" value="2" /><label>요금</label>
+				<input class="input_radio" type="radio" name="category" id="category" value="3" /><label>서비스</label>
+				<input class="input_radio" type="radio" name="category" id="category" value="4" /><label>기타</label>
+				<input class="input_radio" type="radio" name="category" id="category" value="5" /><label>직원채용</label>
+			</td>
+		</tr>
+		<tr>
+			<th class="tit">제목<span class="must"><span class="blind">*</span></span></th>
+			<td colspan="3"><input class="input_txt" style="ime-mode:active;width:500px" type="text" value="" name="title" id="title" /></td>
+		</tr>
+		<tr>
+			<th class="tit">내용</th>
+			<td colspan="3">
+				<textarea name="ir1" id="ir1" style="width:90%;height:300px;display:none;"></textarea>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</div><!-- //board_vWrite -->
+<div class="board_btnarea">
+	<a class="inputBtn" href="#" onclick="_onSubmit();" id="btnAdminWrite"><span style="width:50px;">등록</span></a>
+	<a class="inputBtn" href="/admin/board/${boardCode}"><span style="width:50px;">취소</span></a>
+</div><!-- //btnArea -->
+<script type="text/javascript">
+	//이미지업로드 경로
+	var imagepath 		= "${nBoardImageUploadUrl}";
+	var emoticonpath 	= "${nBoardEmoticonUrl}";
+	var sSkinURI 		= "${nBoardSkinUrl}";
+
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef: oEditors,
+		elPlaceHolder: "ir1",
+		sSkinURI: sSkinURI,
+		fCreator: "createSEditorInIFrame"
+	});
+	
+	_onSubmit = function(){
+	
+		
+		// 에디터의 내용을 에디터 생성시에 사용했던 textarea에 넣어 줍니다.
+		oEditors.getById["ir1"].exec("UPDATE_IR_FIELD", []);
+						
+		// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+		$("#contents").val($("#ir1").val());				
+		var title = $.trim($('#title').val());
+		var contents = $.trim($("#contents").val());
+		var titleLen = title.length;
+		
+		if(title == ""){
+			alert("제목을 입력해주세요");
+			return;
+		}
+		
+		if(titleLen > 100){
+			alert("제목을 100자 이내로 입력해주세요.");
+			return;
+		}
+		
+
+		if(contents == ""){
+			alert("내용을 입력해주세요.");
+			return;
+		}
+		$('#proceForm').submit();
+		
+	}
+			
+</script>

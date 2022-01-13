@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> 우편번호 검색 </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/import.css'}" />
+<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/member.css'}" />
+
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery-1.7.1.min.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/jquery/jquery.validate.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/admin/javascripts/common.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/admin/javascripts/validation.js"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/trimpath-template-1.1.22-jei.js'}"></script>
+
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/user.js'}"></script>
+
+</head>
+<body>
+<div class="pop_wrap">
+	<div class="pop">
+
+		<h1><strong>우편번호 검색</strong></h1>
+		<p class="popBtn"><a href="javascript:;"><img src="/public/images/common/btn_x.gif" alt="닫기"  id="btnClose" /></a></p>
+		<div class="popCon">
+		<p>찾고자 하는 주소의 동 (읍/면) 이름을 입력해주세요.<br /> (예: 삼성동, 역삼동)</p>
+		<div class="address">
+		<input type="text" style="ime-mode:active;width:135px" value="" name="dong" id="dong" class="input_txt" />
+		<img class="srh" tabindex="2" src="/public/images/board/btn_search_pop.gif" alt="검색" id="btnZipcodeSearch" style="cursor:pointer" align="absmiddle" />
+		</div>
+		
+		<div class="result_wrap">
+		<p class="resultNo" id="noneZipcode" style="display:none"><strong class="dongName"></strong> (으)로 <span>검색된 우편번호가 없습니다.</span><br />검색어를 다시 확인해주세요.</p>
+		<!-- [D] 결과값이 있을경우 -->
+		<p class="note_attach star" id="isZipcode" style="display:none"><strong class="dongName"></strong> (으)로 검색된 우편번호 결과입니다.</p>
+		<div class="result_post" id="isZipcodeList" style="display:none">
+		<table border="1" cellspacing="0">
+			<colgroup><col width="" /><col width="25%" /></colgroup>
+			<tr>
+				<th>우편번호</th>
+				<th>주소</th>
+			</tr>
+		</table>
+		<div class="post_table">
+		<table border="1" cellspacing="0" id="zipcodeList">
+			
+
+		</table>
+		</div>
+		</div><!-- //[D] 결과값이 있을경우 -->
+		</div><!-- result_wrap -->
+
+		<p class="btn_pop"><img class="input_btn" alt="닫기" src="/public/images/board/btn_close.gif" id="btnClose1" /></p><!-- //btn -->
+		</div><!-- popCon -->
+	</div><!-- //pop -->
+	</form>
+
+</div><!-- //pop_wrap -->
+
+<!-- Template -->
+<textarea id="templateRow" style="display:none ; width: 800px; height: 100px">
+<colgroup><col width="" /><col width="25%" /></colgroup>	
+</tr>
+{for zipcodes in zipcode}
+<tr>
+	<td><a href="javascript:;" name="post" class="post" zipcode="＄{zipcodes.zip1}-＄{zipcodes.zip2}">＄{zipcodes.address}</a></td>
+	<td class="postNum">＄{zipcodes.zip1}-＄{zipcodes.zip2}</td>
+</tr>
+{/for}
+</textarea>
+
+
+</body>
+</html>

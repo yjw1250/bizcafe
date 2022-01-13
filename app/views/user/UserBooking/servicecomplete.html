@@ -1,0 +1,162 @@
+#{extends 'user/sub.html' /} 
+#{set title:'예약현황 > 서비스 만족도 조사' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/complete_booking.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/servicecomplete.js'}"></script>
+#{/set}	
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+#{if Reserver.resType.equals("BZ")}
+<input type="hidden" name="menuNum" id="menuNum" value="341" />
+
+				<!-- sub title -->
+				<div class="sub_title">
+					<h3 class="st4">
+						<strong><span class="blind">예약 현황</span></strong>
+						<p><span class="blind">비즈니스 미팅공간 예약 현황입니다.</span></p>
+					</h3>
+					<ul class="breadcrumb">
+						<li class="home"><a href="/">Home</a></li>
+						<li><a href="/booking/business">예약</a></li>
+						<li><a href="/booking/business">비즈니스 미팅공간 예약</a></li>
+						<li class="current">완료</li>
+					</ul>
+				</div>
+				<!-- //sub title -->
+
+				<div class="contents">
+
+					<div class="board_complete">
+						<table cellspacing="0" border="0" summary="예약완료">
+						<colgroup>
+						<col width="130"><col width="*"></colgroup>
+						<thead>
+						<tr>
+							<th class="txt_complete" scope="col" colspan="2">서비스 이용이 완료되었습니다.</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<th class="tit">신청일</th>
+							<td>${Reserver.regDate}</td>
+						</tr>
+						<tr>
+							<th class="tit">사용일</th>
+							<td><span class="txt_blue">${Reserver.resDate}</span></td>
+						</tr>
+						<tr>
+							<th class="tit">사용시간</th>
+							<td><span class="txt_blue">${Reserver.resStartHour}</span> 부터 <span class="txt_blue">${Reserver.resEndHour}</span> 까지 <span class="note_attach star">10분전 퇴실</span></td>
+						</tr>
+						<tr>
+							<th class="tit">인원</th>
+							<td><span class="txt_blue">${Reserver.resPerson}인</span></td>
+						</tr>
+						<tr class="last">
+							<th class="tit">부스</th>
+							<td>
+							#{list items:roomlists,as:'roominfo' }
+							<p><span class="txt_blue">${roominfo.roomcode}</span> ( ${roominfo.roomname02} ${roominfo.roomname03} ) <input type="image" src="@{'/public/images/booking/btn_gotobooth.gif'}" onclick="$.linkroom('${roominfo.roomSourceCode}');" alt="공간소개 바로가기" class="input_btn"></p>
+							#{/list}
+							</td>
+						</tr>
+						</tbody>
+						</table>
+					</div><!-- //board_complete -->
+#{/if}
+#{if Reserver.resType.equals("OF")}
+<input type="hidden" name="menuNum" id="menuNum" value="342" />					
+					<!-- sub title -->
+				<div class="sub_title">
+					<h3 class="st3">
+						<strong><span class="blind">소호사무실 예약완료</span></strong>
+						<p><span class="blind">사전 예약을 통해 손쉽게 BIZ STUDIO를 이용하실 수 있습니다.</span></p>
+					</h3>
+					<ul class="breadcrumb">
+					<li class="home"><a href="/">Home</a></li>
+						<li><a href="/booking/soho">예약</a></li>
+						<li><a href="/booking/soho">소호사무실 예약</a></li>
+						<li class="current">완료</li>
+					</ul>
+				</div>
+				<!-- //sub title -->
+
+				<div class="contents">
+
+					<div class="board_complete">
+						<table cellspacing="0" border="0" summary="예약완료">
+						<colgroup>
+						<col width="130"><col width="*"></colgroup>
+						<thead>
+						<tr>
+							<th class="txt_complete" scope="col" colspan="2">서비스 이용이 완료되었습니다.</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<th class="tit">신청일</th>
+							<td>${Reserver.regDate}</td>
+						</tr>
+						<tr>
+							<th class="tit">사용일</th>
+							<td><span class="txt_blue">${Reserver.resDate}</span></td>
+						</tr>
+						<tr>
+							<th class="tit">예약기간</th>
+							<td><span class="txt_blue">${Reserver.resMonthNum}개월</span></td>
+						</tr>
+						<tr>
+							<th class="tit">인원</th>
+							<td><span class="txt_blue">${Reserver.resPerson}인</span></td>
+						</tr>
+						<tr class="last">
+							<th class="tit">부스</th>
+							<td>
+							#{list items:roomlists,as:'roominfo' }
+							<p><span class="txt_blue">${roominfo.roomcode}</span> ( ${roominfo.roomname02} ${roominfo.roomname03} ) <input type="image" src="@{'/public/images/booking/btn_gotobooth.gif'}" onclick="$.linkroom('${roominfo.roomSourceCode}');" alt="공간소개 바로가기" class="input_btn"></p>
+							#{/list}
+							</td>
+						</tr>
+						</tbody>
+						</table>
+					</div><!-- //board_complete -->
+#{/if}
+				
+				
+				   <form id="frmRegist">
+					<div class="service_complete">
+						<h4>BIZ STUDIO 사이트를 이용해 주셔서 감사합니다.</h4>
+						<p class="service_txt">저희 고객센터에서는 보다 나은 서비스를 제공하기 위하여 서비스 이용 만족도 조사를 실시하고 있습니다.<br />고객님의 소중한 의견이 서비스에 반영될 수 있도록 노력하겠습니다. <br />감사합니다.</p>
+						<table cellspacing="0" border="0" summary="예약완료">
+						<input type="hidden" name="resIdx" id="resIdx" value="${Reserver.resIdx}">
+						<colgroup><col width="*"><col width="130"><col width="130"></colgroup>
+						<thead>
+						<tr>
+							<th>항목</th>
+							<th>만족</th>
+							<th>불만</th>
+						</tr>
+						</thead>
+						<tbody>
+						#{list items:surveyLists, as:'survey' }
+						<tr>
+							<td class="subj">
+							<input type="hidden" name="surveyNum${survey.itemNum}" id="surveyNum${survey.itemNum}" value="${survey.surveyNum}">
+							<input type="hidden" name="surveyIdx${survey.itemNum}" id="surveyIdx${survey.itemNum}" value="${survey.idx}">
+							<input type="hidden" name="itemNum${survey.itemNum}" id="itemNum${survey.itemNum}" value="${survey.itemNum}">
+							<span class="c_check"><span class="blind">체크</span></span>${survey.itemTitle}</td>
+							<td><input type="radio" name="answer${survey.itemNum}" id="answer${survey.itemNum}" value="Y" class="input_radio" /></td>
+							<td><input type="radio" name="answer${survey.itemNum}" id="answer${survey.itemNum}" value="N" class="input_radio" /></td>
+						</tr>
+						#{/list}
+						</tbody>
+						</table>
+
+						<h4>기타의견</h4>
+						<p><textarea name="etcComment" id="etcComment" class="input_textarea"></textarea></p>
+						<p class="service_txt2">설문에 참여해 주셔서 감사합니다.</p>
+					</div><!-- //service_complete -->
+					</form>
+					<div class="booking_btnarea"><input class="input_btn" id="btnSubmit" type="image" src="@{'/public/images/booking/btn_send.gif'}" alt="보내기"></div>
+					
+					</div>

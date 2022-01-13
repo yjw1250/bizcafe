@@ -1,0 +1,93 @@
+#{extends 'user/sub.html' /} 
+#{if boardCode == "faq" || boardCode == "qna"}
+#{set title:'홈 > 고객센터' /}
+#{/if}
+<script type="text/javascript" src="@{'/public/javascripts/board.js'}"></script> 
+<div class="sub_title">
+	<h3 class="st2">
+		<strong><span class="blind">1:1 문의</span></strong>
+		<p><span class="blind">고객님의 문의사항입니다.</span></p>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li><a href="/board/faq">고객센타</a></li>
+		<li class="current"><a href="#">1:1 문의</a></li>
+	</ul>
+</div>
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form name="viewForm" id="viewForm" method="post">
+<input type="hidden" name="idx" id="idx" value="${jeiView.idx}" />
+<input type="hidden" name="menuNum" id="menuNum" value="${menuNum}" />
+<input type="hidden" name="page" id="page" value="${page}" />
+<input type="hidden" name="searchKey" id="searchKey" value="${searchKey}" />
+<input type="hidden" name="searchVal" id="searchVal" value="${urlDecodeSearchVal}" />
+<div class="contents">
+	<div class="attend">
+		<p>문의하시기전, 먼저 <strong><a href="/board/faq">FAQ</a></strong>에서 찾으려는 정보가 있는지 확인하세요.<br />고객님이 문의하신 내용의 답변은 회원정보에 등록하신 메일로 보내드립니다.</p>
+	</div><!-- //attend -->
+	<div class="board_view">
+		<table cellspacing="0" border="1" summary="1:1 문의">
+		<colgroup><col width="92px"><col width=""><col width="92px"><col width=""></colgroup>
+		<tbody>
+			<tr>
+				<th class="tit"><img src="/public/images/board/th_txt_subject.gif" alt="제목"></th>
+				<td colspan="3"><p class="subjct" style="width:570px">${jeiView.title}</p></td>
+			</tr>
+			<tr>
+				<th class="tit"><img src="/public/images/board/th_txt_writer.gif" alt="작성자"></th>
+				<td><p class="writer" style="width:229px">${jeiView.regUserName}</p></td>
+				<th class="tit"><img src="/public/images/board/th_txt_writeDate.gif" alt="작성일"></th>
+				<td><p class="regDate" style="width:229px">${jeiView.regDate}</p></td>
+			</tr>
+			<tr class="last">
+				<th class="tit"><img src="/public/images/board/th_txt_contents.gif" alt="내용"></th>
+				<td colspan="3">
+					<p style="width:570px">${jeiView.contents.nl2br()}</p>
+				</td>
+			</tr>
+		</tbody>
+		</table>
+	</div><!-- //board_view  -->
+	#{if jeiView.etcVarchar1 == null}
+	<div class="board_view board_rey">
+		<table cellspacing="0" border="1" summary="1:1 문의 답변">
+		<colgroup><col width="92px"><col width=""></colgroup>
+		<tbody>
+		<tr class="last">
+			<th class="tit"><img src="/public/images/board/th_txt_reply.gif" alt="답변"></th>
+			<td colspan="3"><p style="width:570px"><img src="/public/images/cs/ico_waitting.gif" alt="대기중"> 작성된 답변이 없습니다.</p></td>
+		</tr>
+		</tbody>
+		</table>
+	</div><!-- //board_view  -->
+	#{/if}
+	#{else}
+	<div class="board_view board_rey">
+		<table cellspacing="0" border="1" summary="1:1 문의 답변">
+		<colgroup><col width="92px"><col width=""></colgroup>
+		<tbody>
+			<tr class="last">
+				<th class="tit"><img src="/public/images/board/th_txt_reply.gif" alt="답변"></th>
+				<td colspan="3">
+					<p class="rey_txt" style="width:570px">
+					${jeiView.etcVarchar1.nl2br()}
+					<p class="qnaDate">${jeiView.updDate}</p>
+					</p>
+				</td>
+			</tr>
+		</tbody>
+		</table>
+	</div><!-- //board_view  -->
+	#{/else}
+	<div class="board_btnarea">
+		<p class="f_left">
+			<img class="input_btn" alt="인쇄" src="/public/images/board/btn_print.gif" style="cursor:pointer" id="btnPrint" />
+		</p>
+		<p class="f_right">
+			<img class="input_btn" alt="수정" src="/public/images/board/btn_edit.gif" style="cursor:pointer" id="btnModify" />
+			<img class="input_btn" alt="삭제" src="/public/images/board/btn_delete.gif" style="cursor:pointer" id="btnDel" />
+			<img class="input_btn" alt="목록" src="/public/images/board/btn_list.gif" style="cursor:pointer" id="btnList" />
+		</p>
+	</div><!-- //btnArea -->
+</div><!-- //contents -->
+</form>

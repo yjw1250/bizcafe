@@ -1,0 +1,58 @@
+#{extends 'user/sub.html' /} 
+#{if boardCode == "notice" || boardCode == "recruit"}
+#{set title:'홈 > BIZ STUDIO 소개' /}
+#{/if}
+#{if}
+#{set title:'홈 > 고객센터' /}
+#{/if}
+#{if boardCode == "faq" || boardCode == "qna"}
+#{set title:'홈 > 고객센터' /}
+#{/if}
+#{if boardCode == "gallery"}
+#{set title:'홈 > 갤러리' /}
+#{/if}
+<script type="text/javascript" src="@{'/public/javascripts/board.js'}"></script>
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form name="proceForm" id="proceForm" method="post" action="/board/${boardCode}/create">
+<input type="hidden" name="menuNum" id="menuNum" value="${menuNum}" />
+<div class="sub_title">
+	<h3 class="st2">
+		<strong><span class="blind">1:1 문의</span></strong>
+		<p><span class="blind">고객님의 문의사항입니다.</span></p>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li><a href="/board/faq">고객센타</a></li>
+		<li class="current">1:1 문의</li>
+	</ul>
+</div>
+<div class="contents">
+	<div class="attend">
+		<p>문의하시기전, 먼저 <strong><a href="/board/faq">FAQ</a></strong>에서 찾으려는 정보가 있는지 확인하세요.<br />고객님이 문의하신 내용의 답변은 회원정보에 등록하신 메일로 보내드립니다.</p>
+	</div><!-- //attend -->
+	<div class="board_write">
+		<table cellspacing="0" border="1" summary="1:1 문의">
+		<colgroup><col width="92px"><col width=""></colgroup>
+		<tbody>
+			<tr>
+				<th class="tit"><span class="must"><span class="blind">*</span></span><img src="/public/images/board/th_txt_subject.gif" alt="제목"></th>
+				<td colspan="3">
+					<input type="text" style="ime-mode:active;width:550px" value="" name="title" id="title" class="input_txt">
+				</td>
+			</tr>
+            <tr class="last">
+				<th class="tit"><img src="/public/images/board/th_txt_contents.gif" alt="내용"></th>
+				<td colspan="3">
+					<textarea style="ime-mode:active;width:95%;" rows="15" cols="60" id=contentText name="contents" class="textarea bg_txt_qna"></textarea>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+		</div><!-- //board_view  -->
+		<div class="board_btnarea">
+			<p class="f_left"></p>
+			<p class="f_right"><img class="input_btn" alt="등록" src="/public/images/board/btn_submit.gif" id="btnRegister" style="cursor:pointer"/></p>
+		</div><!-- //btnArea -->
+	</div><!-- //contents -->
+</div><!-- //#contents -->
+</form>

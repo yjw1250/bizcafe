@@ -1,0 +1,59 @@
+#{extends 'user/sub.html' /} 
+#{set title:'예약안내' /} 
+#{set 'moreScripts'}
+#{/set}	
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="menuNum" id="menuNum" value="31" />	
+
+				<!-- sub title -->
+				<div class="sub_title">
+					<h3 class="st1">
+						<strong><span class="blind">예약안내</span></strong>
+						<p><span class="blind">BIZ STUDIO를 이용하기 위한 예약 안내입니다.</span></p>
+					</h3>
+					<ul class="breadcrumb">
+						<li class="home"><a href="/">Home</a></li>
+						<li><a href="/booking/business">예약</a></li>
+						<li class="current">예약안내</li>
+					</ul>
+				</div>
+				<!-- //sub title -->
+				
+			
+			   <div class="contents">
+					<div class="booking_info">
+						<img width="142" height="89" src="@{'/public/images/booking/img_bookingInfo1.gif'}" alt="">
+						<div class="bookingInfo_txt bt1">
+							<strong><img src="@{'/public/images/booking/title_bookingInfo1.gif'}" alt="온라인 예약"></strong>
+							<p>${domain} 에서 회원 가입 후 예약이 가능합니다.</p>
+							<p><em>*</em> 비즈니스 미팅공간은 현재 시점 1시간 이후부터 예약하실 수 있습니다.</p>
+							<p class="btnarea"><a href="/booking/business"><img src="@{'/public/images/booking/btn_business_bookng.gif'}" alt="비즈니스 미팅공간 예약"></a><a href="/booking/soho"><img src="@{'/public/images/booking/btn_soho_bookng.gif'}" alt="소호사무실 예약하기"></a></p>
+						</div><!-- /bookingInfo_txt -->
+					</div><!-- //booking_info -->
+
+					<div class="booking_info">
+						<img width="142" height="89" src="@{'/public/images/booking/img_bookingInfo2.gif'}" alt="전화예약">
+						<div class="bookingInfo_txt bt2">
+							<strong><img src="@{'/public/images/booking/title_bookingInfo2.gif'}" alt=""></strong>
+							<p>02-779-0430~1 로 문의 주시면, 예약이 가능합니다.</p>
+						</div><!-- /bookingInfo_txt -->
+					</div><!-- //booking_info -->
+
+					<div class="booking_info">
+						<img width="142" height="89" src="@{'/public/images/booking/img_bookingInfo3.gif'}" alt="방문예약">
+						<div class="bookingInfo_txt bt3">
+							<strong><img src="@{'/public/images/booking/title_bookingInfo3.gif'}" alt=""></strong>
+							<p>BIZ STUDIO를 방문하시면, 즉시 사용 또는 예약이 가능합니다.</p>
+							<p class="btnarea"><a href="/introduce/contact"><img src="@{'/public/images/booking/btn_contactus.gif'}" alt="찾아오시는 길"></a></p>
+						</div><!-- /bookingInfo_txt -->
+					</div><!-- //booking_info -->
+
+					<div class="booking_info">
+						<img width="142" height="89" src="@{'/public/images/booking/img_bookingInfo4.gif'}" alt="소호사무실 예약">
+						<div class="bookingInfo_txt bt4">
+							<strong><img src="@{'/public/images/booking/title_bookingInfo4.gif'}" alt=""></strong>
+							<p>온라인, 전화, 방문 예약이 모두 가능하시며, <br />예약 후 3일 이내 계약금을 입금해 주셔야만 예약이 유지됩니다.</p>
+						</div><!-- /bookingInfo_txt -->
+					</div><!-- //booking_info -->
+
+				</div><!-- //contents -->

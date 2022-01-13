@@ -1,0 +1,184 @@
+#{extends 'user/sub.html' /} 
+#{set title:'예약' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/calendar2.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/reservation.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/booking.js'}"></script>
+#{/set}	
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="menuNum" id="menuNum" value="32" />	
+<input type="hidden" name="person" id="person" value="${person}">
+<input type="hidden" name="phonenumber" id="phonenumber" value="${user.phone}">
+				<!-- sub title -->
+				<div class="sub_title">
+					<h3 class="st2">
+						<strong><span class="blind">비즈니스 미팅공간 예약</span></strong>
+						<p><span class="blind">사전 예약을 통해 손쉽게 BIZ STUDIO를 이용하실 수 있습니다.</span></p>
+					</h3>
+					<ul class="breadcrumb">
+						<li class="home"><a href="/">Home</a></li>
+						<li><a href="/booking/business">예약</a></li>
+						<li class="current">비즈니스 미팅공간 예약</li>
+					</ul>
+				</div>
+				<!-- //sub title -->
+
+				<div class="contents">
+					
+					<div class="booking_write">
+						<table cellspacing="0" border="1" summary="예약일선택">
+						<colgroup><col width="112"><col width="202"><col width="112"><col width="202"></colgroup>
+						<tbody>
+						<tr>
+							<th class="tit">예약일</th>
+							<td>
+								<span class="input_cal">
+								<input type="text" style="ime-mode:active;width:100px" name="resdate" id="resdate" value="${resdate}" class="input_txt" readonly><img src="@{'/public/images/booking/ico_calender.gif'}" alt="달력" id="btnCalendar">
+								</span>
+							</td>
+							<th class="tit">이용인원</th>
+							<td>
+								<select name="resPerson" id="resPerson" style="ime-mode:active;width:60px;">
+								#{list items:resRoomList,as:'roomNumber' }
+								<option value="${roomNumber}">${roomNumber}</option> 
+								#{/list}
+								</select>
+							</td>
+						</tr>
+						</tbody>
+						</table>
+						<div class="booking_expn">
+							<ul>
+								<li>현재 시간을 기준으로 1시간 이후부터 선택 가능합니다. </li>
+								<li>30분 단위로 선택이 가능합니다. (10분전 퇴실)</li>
+								<li>국가 지정 공휴일은 운영하지 않습니다.</li>
+								<li>1인실은 기본 1시간 , 2인실 이상은 기본 2시간을  같은 부스로 선택하셔야 합니다.</li>
+							</ul>
+						</div><!-- /booking_expn -->
+					</div><!-- //board_view  -->
+
+					<div class="booking_btnarea">
+						<input class="input_btn" type="image" id="search_resever" alt="검색하기" src="@{'/public/images/booking/btn_search.gif'}">
+					</div><!-- //booking_btnarea -->
+					
+					<div id="resever_table" style="display:none;">
+					<div class="tbl_bookingTop">
+						<p class="dateSelection">
+							<img id="prevday" src="@{'/public/images/booking/ico_date_prev.gif'}" alt="이전" style="cursor:pointer;">
+							<span id="showdate"></span>
+							<img id="nextday" src="@{'/public/images/booking/ico_date_next.gif'}" alt="다음" style="cursor:pointer;">
+						</p>
+						<ul class="expn">
+							<li><img src="@{'/public/images/booking/ex_booking1.gif'}" alt="예약불가">예약불가</li>
+							<li><img src="@{'/public/images/booking/ex_booking2.gif'}" alt="예약가능">예약가능</li>
+							<li><img src="@{'/public/images/booking/ex_booking3.gif'}" alt="선택완료">선택완료</li>
+							<li><img src="@{'/public/images/booking/ex_booking4.gif'}" alt="현재시간">현재시간</li>
+						</ul>
+					</div><!-- //tbl_bookingTop -->
+					
+					<form id="frmRegist">
+					<div class="tbl_booking" id="booking"></div>
+					<div class="tbl_bookingcash">
+						<table cellspacing="0" border="1" summary="예약테이블">
+						<input type="hidden" name="resType" id="resType" value="BZ"><!--  BZ : 비즈니스룸, OF: 소호룸 -->
+						<input type="hidden" name="start_time" id="start_time">
+						<input type="hidden" name="end_time" id="end_time">
+						<input type="hidden" name="room_cnt" id="room_cnt">
+						<input type="hidden" name="room_title" id="room_title">
+						<input type="hidden" name="room_code" id="room_code">
+						<input type="hidden" name="sel_time" id="sel_time">
+						<input type="hidden" name="adminchk" id="adminchk" value="0"><!-- 1: 관리자, 0: 사용자 -->
+						<input type="hidden" name="room_user" id="room_user"><!--  룸예약자수 -->
+						<input type="hidden" name="account_unit" id="account_unit"><!-- 30분당 단가  2인실이상 : 1500원, 1인실 : 2000원  -->
+						<input type="hidden" name="payment" id="payment">
+						<input type="hidden" name="resRoom" id="resRoom">
+						<input type="hidden" name="snscertifyNo" id="snscertifyNo"><!--  휴대폰 인증 번호 -->
+						<colgroup>
+						<col width="144px"><col width="*"><col width="180px"></colgroup>
+						<tbody>
+						<tr>
+							<th>비용산정</th>
+							<td>
+								<div class="booking_amount">
+									<dl class="boo_monmy">
+										<dt class="b_tit">1인당 요금</dt>
+										<dd class="b_cash">시간당 <span id="cashunit"></span></dd>
+										<dd class="b_unit">원(\)</dd>
+									</dl>
+									<dl class="boo_time">
+										<dt class="b_tit">시간</dt>
+										<dd class="b_mark"><img src="@{'/public/images/booking/ico_multi.gif'}" alt="곱하기"></dd>
+										<dd class="b_cash"><span id="cashhour"></span></dd>
+										<dd class="b_unit">시간</dd>
+										<dd class="b_ex">(1인실은 기본 1시간, 2인실 이상은 기본 2시간)</dd>
+									</dl>
+									<dl class="boo_people">
+										<dt class="b_tit">인원</dt>
+										<dd class="b_mark"><img src="@{'/public/images/booking/ico_multi.gif'}" alt="곱하기"></dd>
+										<dd class="b_cash"><span id="cashuser"></span></dd>
+										<dd class="b_unit">명</dd>
+									</dl>
+									<dl class="boo_amonut">
+										<dt class="b_tit">총 결제예정금액 (후불제)</dt>
+										<dd class="b_cash"><span id="totalcash"></span></dd>
+										<dd class="b_unit">원(\)</dd>
+									</dl>
+								</div><!-- //booking_amount -->
+							</td>
+							<td class="infomation">
+								<dl>
+									<dt>* 기본요금</dt>
+									<dd>- 1시간당 1인실 기본 4,000원</dd>
+									<dd>- 2시간당 2인실 이상 기본 <br />6,000원</dd>
+								</dl>
+								<dl>
+									<dt>* 추가시간 (30분 단위)</dt>
+									<dd>- 1인실 인당 2,000원씩 추가</dd>
+									<dd>- 2인실 인당 1,500원씩 추가</dd>
+								</dl>
+							</td>
+						</tr>
+						</tbody>
+						</table>
+						
+						</form>
+					</div><!-- //tbl_bookingIn -->
+
+					<div class="booking_btnarea">
+						<input class="input_btn" id="btnSubmit" type="image" alt="예약신청" src="@{'/public/images/booking/btn_booking.gif'}">
+					</div><!-- //booking_btnarea -->
+					
+					</div>
+					
+				</div>
+				
+<!-- 휴대폰 인증요청 팝업 -->
+<div class="pop_wrap" style="display:none;position:absolute;width:400px;top:400px;left:400px;" id="reserver_sms_auth">
+	<div class="pop">
+		<h1><strong>휴대폰 인증요청</strong></h1>
+		<p class="popBtn"><img src="@{'/public/images/common/btn_x.gif'}" alt="닫기" class="sms_close" style="cursor:point;"/></p>
+		<div class="popCon">
+			<table cellspacing="0" border="1" summary="휴대폰 인증요청">
+			<input type="hidden" name="phone" id="phone">
+			<colgroup><col width="80px" /><col width="" /></colgroup>
+			<tbody>
+			<tr>
+				<th class="tit">휴대전화</th>
+				<td class="tl"><span class="phone" id="phonetxt"></span><input class="srh" id="sendphone" type="image" tabindex="2" src="@{'/public/images/member/btn_confirm_num.gif'}" alt="인증번호 발송요청" /></td>
+			</tr>
+			<tr>
+				<th class="tit last">인증번호</th>
+				<td class="last tl">
+					<input type="text" style="ime-mode:active;width:124px" id="certifyNo" name="certifyNo" class="input_txt" />
+					<input class="srh" id="confirmphone" type="image" tabindex="2" src="@{'/public/images/member/btn_ok.gif'}" alt="확인" />
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			<p class="user_modify"><a href="/user/modify">개인정보변경 바로가기</a></p>
+			<p class="btn_pop"><input class="input_btn sms_close" type="image" alt="닫기" src="@{'/public/images/board/btn_close.gif'}" /></p><!-- //btn -->
+		</div><!-- popCon -->
+	</div><!-- //pop -->
+</div>
+<!-- //pop_wrap -->

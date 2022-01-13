@@ -1,0 +1,83 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'관리자 > 관리자 관리 > 관리자 등록' /}
+
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="/public/admin/javascripts/validation.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/jquery/jquery.validate.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/jeicommon.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/admin/javascripts/userAdmin.js"></script>
+#{/set}
+
+#{stylesheet 'member.css' /}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="00" />
+
+<h3>내 정보수정</h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="/admin">홈</a></li><li class="current">내 정보수정</li></ul>
+</div><!-- //breadcrumb -->
+
+#{form @admin.UserAdminModify.update(), name:'myModifyForm',id:'myModifyForm'}
+<div class="board_vWrite">
+	<table cellspacing="0" border="0" summary="공지사항 등록 하기">
+		<colgroup><col width="160px"><col width="*"></colgroup>
+		<tbody>
+		<tr>
+			<th class="tit">관리자 등급</th>
+			<td>Assist Administor</td>
+		</tr>
+		</tbody>
+	</table>
+</div><!-- //board_vWrite -->
+
+<div class="board_vWrite">
+	<table cellspacing="0" border="0" summary="공지사항 등록 하기">
+		<colgroup><col width="160px"><col width="260"><col width="160px"><col width="260"></colgroup>
+		<tbody>
+		<tr>
+			<th class="tit">관리자 이름</th>
+			<td>${userAdmin.adminName}</td><input type="hidden" name="adminName" id="adminName" value="${userAdmin.adminName}">
+			<th class="tit">전화번호<span class="must"><span class="blind">*</span></span></th>
+			<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.tel}" name="tel" id="tel"></td>
+		</tr>
+		<tr>
+			<th class="tit">부서명<span class="must"><span class="blind">*</span></span></th>
+			<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.department}" name="department" id="department"></td>
+			<th class="tit">휴대폰<span class="must"><span class="blind">*</span></span></th>
+			<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.hp}" name="hp" id="hp"></td>
+		</tr>
+		<tr>
+			<th class="tit">직급<span class="must"><span class="blind">*</span></span></th>
+			<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.duty}" name="duty" id="duty"></td>
+			<th class="tit">이메일<span class="must"><span class="blind">*</span></span></th>
+			<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="${userAdmin.email}" name="email" id="email"></td>
+		</tr>
+		</tbody>
+	</table>
+</div><!-- //board_vWrite -->
+
+<div class="board_vWrite">
+	<table cellspacing="0" border="0" summary="공지사항 등록 하기">
+		<colgroup><col width="160px"><col width="*"></colgroup>
+		<tbody>
+		<tr>
+			<th class="tit">아이디</th>
+			<td>${userAdmin.adminID}</td> <input type="hidden" name="adminID" id="adminID" value="${userAdmin.adminID}">
+		</tr>
+		<tr>
+			<th class="tit">비밀번호<span class="must"><span class="blind">*</span></span></th>
+			<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="" name="adminPasswd" id="adminPasswd"><span class="note_attach star">비밀번호는 4자 이상 16자 이하로 작성해주세요.</span></td>
+		</tr>
+		<tr>
+			<th class="tit">비밀번호 확인<span class="must"><span class="blind">*</span></span></th>
+			<td><input class="input_txt" style="ime-mode:active;width:200px" type="text" value="" name="adminPasswd1" id="adminPasswd1"><span class="note_attach star">위에 입력한 비밀번호를 한번 더 입력해 주세요.</span></td>
+		</tr>
+		</tbody>
+	</table>
+		
+</div><!-- //board_vWrite -->
+#{/form}
+
+<div class="board_btnarea">
+	<a class="inputBtn" href="javascript:;" id="btnMyModify"><span style="width:50px;">저장</span></a>
+</div><!-- //btnArea -->

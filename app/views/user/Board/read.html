@@ -1,0 +1,63 @@
+#{extends 'user/sub.html' /} 
+#{set title:'홈 > BIZ STUDIO 소개' /} 
+<div class="sub_title">
+	<h3 class="${boardCodeTitle}">
+		<strong><span class="blind">${boardCodeName}</span></strong>
+		<p><span class="blind">BIZ STUDIO의 소식을 전해드립니다.</span></p>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li><a href="/introduce">BIZ STUDIO 소개</a></li>
+		<li class="current">${boardCodeName}</li>
+	</ul>
+</div>
+<script type="text/javascript" src="@{'/public/javascripts/board.js'}"></script> 
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form name="viewForm" id="viewForm" method="post">
+<input type="hidden" name="idx" id="idx" value="${jeiView.idx}" />
+<input type="hidden" name="menuNum" id="menuNum" value="${menuNum}" />
+<input type="hidden" name="page" id="page" value="${page}" />
+<input type="hidden" name="fileIdx" id="fileIdx" />
+<div class="contents">
+	<div class="board_view">
+		<table cellspacing="0" border="1" summary="공지사항">
+		<colgroup><col width="92px"><col width=""></colgroup>
+		<tbody>
+			<tr>
+				<th class="tit"><img src="/public/images/board/th_txt_subject.gif" alt="제목"></th>
+				<td colspan="3"><p class="subjct" style="width:570px">${jeiView.title}</p></td>
+			</tr>
+			<tr>
+				<th class="tit"><img src="/public/images/board/th_txt_writeDate.gif" alt="작성일"></th>
+				<td colspan="3"><p class="regDate" style="width:570px">${jeiView.regDate}</p></td>
+			</tr>
+			#{if boardCode == "recruit"}
+			<tr>
+				<th class="tit"><img src="/public/images/board/th_txt_attach.gif" alt="첨부파일"></th>
+				<td colspan="3">
+					#{list items:readFiles, as:'files' }
+					<p class="file_attach" style="cursor:pointer;width:570px">
+						<a href="#"><img src="/public/images/board/btn_download.gif" alt="다운로드"></a>${files.fileRealName}
+						<input type="hidden" name="file_idx" id="file_idx" value="${files.idx}" class="file_idx" />
+					</p>
+					#{/list}
+				</td>
+			</tr>	
+			#{/if}		
+			<tr class="last">
+				<th class="tit"><img src="/public/images/board/th_txt_contents.gif" alt="내용"></th>
+				<td colspan="3">
+					<div style="width:570px;">${jeiView.contents.nl2br()}</div>
+				</td>
+			</tr>
+		</tbody>
+		</table>
+	</div><!-- //board_view  -->
+	<div class="board_btnarea">
+		<p class="f_left"></p>
+		<p class="f_right">
+			<a href="/board/${boardCode}?page=${page}&searchKey=${searchKey}&searchVal=${urlDecodeSearchVal}"><img class="input_btn" alt="목록" src="/public/images/board/btn_list.gif" /></a>
+		</p>
+	</div><!-- //btnArea -->
+</div><!-- //contents -->
+</form>

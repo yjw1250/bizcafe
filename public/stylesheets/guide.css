@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+/* 카페 */
+.cafe_img{float:left;width:220px;}
+.cafe_img li img{border:1px solid #dfdfdf;margin-top:28px;padding:4px;}
+.cafe_list{float:right;width:461px;margin-top:18px;}
+.cafe_list table{width:100%;text-align:center;}
+.cafe_list table th{background:#a6a6a6;padding:13px 0;}
+.cafe_list table td{border-right:1px solid #dfdfdf;border-bottom:1px solid #dfdfdf;padding:12px 0;color:#666;}
+.cafe_list table td.cate{border-left:1px solid #dfdfdf;}
+.cafe_list table td.cate img{border:1px solid #e8e8e8;padding:3px;}
+.cafe_info{float:right;width:461px;padding-top:24px;line-height:150%;zoom:1;color:#666;}
+
+/* 이용정보 */
+.guide_time{margin-bottom:28px;}
+.facility_list{margin-top:12px;margin-bottom:36px;}
+.facility_list table{width:100%;text-align:center;}
+.facility_list table.oa{width:515px;*width:522px;}
+.facility_list table th{background:#a6a6a6;padding:13px 0;}
+.facility_list table td{border-right:1px solid #dfdfdf;border-bottom:1px solid #dfdfdf;padding:12px 0;line-height:140%;color:#666;}
+.facility_list table td.lb{border-left:1px solid #dfdfdf;}
+.facility_list .info{margin-top:5px;}
+.facility_info dl{color:#a6a6a6;}
+.facility_info dt{font-weight:bold;margin-bottom:10px;}
+.facility_info dd{background: url("../images/main/bul_cross.gif") no-repeat 5px 4px;padding-left:13px;margin-bottom:5px;}
+
+/* 비즈니스미팅공간-공간소개 / 소호사무실-공간소개 */
+.space_type{margin-top:15px;}
+.space_type .space_select{width:698px;height:53px;border:1px solid #d4d4d4;font-size:11px;}
+.space_type .space_select select{padding:1px;margin-left:10px;width:200px;height:20px;font-size:11px;color:#7f7f7f;}
+.space_type .space_select_bg{width:671px;height:51px;padding-top:14px;padding-left:25px;border:1px solid #fff;background:url("../images/guide/bg_space_select.gif") repeat-x 0 0 ;}
+.space_type .space_select_bg *{vertical-align:middle;}
+.space_type .space_infoBox{width:658px;border:1px solid #d4d4d4;border-top:0;padding:20px;margin:0 0 20px 0;color:#666;}
+.space_type .space_infoBox .space_thumb{float:left;width:360px;height:365px;zoom:1;display:inline;}
+.space_type .space_infoBox .space_thumb .view{width:358px;height:268px;border:1px solid #d4d4d4;}
+.space_type .space_infoBox .space_thumb .thumb{margin-top:14px;}
+.space_type .space_infoBox .space_thumb .thumb li{float:left;width:108px;height:79px;border:1px solid #d4d4d4;margin-left:15px;zoom:1;display:inline;cursor:pointer;}
+.space_type .space_infoBox .space_thumb .thumb li.first{margin:0;}
+.space_type .space_infoBox .space_thumb .thumb li img{width:108px;height:79px;}
+.space_type .space_infoBox .space_info{float:left;margin-left:20px;width:275px;}
+.space_type .space_infoBox .space_info dl{border-bottom:1px solid #dedede;padding:12px 0 10px 10px;line-height:150%;}
+.space_type .space_infoBox .space_info dl.last{border:0;padding-bottom:0;}
+.space_type .space_infoBox .space_info dt{font-weight:bold;}
+.space_type .space_infoBox .space_info dd strong{color:#cb2831;}
+.space_type .space_infoBox .space_info dd span{font-size:11px;}
+.space_type .space_infoBox .clear{height:0;}
+.space_type .info{clear:both;padding:18px 26px 0;border:1px solid #d4d4d4;border-top:2px solid #e9e9e9;border-bottom:0;line-height:150%;zoom:1;color:#666;}
+.space_list table{width:100%;text-align:center;border-bottom:2px solid #9fd6e1;}
+.space_list table th{background:#a6a6a6;padding:13px 0;}
+.space_list table td{border-right:1px solid #dfdfdf;border-bottom:1px solid #dfdfdf;padding:12px 0;line-height:140%;color:#666;}
+.space_list table td.rb{border-right:0;}
+.space_list table td strong{color:#cb2831;display:block;margin-bottom:5px;}
+.space_list table td p.cont{font-size:11px;text-align:left;letter-spacing:-1px;line-height:180%;margin-left:10px;}
+.chart_info{padding:18px 26px;line-height:150%;zoom:1;color:#666;}

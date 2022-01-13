@@ -1,0 +1,57 @@
+/* qna 추가 답변추가 */
+.board_rey{margin-top:10px;}
+
+/* qna텍스트영역 문자 */
+.board_write .bg_txt_qna{background:url(../images/cs/bg_inputTxt_qna.gif) 7px 7px no-repeat}
+
+/* 사이트맵 */
+.sitemap{float:left;width:170px;border:1px solid #dadada;border-top:2px solid #c5e5ec;margin:0 3px 10px 0;}
+.sitemap h4{padding:15px 20px;border-bottom:1px solid #e2d8d7;}
+.sitemap ul{padding:7px 6px 6px;}
+.sitemap li span{display:block;border:1px solid #e7e7e7;background:#f6f6f6;margin-bottom:1px;padding:10px 0;}
+.sitemap li a{font-size:11px;color:#6c7172;letter-spacing:-1px;}
+.sitemap li a:hover{font-weight:bold;color:#6c7172;text-decoration:none;}
+.sitemap ul.depth3{padding:0;}
+.sitemap ul.depth3 li{border:0;background:#fff;margin:0;padding:5px 0;border-top:1px solid #e7e7e7;}
+.sitemap ul.depth3 li.first{border-top:0;}
+.sitemap ul.depth3 li a{color:#669ba2;font-weight:bold;}
+.sitemap ul.depth3 li a:hover{color:#669ba2;}
+
+/* 이용약관 */
+.rule .version p {margin: 0;color:#000;}
+.rule .version p strong {font-weight:normal;}
+.rule {margin:0 20px 0 20px;color:#666;line-height:150%;}
+.rule h3{margin:40px 0 30px;font-size:16px;color:#000;text-align:center;}
+.rule h3.first{margin:0 0 30px 0;}
+.rule div{margin:0 0 20px 0;color:#666;font-size:12px;}
+.rule div p{margin:20px 0 20px 0;}
+.rule div p strong{display:block;}
+.rule div h4{margin:0 0 3px 0;font-size:12px;color:#000;}
+.rule div ol {list-style-type:circle;} 
+.rule div ol li ol li{list-style-type:decimal;margin:0 0 0 30px;}
+.rule div ul li{padding:0 0 0 14px;background:url(../images/cs/bu_privacy.gif) 2px 10px no-repeat;line-height:22px}
+
+/* 개인정보 취급방침 */
+.privacy .version p {margin: 0;color:#000;}
+.privacy .version p strong {font-weight:normal;}
+.privacy .info_box {margin-top:12px;padding:25px;border:1px solid #d4d4d4;background-color:#f7f7f7;color:#666;line-height:22px;}
+.privacy .jumplink{overflow:hidden;padding:25px;margin:0 0 20px 0;border-bottom:1px solid #d4d4d4;}
+.privacy .jumplink h4{margin:0 0 15px 0;font-size:12px;color:#000;}
+.privacy .jumplink ol{overflow:hidden;text-align:left;}
+.privacy .jumplink ol li{width:320px;/* list-style-type:decimal-leading-zero;*/margin:0;}
+.privacy .jumplink ol li a{width:auto;margin:0;line-height:22px;letter-spacing:-1px;color:#666;}
+.privacy .jumplink ol li a:hover{text-decoration:underline;}
+.privacy .jumplink .f_left{float:left;}
+.privacy .jumplink .f_right{float:right;}
+.privacy div{margin:0 0 10px 0;color:#666;font-size:12px;}
+.privacy div p {margin:0 0 10px 0 ;color:#666;font-size:12px;line-height:22px;}
+.privacy div p strong{display:block;}
+.privacy div h4{padding:20px 0 5px 0;font-size:12px;color:#000;}
+.privacy div ol li{margin:0 0 15px 0;line-height:22px;}
+.privacy div ol li strong{display:block;margin:0;}
+.privacy div ul {margin-top:-10px;}
+.privacy div ul li{padding:0 0 0 14px;background:url(../images/cs/bu_privacy.gif) 2px 10px no-repeat;line-height:22px}
+.privacy .board_list th{color:#fff;}
+.privacy .board_list td, .privacy .board_list td a{color:#666;}
+.privacy div ol.circle li {margin:0 !important;}
+

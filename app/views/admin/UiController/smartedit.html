@@ -1,0 +1,58 @@
+#{extends 'adminMain.html' /} 
+#{set title:'UI 공통 모듈 샘플:스마트에디터' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" src="/public/javascripts/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="/public/javascripts/jeicommon.js" charset="UTF-8" ></script>
+<script type="text/javascript" src="/public/admin/javascripts/smarteditor.js" charset="utf-8"></script>
+#{/set}
+<h3>폼입력값 validate</h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="">홈</a></li></ul>
+</div><!-- //breadcrumb -->
+
+<div id="divInfo" style="display:black;">
+	<form name="w_form" id="w_form" method="post" action="">
+	<p>
+		<input type="button" id="pasteHTMLDemo" value="본문에 HTML 삽입" style="cursor:pointer; _cusor:hand;" ></input>
+		<input type="button" id="showHTML" value="본문 HTML 보기" style="cursor:pointer; _cusor:hand;" ></input>
+	</p>
+
+	<textarea name="content1" id="content1" style="display:none"></textarea>
+	<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#DEDEDE">
+	  <tr valign="top">
+		<td height="250" bgcolor="#FFFFFF"><textarea name="ir1" id="ir1" style="width:100%;height:300px;display:none;"></textarea></td>
+	  </tr>
+	</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	  <tr height="80">
+		<td align="center"><span id="_onSubmit" style="cursor:pointer; _cusor:hand;" >등록</span></td>
+	  </tr>
+	</table>
+	</form>
+</div>
+
+<script>
+	//이미지업로드 경로
+	var imagepath 		= "${nboardimageuploadurl}";
+	var emoticonpath 	= "${nboardemoticonurl}";
+	var sSkinURI 		= "${nboardskinurl}";
+
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef: oEditors,
+		elPlaceHolder: "ir1",
+		sSkinURI: sSkinURI,
+		fCreator: "createSEditorInIFrame"
+	});
+
+	// 복수개의 에디터를 생성하고자 할 경우, 아래와 같은 방식으로 호출하고 oEditors.getById["ir2"]이나 oEditors[1]을 이용해 접근하면 됩니다.
+	/*
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef: oEditors,
+		elPlaceHolder: "ir2",
+		sSkinURI: "SEditorSkin.html",
+		fCreator: "createSEditorInIFrame"
+	});
+	*/	
+			
+</script>

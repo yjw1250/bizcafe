@@ -1,0 +1,105 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'관리자 > 테스트' /} 
+<h3>${boardCodeName} 관리</h3>
+<script type="text/javascript" src="@{'/public/admin/javascripts/board.js'}"></script>
+<script type="text/javascript" src="/public/javascripts/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form name="viewForm" id="viewForm" method="post">
+<input type="hidden" name="idx" id="idx" value="${jeiView.idx}" />
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="${adminMenuNum}" />
+<input type="hidden" name="page" id="page" value="${page}" />
+<div class="breadcrumb">
+	<ul><li class="home"><a href="">홈</a></li><li><a href="">고객관리</a></li><li class="current">${boardCodeName} 관리</li></ul>
+</div><!-- //breadcrumb -->
+<div class="board_vWrite">
+	<table cellspacing="0" border="0" summary="공지사항 상세보기">
+	<colgroup><col width="160px"><col width="260"><col width="160px"><col width="260"></colgroup>
+	<tbody>
+		<tr>
+			<th class="tit">제목</th>
+			<td>${jeiView.title}</td>
+			<th class="tit">작성자</th>
+			<td>${jeiView.regUserName}(${jeiView.regUserId})</td>
+		</tr>
+		<tr>
+			<th class="tit">작성일</th>
+			<td>${jeiView.regDate}</td>
+			<th class="tit">조회수</th>
+			<td>${jeiView.hitNum}</td>
+		</tr>
+		<tr>
+			<th class="tit">내용</th>
+			<td colspan="3" id="contents"  style="word-break:break-all;min-height:250px;">
+				<div style="width:570px;">${jeiView.contents.nl2br()}</div>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</div><!-- //board_vWrite -->
+#{if boardCode == "qna"}
+<div class="board_write">
+	<textarea name="etcVarchar1" id="etcVarchar1" style="display:none"></textarea>
+	<table cellspacing="0" border="0" summary="1:1 문의 답변">
+	<colgroup><col width="160px"><col width="*"></colgroup>
+	<tbody>
+		<tr>
+			<th class="tit">답변</th>
+			<td class="editArea" style="">
+				<textarea name="ir1" id="ir1" style="width:90%;height:300px;display:none;">${jeiView.etcVarchar1}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="">
+				<div class="qna_btnarea">
+					<a class="innerBtn" href="javascript:_onSubmit();" id="btnAdminWrite"><span style="width:50px;">답변등록</span></a>
+				</div><!-- //board_btnarea2 -->
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</div><!-- //board_vWrite -->
+#{/if}
+<div class="board_btnarea">
+	<a class="inputBtn" href="javascript:;" onclick="$.modify();"><span style="width:50px;">수정</span></a>
+	<a class="inputBtn" href="javascript:$.del()"><span style="width:50px;">삭제</span></a>
+	<a class="inputBtn" href="/admin/board/${boardCode}?page=${page}"><span style="width:50px;">목록</span></a>
+</div><!-- //btnArea -->
+</form>
+<script type="text/javascript">
+	//이미지업로드 경로
+	var imagepath 		= "${nBoardImageUploadUrl}";
+	var emoticonpath 	= "${nBoardEmoticonUrl}";
+	var sSkinURI 		= "${nBoardSkinUrl}";
+	try{
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder: "ir1",
+			sSkinURI: sSkinURI,
+			fCreator: "createSEditorInIFrame"
+		});
+	}catch(e){}
+	
+	_onSubmit = function(){
+	
+		
+		// 에디터의 내용을 에디터 생성시에 사용했던 textarea에 넣어 줍니다.
+		oEditors.getById["ir1"].exec("UPDATE_IR_FIELD", []);
+						
+		// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+		$("#etcVarchar1").val($("#ir1").val());				
+		var contents = $.trim($("#etcVarchar1").val());
+
+		if(contents == ""){
+			alert("답변을 입력해주세요.");
+			return;
+		}
+		$('#viewForm').attr({
+			action:'/admin/board/${boardCode}/reply'
+		});
+		
+		$('#viewForm').submit();
+		
+	}
+			
+</script>

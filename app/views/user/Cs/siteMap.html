@@ -1,0 +1,112 @@
+#{extends '/user/sub.html' /} 
+#{set title:'홈 > 고객센터 > SiteMap' /} 
+
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="menuNum" id="menuNum" value="43" />	
+
+<!-- sub title -->
+<div class="sub_title">
+	<h3 class="st3">
+		<strong><span class="blind">1:1 문의</span></strong>
+		<p><span class="blind">고객님의 문의사항입니다.</span></p>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li><a href="/board/faq">고객센터</a></li>
+		<li class="current">Site Map</li>
+	</ul>
+</div>
+<!-- //sub title -->
+
+<div class="contents">
+
+	<div class="sitemap">
+	<h4><img src="@{'/public/images/cs/sitemap_introduce.gif'}" alt="BIZ STUDIO소개" /></h4>
+	<ul>
+		<li><span><a href="/introduce">- BIZ STUDIO 소개</a></span></li>
+		<li><span><a href="/board/notice">- 공지사항</a></span></li>
+		<li><span><a href="/board/recruit">- 채용</a></span></li>
+		<li><span><a href="/introduce/contact">- 찾아오시는 길</a></span></li>
+	</ul>
+	</div>
+
+	<div class="sitemap">
+	<h4><img src="@{'/public/images/cs/sitemap_information.gif'}" alt="이용안내" /></h4>
+	<ul>
+		<li><span><a href="/guide/business/chart">- 비즈니스 미팅공간</a></span>
+			<ul class="depth3">
+				<li class="first"><a href="/guide/business/chart">ㄴ 배치도</a></li>
+				<li><a href="/guide/business/space">ㄴ 공간 소개</a></li>
+			</ul>
+		</li>
+		<li><span><a href="/guide/soho/chart">- 소호사무실</a></span>
+			<ul class="depth3">
+				<li class="first"><a href="/guide/soho/chart">ㄴ 배치도</a></li>
+				<li><a href="/guide/soho/space">ㄴ  사무실 소개</a></li>
+			</ul>
+		</li>
+		<li><span><a href="/guide/cafe">- 카페</a></span></li>
+		<li><span><a href="/guide/useInfo">- 이용정보</a></span></li>
+	</ul>
+	</div>
+
+	<div class="sitemap">
+	<h4><img src="@{'/public/images/cs/sitemap_reserve.gif'}" alt="예약" /></h4>
+	<ul>
+		<li><span><a href="/booking/info">- 예약안내</a></span></li>
+		<li><span><a href="/booking/business">- 비즈니스미팅공간 예약</a></span></li>
+		<li><span><a href="/booking/soho">- 소호사무실 예약</a></span></li>
+		<li><span><a href="/booking/businesstate">- 예약 현황</a></span>
+			<ul class="depth3">
+				<li class="first"><a href="/booking/businesstate">ㄴ 비즈니스미팅공간</a></li>
+				<li><a href="/booking/sohostate">ㄴ 소호사무실</a></li>
+			</ul>
+		</li>
+	</ul>
+	</div>
+
+	<div class="sitemap">
+	<h4><img src="@{'/public/images/cs/sitemap_cs.gif'}" alt="고객센터" /></h4>
+	<ul>
+		<li><span><a href="/board/faq">- FAQ</a></span></li>
+		<li><span><a href="/board/qna">- 1:1 문의</a></span></li>
+		<li><span><a href="/cs/siteMap">- 사이트 맵</a></span></li>
+	</ul>
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="sitemap">
+	<h4><img src="@{'/public/images/cs/sitemap_gallery.gif'}" alt="갤러리" /></h4>
+	<ul>
+		<li><span><a href="/board/gallery">- 갤러리</a></span></li>
+	</ul>
+	</div>
+
+	<div class="sitemap">
+	<h4><img src="@{'/public/images/cs/sitemap_policy.gif'}" alt="정책" /></h4>
+	<ul>
+		<li><span><a href="/cs/rules">- 이용약관</a></span></li>
+		<li><span><a href="/cs/privacy">- 개인정보 처리방침</a></span></li>
+		<li><span><a href="/cs/emailCollect">- 이메일무단수집거부</a></span></li>
+	</ul>
+	</div>
+
+	<div class="sitemap">
+	<ul>
+	#{if memberInfo?.userID == "" }
+		<li><span><a href="/user/join">- 회원가입</a></span></li>
+		<li><span><a href="/user/searchIdPassword">- 아이디/비밀번호 찾기</a></span></li>
+		<li><span><a href="javascript:alert('로그인이 필요한 서비스 입니다.');">- 개인정보수정</a></span></li>
+		<li><span><a href="javascript:alert('로그인이 필요한 서비스 입니다.');">- 회원탈퇴</a></span></li>
+	#{/if}
+	#{else}
+		<li><span><a href="javascript:alert('로그아웃 상태에서 이용이 가능합니다.');">- 회원가입</a></span></li>
+		<li><span><a href="javascript:alert('로그아웃 상태에서 이용이 가능합니다.');">- 아이디/비밀번호 찾기</a></span></li>
+		<li><span><a href="/user/modify">- 개인정보수정</a></span></li>
+		<li><span><a href="/user/out">- 회원탈퇴</a></span></li>
+	#{/else}
+	</ul>
+	</div>
+
+</div><!-- //contents -->

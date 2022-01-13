@@ -1,0 +1,139 @@
+Mon Feb 13 16:41:21 2012 OpenVPN 2.1.1 i686-pc-mingw32 [SSL] [LZO2] [PKCS11] built on Dec 11 2009
+Mon Feb 13 16:41:26 2012 NOTE: OpenVPN 2.1 requires '--script-security 2' or higher to call user-defined scripts or executables
+Mon Feb 13 16:41:26 2012 LZO compression initialized
+Mon Feb 13 16:41:26 2012 Control Channel MTU parms [ L:1542 D:138 EF:38 EB:0 ET:0 EL:0 ]
+Mon Feb 13 16:41:26 2012 Data Channel MTU parms [ L:1542 D:1450 EF:42 EB:135 ET:0 EL:0 AF:3/1 ]
+Mon Feb 13 16:41:26 2012 Local Options hash (VER=V4): '41690919'
+Mon Feb 13 16:41:26 2012 Expected Remote Options hash (VER=V4): '530fdded'
+Mon Feb 13 16:41:26 2012 Socket Buffers: R=[8192->8192] S=[8192->8192]
+Mon Feb 13 16:41:26 2012 UDPv4 link local: [undef]
+Mon Feb 13 16:41:26 2012 UDPv4 link remote: 211.107.254.186:1194
+Mon Feb 13 16:41:26 2012 TLS: Initial packet from 211.107.254.186:1194, sid=a9232623 97c332e2
+Mon Feb 13 16:41:26 2012 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
+Mon Feb 13 16:41:26 2012 VERIFY OK: depth=1, /C=KG/ST=NA/L=MobileCity/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:41:26 2012 VERIFY OK: nsCertType=SERVER
+Mon Feb 13 16:41:26 2012 VERIFY OK: depth=0, /C=KG/ST=NA/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:42:26 2012 TLS Error: TLS key negotiation failed to occur within 60 seconds (check your network connectivity)
+Mon Feb 13 16:42:26 2012 TLS Error: TLS handshake failed
+Mon Feb 13 16:42:26 2012 TCP/UDP: Closing socket
+Mon Feb 13 16:42:26 2012 SIGUSR1[soft,tls-error] received, process restarting
+Mon Feb 13 16:42:26 2012 Restart pause, 2 second(s)
+Mon Feb 13 16:42:28 2012 NOTE: OpenVPN 2.1 requires '--script-security 2' or higher to call user-defined scripts or executables
+Mon Feb 13 16:42:28 2012 Re-using SSL/TLS context
+Mon Feb 13 16:42:28 2012 LZO compression initialized
+Mon Feb 13 16:42:28 2012 Control Channel MTU parms [ L:1542 D:138 EF:38 EB:0 ET:0 EL:0 ]
+Mon Feb 13 16:42:28 2012 Data Channel MTU parms [ L:1542 D:1450 EF:42 EB:135 ET:0 EL:0 AF:3/1 ]
+Mon Feb 13 16:42:28 2012 Local Options hash (VER=V4): '41690919'
+Mon Feb 13 16:42:28 2012 Expected Remote Options hash (VER=V4): '530fdded'
+Mon Feb 13 16:42:28 2012 Socket Buffers: R=[8192->8192] S=[8192->8192]
+Mon Feb 13 16:42:28 2012 UDPv4 link local: [undef]
+Mon Feb 13 16:42:28 2012 UDPv4 link remote: 211.107.254.186:1194
+Mon Feb 13 16:42:28 2012 TLS: Initial packet from 211.107.254.186:1194, sid=5f6d32ec e9523b69
+Mon Feb 13 16:42:28 2012 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
+Mon Feb 13 16:42:29 2012 VERIFY OK: depth=1, /C=KG/ST=NA/L=MobileCity/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:42:29 2012 VERIFY OK: nsCertType=SERVER
+Mon Feb 13 16:42:29 2012 VERIFY OK: depth=0, /C=KG/ST=NA/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:43:28 2012 TLS Error: TLS key negotiation failed to occur within 60 seconds (check your network connectivity)
+Mon Feb 13 16:43:28 2012 TLS Error: TLS handshake failed
+Mon Feb 13 16:43:28 2012 TCP/UDP: Closing socket
+Mon Feb 13 16:43:28 2012 SIGUSR1[soft,tls-error] received, process restarting
+Mon Feb 13 16:43:28 2012 Restart pause, 2 second(s)
+Mon Feb 13 16:43:30 2012 NOTE: OpenVPN 2.1 requires '--script-security 2' or higher to call user-defined scripts or executables
+Mon Feb 13 16:43:30 2012 Re-using SSL/TLS context
+Mon Feb 13 16:43:30 2012 LZO compression initialized
+Mon Feb 13 16:43:30 2012 Control Channel MTU parms [ L:1542 D:138 EF:38 EB:0 ET:0 EL:0 ]
+Mon Feb 13 16:43:30 2012 Data Channel MTU parms [ L:1542 D:1450 EF:42 EB:135 ET:0 EL:0 AF:3/1 ]
+Mon Feb 13 16:43:30 2012 Local Options hash (VER=V4): '41690919'
+Mon Feb 13 16:43:30 2012 Expected Remote Options hash (VER=V4): '530fdded'
+Mon Feb 13 16:43:30 2012 Socket Buffers: R=[8192->8192] S=[8192->8192]
+Mon Feb 13 16:43:30 2012 UDPv4 link local: [undef]
+Mon Feb 13 16:43:30 2012 UDPv4 link remote: 211.107.254.186:1194
+Mon Feb 13 16:43:30 2012 TLS: Initial packet from 211.107.254.186:1194, sid=604120ef 4fa979fd
+Mon Feb 13 16:43:30 2012 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
+Mon Feb 13 16:43:30 2012 VERIFY OK: depth=1, /C=KG/ST=NA/L=MobileCity/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:43:30 2012 VERIFY OK: nsCertType=SERVER
+Mon Feb 13 16:43:30 2012 VERIFY OK: depth=0, /C=KG/ST=NA/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:44:30 2012 TLS Error: TLS key negotiation failed to occur within 60 seconds (check your network connectivity)
+Mon Feb 13 16:44:30 2012 TLS Error: TLS handshake failed
+Mon Feb 13 16:44:30 2012 TCP/UDP: Closing socket
+Mon Feb 13 16:44:30 2012 SIGUSR1[soft,tls-error] received, process restarting
+Mon Feb 13 16:44:30 2012 Restart pause, 2 second(s)
+Mon Feb 13 16:44:32 2012 NOTE: OpenVPN 2.1 requires '--script-security 2' or higher to call user-defined scripts or executables
+Mon Feb 13 16:44:32 2012 Re-using SSL/TLS context
+Mon Feb 13 16:44:32 2012 LZO compression initialized
+Mon Feb 13 16:44:32 2012 Control Channel MTU parms [ L:1542 D:138 EF:38 EB:0 ET:0 EL:0 ]
+Mon Feb 13 16:44:32 2012 Data Channel MTU parms [ L:1542 D:1450 EF:42 EB:135 ET:0 EL:0 AF:3/1 ]
+Mon Feb 13 16:44:32 2012 Local Options hash (VER=V4): '41690919'
+Mon Feb 13 16:44:32 2012 Expected Remote Options hash (VER=V4): '530fdded'
+Mon Feb 13 16:44:32 2012 Socket Buffers: R=[8192->8192] S=[8192->8192]
+Mon Feb 13 16:44:32 2012 UDPv4 link local: [undef]
+Mon Feb 13 16:44:32 2012 UDPv4 link remote: 211.107.254.186:1194
+Mon Feb 13 16:44:32 2012 TLS: Initial packet from 211.107.254.186:1194, sid=9de7e3d0 d627e96e
+Mon Feb 13 16:44:32 2012 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
+Mon Feb 13 16:44:32 2012 VERIFY OK: depth=1, /C=KG/ST=NA/L=MobileCity/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:44:32 2012 VERIFY OK: nsCertType=SERVER
+Mon Feb 13 16:44:32 2012 VERIFY OK: depth=0, /C=KG/ST=NA/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:45:32 2012 TLS Error: TLS key negotiation failed to occur within 60 seconds (check your network connectivity)
+Mon Feb 13 16:45:32 2012 TLS Error: TLS handshake failed
+Mon Feb 13 16:45:32 2012 TCP/UDP: Closing socket
+Mon Feb 13 16:45:32 2012 SIGUSR1[soft,tls-error] received, process restarting
+Mon Feb 13 16:45:32 2012 Restart pause, 2 second(s)
+Mon Feb 13 16:45:34 2012 NOTE: OpenVPN 2.1 requires '--script-security 2' or higher to call user-defined scripts or executables
+Mon Feb 13 16:45:34 2012 Re-using SSL/TLS context
+Mon Feb 13 16:45:34 2012 LZO compression initialized
+Mon Feb 13 16:45:34 2012 Control Channel MTU parms [ L:1542 D:138 EF:38 EB:0 ET:0 EL:0 ]
+Mon Feb 13 16:45:34 2012 Data Channel MTU parms [ L:1542 D:1450 EF:42 EB:135 ET:0 EL:0 AF:3/1 ]
+Mon Feb 13 16:45:34 2012 Local Options hash (VER=V4): '41690919'
+Mon Feb 13 16:45:34 2012 Expected Remote Options hash (VER=V4): '530fdded'
+Mon Feb 13 16:45:34 2012 Socket Buffers: R=[8192->8192] S=[8192->8192]
+Mon Feb 13 16:45:34 2012 UDPv4 link local: [undef]
+Mon Feb 13 16:45:34 2012 UDPv4 link remote: 211.107.254.186:1194
+Mon Feb 13 16:45:34 2012 TLS: Initial packet from 211.107.254.186:1194, sid=8a56cbc0 e6fa16ab
+Mon Feb 13 16:45:34 2012 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
+Mon Feb 13 16:45:34 2012 VERIFY OK: depth=1, /C=KG/ST=NA/L=MobileCity/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:45:34 2012 VERIFY OK: nsCertType=SERVER
+Mon Feb 13 16:45:34 2012 VERIFY OK: depth=0, /C=KG/ST=NA/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:45:58 2012 read UDPv4: Connection reset by peer (WSAECONNRESET) (code=10054)
+Mon Feb 13 16:45:58 2012 read UDPv4: Connection reset by peer (WSAECONNRESET) (code=10054)
+Mon Feb 13 16:45:58 2012 read UDPv4: Connection reset by peer (WSAECONNRESET) (code=10054)
+Mon Feb 13 16:45:58 2012 read UDPv4: Connection reset by peer (WSAECONNRESET) (code=10054)
+Mon Feb 13 16:46:34 2012 TLS Error: TLS key negotiation failed to occur within 60 seconds (check your network connectivity)
+Mon Feb 13 16:46:34 2012 TLS Error: TLS handshake failed
+Mon Feb 13 16:46:34 2012 TCP/UDP: Closing socket
+Mon Feb 13 16:46:34 2012 SIGUSR1[soft,tls-error] received, process restarting
+Mon Feb 13 16:46:34 2012 Restart pause, 2 second(s)
+Mon Feb 13 16:46:36 2012 NOTE: OpenVPN 2.1 requires '--script-security 2' or higher to call user-defined scripts or executables
+Mon Feb 13 16:46:36 2012 Re-using SSL/TLS context
+Mon Feb 13 16:46:36 2012 LZO compression initialized
+Mon Feb 13 16:46:36 2012 Control Channel MTU parms [ L:1542 D:138 EF:38 EB:0 ET:0 EL:0 ]
+Mon Feb 13 16:46:36 2012 Data Channel MTU parms [ L:1542 D:1450 EF:42 EB:135 ET:0 EL:0 AF:3/1 ]
+Mon Feb 13 16:46:36 2012 Local Options hash (VER=V4): '41690919'
+Mon Feb 13 16:46:36 2012 Expected Remote Options hash (VER=V4): '530fdded'
+Mon Feb 13 16:46:36 2012 Socket Buffers: R=[8192->8192] S=[8192->8192]
+Mon Feb 13 16:46:36 2012 UDPv4 link local: [undef]
+Mon Feb 13 16:46:36 2012 UDPv4 link remote: 211.107.254.186:1194
+Mon Feb 13 16:46:36 2012 TLS: Initial packet from 211.107.254.186:1194, sid=4d7a6a3d 00b22fed
+Mon Feb 13 16:46:36 2012 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
+Mon Feb 13 16:46:36 2012 VERIFY OK: depth=1, /C=KG/ST=NA/L=MobileCity/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:46:36 2012 VERIFY OK: nsCertType=SERVER
+Mon Feb 13 16:46:36 2012 VERIFY OK: depth=0, /C=KG/ST=NA/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:47:36 2012 TLS Error: TLS key negotiation failed to occur within 60 seconds (check your network connectivity)
+Mon Feb 13 16:47:36 2012 TLS Error: TLS handshake failed
+Mon Feb 13 16:47:36 2012 TCP/UDP: Closing socket
+Mon Feb 13 16:47:36 2012 SIGUSR1[soft,tls-error] received, process restarting
+Mon Feb 13 16:47:36 2012 Restart pause, 2 second(s)
+Mon Feb 13 16:47:38 2012 NOTE: OpenVPN 2.1 requires '--script-security 2' or higher to call user-defined scripts or executables
+Mon Feb 13 16:47:38 2012 Re-using SSL/TLS context
+Mon Feb 13 16:47:38 2012 LZO compression initialized
+Mon Feb 13 16:47:38 2012 Control Channel MTU parms [ L:1542 D:138 EF:38 EB:0 ET:0 EL:0 ]
+Mon Feb 13 16:47:38 2012 Data Channel MTU parms [ L:1542 D:1450 EF:42 EB:135 ET:0 EL:0 AF:3/1 ]
+Mon Feb 13 16:47:38 2012 Local Options hash (VER=V4): '41690919'
+Mon Feb 13 16:47:38 2012 Expected Remote Options hash (VER=V4): '530fdded'
+Mon Feb 13 16:47:38 2012 Socket Buffers: R=[8192->8192] S=[8192->8192]
+Mon Feb 13 16:47:38 2012 UDPv4 link local: [undef]
+Mon Feb 13 16:47:38 2012 UDPv4 link remote: 211.107.254.186:1194
+Mon Feb 13 16:47:38 2012 TLS: Initial packet from 211.107.254.186:1194, sid=fd817a43 58749ef0
+Mon Feb 13 16:47:38 2012 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
+Mon Feb 13 16:47:38 2012 VERIFY OK: depth=1, /C=KG/ST=NA/L=MobileCity/O=Mobile/CN=server/emailAddress=Mobile@soft
+Mon Feb 13 16:47:38 2012 VERIFY OK: nsCertType=SERVER
+Mon Feb 13 16:47:38 2012 VERIFY OK: depth=0, /C=KG/ST=NA/O=Mobile/CN=server/emailAddress=Mobile@soft

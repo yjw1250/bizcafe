@@ -1,0 +1,45 @@
+#{extends 'user/sub.html' /} 
+#{set title:'홈 > 로그인' /}
+#{set 'moreStyleSheets'}
+#{stylesheet 'member.css' /}
+#{/set}
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/validation.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/userLoginError.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/userLogin.js'}"></script>
+
+#{/set}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="menuNum" id="menuNum" value="71" />
+<!-- sub title -->
+<div class="sub_title">
+	<h3 class="st5">
+		<strong><span class="blind">아이디/비밀번호찾기</span></strong>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li class="current"><a href="/user/login">로그인</a></li>
+	</ul>
+</div>
+<!-- //sub title -->
+
+<div class="contents">
+	
+	<form name="loginForm" id="loginForm" method="post" action="${httpsDomain}" autocomplete="off">
+	<div class="idpw_form">
+		<div class="login">
+				<fieldset class="id_area">
+					<ul>
+						<li><span>아이디</span><input type="text" style="ime-mode:active;width:140px" value="${memberInfo?.saveID}" name="loginID" id="loginID" class="input_txt" /></li>
+						<li><span>비밀번호</span><input type="password" style="ime-mode:active;width:140px" value="" name="loginPasswd" id="loginPasswd" class="input_txt" /></li>
+						<li class="check"><span><input type="checkbox" style="" value="1"  #{if memberInfo?.saveID!="" } checked #{/if} name="saveID" id="saveID" class="" /> 아이디저장</span></li>
+					</ul>
+					<p class="btn_idpwarea"><input class="input_btn" type="image" alt="로그인" src="/public/images/member/btn_login.gif" /></p>
+				</fieldset>
+		</div>
+		<div class="btn_idpw"><span class="note_check"><a href="/user/searchIdPassword">아이디/비밀번호찾기</a></span> <span class="note_check">아직회원이 아니십니까?</span> <a href="/user"><img alt="회원가입하기" src="/public/images/member/btn_joinGo.gif" style="vertical-align:middle" /></a></div>
+	</div><!-- //idpw_form -->
+	</form>
+	
+</div><!-- //contents -->

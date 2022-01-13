@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>#{get 'title' /} </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="@{'/public/admin/stylesheets/admin.css'}" />
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery-1.7.1.min.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery.cookie.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/trimpath-template-1.1.22-jei.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/adminMenu.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/common.js'}"></script>
+#{get 'moreScripts' /}
+</head>
+
+<body>
+<div id="wrap">
+	<!-- 헤더 시작 -->
+	<div id="header">
+		#{include "./adminHeader.html" /}
+	</div><!-- //#header -->
+	<!-- //헤더 끝 -->
+	
+	<div id="container">
+		
+		<!-- 컨텐츠 영역 시작 --> 
+		<div class="container_wrap">
+			
+			<div class="snb">
+				<div class="admin_info">
+					<p class="a_hello"><strong>[${adminInfo?.adminName}]</strong>관리자님, 환영홥니다.</p>
+					<p class="a_btn"><a href="/admin/modify"><img src="@{'/public/admin/images/btn_myinfo.gif'}" alt="정보변경" /></a><a href="/admin/logout"><img src="@{'/public/admin/images/btn_logout.gif'}" alt="로그아웃"></a></p>
+					<p class="a_datd">${adminInfo?.logDate}</p>
+					<p class="a_time"> ${adminInfo?.logTime}</p>
+					<p class="a_ip">IP : ${adminInfo?.logIp}</p>
+					
+				</div><!-- //admin_info -->
+				
+				<!-- 통계 -->
+				<div class="snb_menu" id="submenu01" style="display:none">
+					<h2><span class="blind">통계</span></h2>
+					<ul>
+					#{if adminMenu?.menu11 == "1"}
+						<li class="" id="submenu11" ><a href="/admin/stats/visit" class="m1">이용자현황</a></li>
+					#{/if}
+					#{if adminMenu?.menu12 == "1"}
+						<!-- <li class="" id="submenu12" ><a href="javascript:;" class="m2">월별 매출현황</a></li> -->
+					#{/if}
+					#{if adminMenu?.menu13 == "1"}
+						<li class="" id="submenu13" ><a href="/admin/status/bizroomstate" class="m3">비즈니스 미팅공간 이용현황</a></li>
+					#{/if}
+					#{if adminMenu?.menu14 == "1"}
+						<li class="" id="submenu14" ><a href="/admin/status/sohoroomstate" class="m4">소호사무실 이용현황</a></li>
+					#{/if}
+					</ul>
+				</div><!-- //sub_menu -->
+				
+				<div class="snb_menu" id="submenu02" style="display:none">
+					<h2><span class="blind">비즈니스 미팅공간 이용현황</span></h2>
+					<ul>
+					#{if adminMenu?.menu21 == "1"}
+						<li class="" id="submenu21" ><a href="/admin/booking/businesstate" class="m1">현황 관리</a></li>
+					#{/if}
+					#{if adminMenu?.menu22 == "1"}
+						<li class="" id="submenu22" ><a href="/admin/booking/businessmem" class="m2">등록</a></li>
+					#{/if}
+					</ul>
+				</div><!-- //sub_menu -->
+				
+				<div class="snb_menu" id="submenu03" style="display:none">
+					<h2><span class="blind">소호사무실 예약관리</span></h2>
+					<ul>
+					#{if adminMenu?.menu31 == "1"}
+						<li class="" id="submenu31" ><a href="/admin/booking/sohostate" class="m1">현황 관리</a></li>
+					#{/if}
+					#{if adminMenu?.menu32 == "1"}
+						<li class="" id="submenu32" ><a href="/admin/booking/sohomem" class="m2">등록</a></li>
+					#{/if}
+					</ul>
+				</div><!-- //sub_menu -->
+
+				<div class="snb_menu" id="submenu04" style="display:none">
+					<h2><span class="blind">사이트 관리</span></h2>
+					<ul>
+					#{if adminMenu?.menu41 == "1"}
+						<li class="" id="submenu41" ><a href="/admin/user" class="m1">회원 관리</a></li>
+					#{/if}
+					#{if adminMenu?.menu42 == "1"}
+						<li class="" id="submenu42" ><a href="/admin/service" class="m2">서비스 만족도</a></li>
+					#{/if}
+					#{if adminMenu?.menu43 == "1"}
+						<li class="" id="submenu43" ><a href="/admin/board/notice" class="m3">공지사항</a></li>
+					#{/if}
+					#{if adminMenu?.menu44 == "1"}
+						<li class="" id="submenu44" ><a href="/admin/board/recruit" class="m4">채용</a></li>
+					#{/if}
+					#{if adminMenu?.menu45 == "1"}
+						<li class="" id="submenu45" ><a href="/admin/board/faq" class="m5">FAQ</a></li>
+					#{/if}
+					#{if adminMenu?.menu46 == "1"}
+						<li class="" id="submenu46" ><a href="/admin/board/qna" class="m6">1:1 문의</a></li>
+					#{/if}
+					#{if adminMenu?.menu47 == "1"}
+						<li class="" id="submenu47" ><a href="/admin/board/gallery" class="m7">갤러리</a></li>
+					#{/if}
+					</ul>
+				</div><!-- //sub_menu -->
+
+				<div class="snb_menu" id="submenu05" style="display:none">
+					<h2><span class="blind">관리자 설정</span></h2>
+					<ul>
+						<li class="" id="submenu51" ><a href="/admin/userAdmin" class="m1">관리자 설정</a></li>
+					</ul>
+				</div><!-- //sub_menu -->
+				
+				<div class="manager_info">
+					<h2><strong>책임자 정보</strong></h2>
+					<dl>
+						<dt>관리 책임자</dt>
+						<dd>팀장 조병현</dd>
+						<dd>TEL:02-3670-0303</dd>
+					</dl>
+					<dl>
+						<dt>기술 책임자</dt>
+						<dd>팀장 김용웅</dd>
+						<dd>TEL:02-2028-5414</dd>
+					</dl>
+				</div><!-- //manager_info -->
+				
+				
+			</div><!-- //snb -->
+				
+			<div id="content">
+				<!-- 내용시작 -->
+				#{doLayout /}
+				<!-- // 내용 끝 -->
+			</div><!-- id=content -->
+		</div><!-- container_wrap -->
+		<!-- //컨텐츠 영역 시작 -->
+	</div><!-- //id="container" -->
+
+	<!-- 풋터시작 -->
+	<div class="footer" id="footer">
+		#{include "./adminFooter.html" /}
+	</div><!-- //footer -->
+	<!-- 풋터끝 -->
+
+</div><!-- //#wrap -->
+
+
+
+
+</body>
+</html>

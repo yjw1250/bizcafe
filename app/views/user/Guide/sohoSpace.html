@@ -1,0 +1,221 @@
+#{extends '/user/sub.html' /} 
+#{set title:'홈 > 이용안내' /} 
+
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/guide.js'}"></script>
+
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="menuNum" id="menuNum" value="222" />	
+
+<!-- sub title -->
+<div class="sub_title">
+	<h3 class="st4">
+		<strong><span class="blind">사무실소개</span></strong>
+		<p><span class="blind">고객님의 비즈니스를 위한 모든 서비스가 제공됩니다.</span></p>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li><a href="/guide/business/chart">이용안내</a></li>
+		<li>소호사무실</li>
+		<li class="current">사무실 소개</li>
+	</ul>
+</div>
+<!-- //sub title -->
+
+<div class="contents">
+	<p><img src="/public/images/guide/soho_space_visual.jpg" alt="1~2인 기업용 소호사무실" /></p>
+	<div class="space_type">
+		<div class="space_select">
+			<div class="space_select_bg">
+				<span><img src="/public/images/guide/title_space_type.gif" alt="공간타입" /></span>
+				<select name="noteType" space="soho" parameter="${type}">
+				<option value="0" >소호사무실 1인실 R-1, 2, 4</option>
+				<option value="1" >소호사무실 1인실 R-3, 5, 6</option>
+				<option value="2" >소호사무실 2인실 R-7, 8</option>
+				</select>
+				<input class="input_btn goBookingSoho" type="image" alt="예약하기" src="/public/images/guide/btn_booking.gif">
+			</div>
+		</div>
+		<div id="space_0">
+			<p class="info">프리랜서, 개인사업자를 위한 1인용 올인원 소호사무실로 고급 사무가구와 복합기가 구비되어 있으며<br />고객님의 외부 활동을 위하여 카페 이용을 지원해드리고 있습니다.</p>
+			<div class="space_infoBox">
+				<div class="space_thumb">
+					<div class="view"><img src="/public/images/guide/thumb_r124_01.jpg" id="semiGallery_0" alt="" /></div>
+					<ul class="thumb" id="semiGalleryList_0">
+						<li class="first"><img src="/public/images/guide/thumb_r124_01.jpg" alt="" /></li>
+						<li><img src="/public/images/guide/thumb_r124_02.jpg" alt="" /></li>
+						<li><img src="/public/images/guide/thumb_r124_03.jpg" alt="" /></li>
+					</ul>
+				</div>
+				<div class="space_info">
+					<dl>
+						<dt>이용인원수 : 1명</dt>
+					</dl>
+					<dl>
+						<dt>이용시간</dt>
+						<dd>- 평일 : 오전 8시 ~ 오후 10시</dd>
+						<dd>- 토요일 : 오전 10시 ~ 오후 8시</dd>
+						<dd>- 일요일 : 오전 10시 ~ 오후 6시</dd>
+					</dl>
+					<dl>
+						<dt>특이사항</dt>
+						<dd>- 넓고 쾌적한 공간</dd>
+						<dd>- 사업자 등록 가능(3개월 이상 계약 시)</dd>
+					</dl>
+					<dl>
+						<dt>지원사항</dt>
+						<dd>- 프린터기(용지 별도)</dd>
+						<dd>- 전화라인(전화 설치 별도)</dd>
+						<dd>- 개별 보안키</dd>
+						<dd>- 유무선인터넷</dd>
+						<dd>- 고급 사무가구(책장, 옷걸이 포함)</dd>
+						<dd>- 외부에 접한 창</dd>
+					</dl>
+					<dl class="last">
+						<dt>공통사항</dt>
+						<dd>- BIZ STUDIO 내 세미나룸 이용 가능<br>(월 2회 각 2시간 이내)<br />&nbsp;<span class="note_attach star">이용 일주일 전 예약필수</span></dd>
+						<dd>- 커피 음료 할인</dd>
+					</dl>
+				</div>
+				<p class="clear"></p>
+			</div>
+		</div>
+		<div id="space_1" style="display:none;">
+			<p class="info">프리랜서, 개인사업자를 위한 1인용 올인원 소호사무실로 고급 사무가구와 복합기가 구비되어 있으며<br />고객님의 외부 활동을 위하여 카페 이용을 지원해드리고 있습니다.</p>
+			<div class="space_infoBox">
+				<div class="space_thumb">
+					<div class="view"><img src="/public/images/guide/thumb_r356_01.jpg" id="semiGallery_1" alt="" /></div>
+					<ul class="thumb" id="semiGalleryList_1">
+						<li class="first"><img src="/public/images/guide/thumb_r356_01.jpg" alt="" /></li>
+						<li><img src="/public/images/guide/thumb_r356_02.jpg" alt="" /></li>
+						<li><img src="/public/images/guide/thumb_r356_03.jpg" alt="" /></li>
+					</ul>
+				</div>
+				<div class="space_info">
+					<dl>
+						<dt>이용인원수 : 1명</dt>
+					</dl>
+					<dl>
+						<dt>이용시간</dt>
+						<dd>- 평일 : 오전 8시 ~ 오후 10시</dd>
+						<dd>- 토요일 : 오전 10시 ~ 오후 8시</dd>
+						<dd>- 일요일 : 오전 10시 ~ 오후 6시</dd>
+					</dl>
+					<dl>
+						<dt>특이사항</dt>
+						<dd>- 넓고 쾌적한 공간</dd>
+						<dd>- 사업자 등록 가능(3개월 이상 계약 시)</dd>
+					</dl>
+					<dl>
+						<dt>지원사항</dt>
+						<dd>- 프린터기(용지 별도)</dd>
+						<dd>- 전화라인(전화 설치 별도)</dd>
+						<dd>- 개별 보안키</dd>
+						<dd>- 유무선인터넷</dd>
+						<dd>- 고급 사무가구(책장, 옷걸이 포함)</dd>
+					</dl>
+					<dl class="last">
+						<dt>공통사항</dt>
+						<dd>- BIZ STUDIO 내 세미나룸 이용 가능<br>(월 2회 각 2시간 이내)<br />&nbsp;<span class="note_attach star">이용 일주일 전 예약필수</span></dd>
+						<dd>- 커피 음료 할인</dd>
+					</dl>
+				</div>
+				<p class="clear"></p>
+			</div>
+		</div>
+		<div id="space_2" style="display:none;">
+			<p class="info">프리랜서, 개인사업자를 위한 2인용 올인원 소호사무실로 고급 사무가구와 복합기가 구비되어 있으며<br />고객님의 외부 활동을 위하여 카페 이용을 지원해드리고 있습니다.</p>
+			<div class="space_infoBox">
+				<div class="space_thumb">
+					<div class="view"><img src="/public/images/guide/thumb_r78_01.jpg" id="semiGallery_2" alt="" /></div>
+					<ul class="thumb" id="semiGalleryList_2">
+						<li class="first"><img src="/public/images/guide/thumb_r78_01.jpg" alt="" /></li>
+						<li><img src="/public/images/guide/thumb_r78_02.jpg" alt="" /></li>
+						<li><img src="/public/images/guide/thumb_r78_03.jpg" alt="" /></li>
+					</ul>
+				</div>
+				<div class="space_info">
+					<dl>
+						<dt>이용인원수 : 2명</dt>
+					</dl>
+					<dl>
+						<dt>이용시간</dt>
+						<dd>- 평일 : 오전 8시 ~ 오후 10시</dd>
+						<dd>- 토요일 : 오전 10시 ~ 오후 8시</dd>
+						<dd>- 일요일 : 오전 10시 ~ 오후 6시</dd>
+					</dl>
+					<dl>
+						<dt>특이사항</dt>
+						<dd>- 외부에 접한 창(R-7)</dd>
+						<dd>- 넓고 쾌적한 공간</dd>
+						<dd>- 사업자 등록 가능(6개월 이상 계약 시)</dd>
+					</dl>
+					<dl>
+						<dt>지원사항</dt>
+						<dd>- 프린터기(용지 별도)</dd>
+						<dd>- 전화라인(전화 설치 별도)</dd>
+						<dd>- 개별 보안키</dd>
+						<dd>- 유무선인터넷</dd>
+						<dd>- 고급 사무가구(책장, 옷걸이 포함)</dd>
+					</dl>
+					<dl class="last">
+						<dt>공통사항</dt>
+						<dd>- BIZ STUDIO 내 세미나룸 이용 가능<br>(월 2회 각 2시간 이내)<br />&nbsp;<span class="note_attach star">이용 일주일 전 예약필수</span></dd>
+						<dd>- 커피 음료 할인</dd>
+					</dl>
+				</div>
+				<p class="clear"></p>
+			</div>
+		</div>
+	</div>
+	<div class="space_list">
+		<table cellspacing="0" border="0" summary="공간 소개">
+		<colgroup><col width="100"><col width="90"><col width="75"><col width="200"><col width="*"></colgroup>
+		<thead>
+		<tr>
+			<th scope="col"><img src="/public/images/guide/th_txt_cafeClass.gif" alt="구분"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_cafeName.gif" alt="명칭"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_limit.gif" alt="정원"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_support.gif" alt="지원사항"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_special.gif" alt="특이사항"></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td class="lb" rowspan="6">1인실</td>
+			<td>R-1</td>
+			<td rowspan="6">1</td>
+			<td rowspan="8">
+				<p class="cont">- 유무선인터넷<br />- 고급 사무가구<br />- 칼라유리보드<br />- 커피 음료 할인<br />&nbsp;<br />&nbsp;</p>
+			</td>
+			<td class="rb" rowspan="8">
+				<p class="cont">- 프린터기(용지 별도)<br />- 전화라인(전화설치 별도)<br />- 개별 보안 키<br />- 사업자 등록<br />- 컨퍼런스룸 이용 가능(월 4회)<br />- 외부에 접한 창(R-1, R-2, R-4)</p>
+			</td>
+		</tr>
+		<tr>
+			<td>R-2</td>
+		</tr>
+		<tr>
+			<td>R-3</td>
+		</tr>
+		<tr>
+			<td>R-4</td>
+		</tr>
+		<tr>
+			<td>R-5</td>
+		</tr>
+		<tr>
+			<td>R-6</td>
+		</tr>
+		<tr>
+			<td rowspan="2">2인실</td>
+			<td>R-7</td>
+			<td rowspan="2">2</td>
+		</tr>
+		<tr>
+			<td>R-8</td>
+		</tr>
+		</tbody>
+		</table>
+	</div>
+
+</div><!-- //contents -->

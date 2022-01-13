@@ -1,0 +1,82 @@
+#{extends 'user/sub.html' /} 
+#{set title:'비즈니스룸 예약 완료 안내' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery.validate.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/complete_booking.js'}"></script>
+#{/set}	
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="menuNum" id="menuNum" value="32" />
+<!-- sub title -->
+				<div class="sub_title">
+					<h3 class="st2">
+						<strong><span class="blind">비즈니스미팅공간 예약완료</span></strong>
+						<p><span class="blind">사전 예약을 통해 손쉽게 BIZ STUDIO를 이용하실 수 있습니다.</span></p>
+					</h3>
+					<ul class="breadcrumb">
+						<li class="home"><a href="/">Home</a></li>
+						<li><a href="/booking/business">예약</a></li>
+						<li><a href="/booking/business">비즈니스미팅공간 예약</a></li>
+						<li class="current">완료</li>
+					</ul>
+				</div>
+				<!-- //sub title -->
+
+				<div class="contents">
+
+					<div class="board_complete" id="print_page">
+						<table cellspacing="0" border="0" summary="예약완료">
+						<colgroup>
+						<col width="130"><col width="*"></colgroup>
+						<thead>
+						<tr>
+							<th class="txt_complete" scope="col" colspan="2">예약 신청이 완료되었습니다.</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<th class="tit">신청일</th>
+							<td>${Reserver.regDate}</td>
+						</tr>
+						<tr>
+							<th class="tit">예약</th>
+							<td><span class="txt_blue">${Reserver.resDate}</span></td>
+						</tr>
+						<tr>
+							<th class="tit">예약시간</th>
+							<td><span class="txt_blue">${Reserver.resStartHour}</span> 부터 <span class="txt_blue">${Reserver.resEndHour}</span> 까지 <span class="note_attach star">10분전 퇴실</span></td>
+						</tr>
+						<tr>
+							<th class="tit">인원</th>
+							<td><span class="txt_blue">${Reserver.resPerson}인</span></td>
+						</tr>
+						<tr>
+							<th class="tit">부스</th>
+							<td>
+							#{list items:roomlists,as:'roominfo' }
+							<p><span class="txt_blue">${roominfo.roomcode}</span> ( ${roominfo.roomname02} ${roominfo.roomname03} ) <input type="image" src="@{'/public/images/booking/btn_gotobooth.gif'}" onclick="$.linkroom('${roominfo.roomSourceCode}');" alt="공간소개 바로가기" class="input_btn"></p>
+							#{/list}
+							</td>
+						</tr>
+						<tr>
+							<th class="tit">결제예정금액<p class="txt_brown">(후불제)</p></th>
+							<td><span class="txt_red">${Reserver.payment}</span> 원(\)</td>
+						</tr>
+						<tr>
+							<td class="info" colspan="2"><span class="note_attach star">예약취소는 예약 현황에서 취소하실 수 있습니다.</span></td>
+						</tr>
+						</tbody>
+						</table>
+					</div>
+					<div class="sns_btnarea">
+						<p class="sns">
+							<input onclick="$.facebook('http://www.bizstudio.co.kr' ,'${SnsMessage}');" type="image" src="@{'/public/images/booking/btn_facebook.gif'}" alt="페이스북" class="input_btn"><input type="image" onclick="$.twitter('http://www.bizstudio.co.kr','${SnsMessage}');" src="@{'/public/images/booking/btn_tweeter.gif'}" alt="트워터" class="input_btn"><input type="image" onclick="$.me2day('${SnsMessage}');" src="@{'/public/images/booking/btn_metoday.gif'}" alt="미투데이" class="input_btn">
+							<span class="note_attach star">SNS 보내기 시 <span class="txt_grey">신청인, 예약일, 예약시간, 인원, 부스, 위치정보</span>를 등록하실 수 있습니다.</span>
+						</p>
+						<p class="print">
+							<input type="image" src="@{'/public/images/booking/btn_print.gif'}" alt="인쇄하기" id="btnPrint" class="input_btn">
+							<a class="btn_txt" href="javascript:onclick=$.print('front');">인쇄하기</a>
+						</p>
+					</div>
+
+				</div><!-- //contents -->

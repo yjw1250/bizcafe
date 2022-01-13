@@ -1,0 +1,73 @@
+#{extends 'user/sub.html' /} 
+<link rel="stylesheet" type="text/css" href="/public/stylesheets/member.css" />
+<script type="text/javascript" src="@{'/public/javascripts/board.js'}"></script> 
+<div class="sub_title">
+	<h3 class="st1">
+		<strong><span class="blind">${boardCodeName}</span></strong>
+		<p><span class="blind">JEI Biz 의 소식을 전해드립니다.</span></p>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li><a href="/board/gallery">갤러리</a></li>
+		<li class="current"><a href="#">갤러리</a></li>
+	</ul>
+</div>
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form name="listForm" id="listForm">
+<input type="hidden" name="menuNum" id="menuNum" value="${menuNum}" />
+<input type="hidden" name="page" id="page" value="${page}" />
+<input type="hidden" name="idx" id="idx" />
+<div class="contents">
+	<ul class="gallery_list">
+		#{list items:data, as:'board' }
+		<li>
+			<a href="#"><img src="${fileUrl}/${board.thumbFileName}" alt="" width="137" height="115" /></a>
+			<a href="#" class="g_ttl">${board.title}</a>
+			<img src="${fileUrl}/${board.bigFileName}" style="display:none" alt="" class="bigImages" />
+		</li>
+		#{/list}
+	</ul>
+	<div class="pop_wrap" style="position:absolute;left:25px;top:0px;width:656px;display:none">
+		<div class="pop">
+			<h1><strong>BIZ 조감도</strong></h1>
+			<p class="popBtn"><a href="#"><img src="/public/images/common/btn_x.gif" alt="닫기" /></a></p>
+			<div class="popCon">
+				<p class="gallery_pop"><img /></p>
+				<p class="btn_pop"><img class="input_btn" alt="닫기" src="/public/images/board/btn_close.gif" id="galleryHide" style="cursor:pointer"/></p><!-- //btn -->
+			</div><!-- popCon -->
+		</div><!-- //pop -->
+	</div><!-- //pop_wrap -->
+	<div class="pagenavi">
+		#{if boardTotalCount > 0}
+			#{if pagination.page != 1}
+			<a class="first" href="#" onclick="$.page(1)">
+				<img alt="처음" src="/public/images/board/btn_pagenavi_fist.gif" />
+			</a>
+			#{/if}
+			#{if pagination.page > 1}
+			<a class="prev" href="#" onclick="$.page(${pagination.page - 1})">
+				<img alt="이전" src="/public/images/board/btn_pagenavi_prev.gif" />
+			</a>
+			#{/if}
+		 	#{list items:pagination.firstPage + 1..pagination.lastPage, as:'i'}
+		 		#{if pagination.page != i}
+					<a href="#" onclick="$.page(${i})">${i}</a>
+				#{/if}
+				#{else}
+					<strong>${i}</strong>
+				#{/else}
+			#{/list}
+			#{if pagination.totalPage > pagination.page}
+			<a class="next" href="#" onclick="$.page(${pagination.page + 1})">
+				<img alt="다음" src="/public/images/board/btn_pagenavi_next.gif" />
+			</a>
+			#{/if}
+			#{if pagination.block < pagination.totalBlock}
+			<a class="end" href="#" onclick="$.page(${pagination.lastPage})">
+				<img alt="끝" src="/public/images/board/btn_pagenavi_end.gif" />
+			</a>
+			#{/if}
+		#{/if}
+	</div><!-- //pagenavi -->
+</div>
+</form>

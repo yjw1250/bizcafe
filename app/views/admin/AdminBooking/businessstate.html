@@ -1,0 +1,92 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'비즈니스 미팅공간 예약관리 > 현황 관리' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery.validate.min.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/calendar2.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/reservation.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/business_statebooking.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/user.js'}"></script>
+#{/set}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="21" />
+<input type="hidden" name="resdate" id="resdate" />
+<input type="hidden" name="stateCD" id="stateCD" />
+
+				<h3>현황 관리</h3>
+				<div class="breadcrumb">
+					<ul><li class="home"><a href="/admin">홈</a></li><li><a href="/admin/booking/businesstate">비즈니스 미팅공간 예약관리</a></li><li class="current">현황 관리</li></ul>
+				</div><!-- //breadcrumb -->
+
+				<div class="tbl_bookingTop">
+					<p class="dateSelection">
+						<img id="prevday" src="@{'/public/admin/images/ico_date_prev.gif'}" alt="이전" style="cursor:pointer;">
+						<span id="showdate"></span>
+						<img id="nextday" src="@{'/public/admin/images/ico_date_next.gif'}" alt="다음" style="cursor:pointer;">
+					</p>
+					<ul class="expn">
+						<li><img src="@{'/public/admin/images/ex_booking1.gif'}" alt="예약불가">예약불가</li>
+						<li><img src="@{'/public/admin/images/ex_booking4.gif'}" alt="현제시간">현재시간</li>
+					</ul>
+				</div><!-- //tbl_bookingTop -->
+					
+				<div class="tbl_booking booking_allview" id="booking"></div><!-- //tbl_booking -->
+
+
+				<div class="tab">
+					<ul id="tabstate">
+						<li id="res0"><a href="javascript:$.changestate('0');"><span>예약중</span></a></li>
+						<li id="res1"><a href="javascript:$.changestate('1');"><span>이용완료</span></a></li>
+						<li id="res9"><a href="javascript:$.changestate('9');"><span>예약취소</span></a></li>
+					</ul>
+				</div><!-- //tab -->
+				<div class="tabContent">
+					<div class="board_list">
+						<table cellspacing="0" cellpadding="0" summary="예약하기">
+						<colgroup><col width="8%" /><col width="15%" /><col width="20%" /><col width="8%" /><col width="*" /><col width="10%" /><col width="10%" /></colgroup>
+						<thead>
+						<tr>
+							<th>번호</th>
+							<th>신청일시</th>
+							<th>예약일시</th>
+							<th>인원</th>
+							<th>부스</th>
+							<th>예약번호</th>
+							<th>신청인</th>
+						</tr>
+						</thead>
+						<tbody id="listHeader">
+						</tbody>
+						</table>
+					</div><!-- //board_list -->
+					
+					<div class="pagenavi" id="pageNavi"></div>
+					<!-- //pagenavi -->
+					
+					#{include 'user/memberinfo.html'/}
+					
+					<!-- Template -->
+					<textarea id="templateList" style="display: none;">
+					{for business in businessList}
+					{var idx = count - ((page -1 ) * listNo) - business_index}
+						<tr class="bg0">
+							<td class="num tc">＄{idx}</td>
+							<td class="num tc">＄{business.regDate} (＄{business.regDatetime})</td>
+							<td class="num tc">＄{business.resDate} (＄{business.resStartHour}~＄{business.resEndHour})</td>
+							<td class="num tc">＄{business.resPerson}</td>
+							<td class="tl">＄{business.resRoom}</td>
+							<td class="num tc"><a href="/admin/booking/businessdetail/＄{business.idx}">＄{business.resIdx}</a></td>
+							<td class="tc"><a href="javascript:;" id="＄{business.idx}" onclick="$.userReadview('＄{business.resUserID}',this,-200,-400)">＄{business.resUserName}</a></td>
+						</tr>
+					{forelse}	
+						<tr>
+						<td class="comment" colspan="7">검색결과가 없습니다.</td>
+						</tr>
+					{/for}
+					</textarea>
+					
+					
+					
+					</div><!-- //tabContent -->
+					
+					

@@ -1,0 +1,147 @@
+#{extends 'user/sub.html' /} 
+#{set title:'홈 > 회원정보수정' /}
+
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="/public/admin/javascripts/validation.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/jquery/jquery.validate.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/jeicommon.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/public/javascripts/user.js"></script>
+#{/set}
+
+#{stylesheet 'member.css' /}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="menuNum" id="menuNum" value="72" />
+
+<!-- sub title -->
+<div class="sub_title">
+	<h3 class="st3">
+		<strong><span class="blind">회원가입</span></strong>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li class="current"><a href="/user/modify">개인정보수정</a></li>
+	</ul>
+</div>
+<!-- //sub title -->
+
+<div class="contents">
+
+	<div class="board_write">
+	#{form @user.UserManager.update(), name:'modifyForm',id:'modifyForm'}
+		<table cellspacing="0" border="1" summary="회원가입폼">
+		<colgroup><col width="103px" /><col width="" /></colgroup>
+		<tbody>
+		<tr>
+			<th class="tit"><span class="mustR"><span class="blind">*</span></span><img src="/public/images/member/th_txt_name.gif" alt="성명" /></th>
+			<td colspan="3">${data.user.userName}</td><input type="hidden" name="userName" id="userName" value="${data.user.userName}">
+		</tr>
+		<tr>
+			<th class="tit"><span class="mustR"><span class="blind">*</span></span><img src="/public/images/member/th_txt_id.gif" alt="아이디" /></th>
+			<td colspan="3">${data.user.userID}</td><input type="hidden" name="userID" id="userID" value="${data.user.userID}">
+		</tr>
+		<tr>
+			<th class="tit"><span class="mustR"><span class="blind">*</span></span><img src="/public/images/member/th_txt_birth.gif" alt="생일" /></th>
+			<td colspan="3">
+				<select name="birthYear" id="birthYear">
+				<option value="" selected="selected">년</option>
+					#{list items:1910..2012, as:"i" }
+					<option value="${i}" #{if data.birthYear==i } selected #{/if} >${i}</option>
+					#{/list}
+				</select>
+				<select name="birthMonth" id="birthMonth">
+					<option value="" selected="selected">월</option>
+					#{list items:01..12, as:"i" }
+					<option value="${i}" #{if data.birthMonth==i } selected #{/if} >${i}</option>
+					#{/list}
+				</select>
+				<select name="birthDay" id="birthDay">
+				<option value="" selected="selected">일</option>;
+					#{list items:01..31, as:"i" }
+					<option value="${i}" #{if data.birthDay==i } selected #{/if} >${i}</option>
+					#{/list}
+				</select>
+				<input type="hidden" name="birth" id="birth" value="" />
+			</td>
+		</tr>
+		
+		<tr>
+			<th class="tit"><img src="/public/images/member/th_txt_pass.gif" alt="비밀번호" /></th>
+			<td colspan="3">
+				<input type="password" style="ime-mode:active;width:200px" value="" name="userPasswd" id="userPasswd" class="input_txt" />
+				<span class="note_attach star">영문 또는 숫자를 조합하여 4~16내에서 입력 (특수문자X)</span>
+			</td>
+		</tr>
+		<tr>
+			<th class="tit"><img src="/public/images/member/th_txt_passRe.gif" alt="비밀번호재확인" /></th>
+			<td colspan="3">
+				<input type="password" style="ime-mode:active;width:200px" value="" name="userPasswd1" id="userPasswd1" class="input_txt" />
+				<span class="note_attach star">입력하신 비밀번호를 한번 더 입력해 주세요.</span>
+			</td>
+		</tr>
+		<tr>
+			<th class="tit" rowspan="2"><span class="mustR"><span class="blind">*</span></span><img src="/public/images/member/th_txt_phone.gif" alt="연락처" /></th>
+			<td colspan="3">
+				<span class="txt_point">휴대전화</span>
+				<select name="phone1" id="phone1">
+				#{list items:data.hpList, as:"hp" }
+				<option value="${hp.cdnm}" #{if data.phone1==hp.cdnm } selected #{/if}>${hp.cdnm}</option>
+				#{/list}
+				</select> -
+				<input type="text" style="ime-mode:active;width:65px" value="${data.phone2}" name="phone2" id="phone2" class="input_txt" /> -
+				<input type="text" style="ime-mode:active;width:65px" value="${data.phone3}" name="phone3" id="phone3" class="input_txt" />
+				<img class="srh" id="btnCertify" tabindex="2" src="/public/images/member/btn_confirm_num.gif" alt="인증번호 발송요청" />
+				<input type="hidden" name="phone" id="phone" value="">
+				<input type="hidden" name="phoneChk" id="phoneChk" value="${data.user.phone}">
+				<input type="hidden" name="certifyNo" id="certifyNo" value="">
+				
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<span class="txt_point">인증번호</span>
+				<input type="text" style="ime-mode:active;width:124px" value="" name="certify_num" id="certify_num" class="input_txt" />
+				<img class="srh" name="btnCertifyOk" id="btnCertifyOk" tabindex="2" src="/public/images/member/btn_ok.gif" alt="확인" />
+				<span class="note_check" id="certifyCheckYes" style="display:none">인증완료</span>
+				<!--  <span class="note_nox">인증만료-인증번호를 다시 발송받으세요.</span> -->
+				<span class="note_nox" id="certifyCheckNo" style="display:none">인증실패-인증번호를 다시 확인해주세요</span>
+			</td>
+		</tr>
+		<tr>
+			<th class="tit"><span class="mustR"><span class="blind">*</span></span><img src="/public/images/member/th_txt_mail.gif" alt="이메일" /></th>
+			<td colspan="3">
+				<input type="text" style="ime-mode:active;width:65px" value="${data.emailID}" name="emailID" id="emailID" class="input_txt" /> @ 
+				<input type="text" style="ime-mode:active;width:100px" value="${data.emailDomain}" name="emailDomain" id="emailDomain" class="input_txt" />
+				<select name="emailDomainSelect" id="emailDomainSelect">
+				<option value="" selected="selected">직접입력</option>
+				#{list items:data.domainInfo, as:'domains' }
+				<option value="${domains.cdnm}">${domains.cdnm}</option>
+				#{/list}
+				</select>
+				<p class="note_attach star">비밀번호 분실 시 정보를 받으실 이메일 주소를 입력해 주세요.</p>
+			</td>
+		</tr>
+		<tr class="last">
+			<th class="tit"><img src="/public/images/member/th_txt_address.gif" alt="주소" /></th>
+			<td colspan="3">
+				<p>
+					<input type="text" style="ime-mode:active;width:67px" value="${data.user.zip1}" name="zip1" id="zip1" class="input_txt" readonly /> - 
+					<input type="text" style="ime-mode:active;width:67px" value="${data.user.zip2}" name="zip2" id="zip2" class="input_txt" readonly />
+					<img class="srh" id="btnZipcode" tabindex="2" src="/public/images/member/btn_address.gif" style="cursor:pointer" alt="주소찾기" />
+				</p>
+				<p><input type="text" style="ime-mode:active;width:280px" value="${data.user.addr1}" name="addr1" id="addr1" class="input_txt" readonly /></p>
+				<p><input type="text" style="ime-mode:active;width:280px" value="${data.user.addr2}" name="addr2" id="addr2" class="input_txt" /></p>
+			</td>
+		</tr>
+		</tbody>
+		</table>
+	</div><!-- //board_view  -->
+	<div class="board_btnarea">
+		<p class="f_left"><a href="/user/out" class="btn_memberOut">회원탈퇴 신청하기</a></p>
+		<p class="f_right"><img class="input_btn" id="btnModify" alt="정보수정" src="/public/images/member/btn_modify.gif" /></p>
+	</div><!-- //btnArea -->
+	
+
+	
+	#{/form}
+</div><!-- //contents -->
+

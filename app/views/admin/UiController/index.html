@@ -1,0 +1,178 @@
+#{extends 'adminMain.html' /} 
+#{set title:'UI 공통 모듈 샘플' /} 
+
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="61" />	
+
+
+<h3>UI 샘플 리스트:샘플 적용된 페이지 Url을 정리 합니다.</h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="">홈</a></li></ul>
+</div><!-- //breadcrumb -->
+
+<div id="divMemList" style="display:block;">
+<div class="board_list">
+	<table cellspacing="0" cellpadding="0" summary="회원리스트">
+		<colgroup><col width="8%" /><col width="30%" /><col width="15%" /><col width="8%" /><col width="12%" /><col width="*" /></colgroup>
+		<thead>
+		<tr>
+			<th>공통UI</th>
+			<th>활용범위</th>
+			<th>샘플페이지</th>
+			<th>완료여부</th>
+			<th>플러그인</th>
+			<th>비고</th>
+		</tr>
+		</thead>
+		<tbody id="listHeader">
+			<tr class="bg0">
+				<td class="num tc">레이어팝업</td>
+				<td class="tc">메세지창(alert),새창으로 Detail페이지 보기,쿠키팝업</td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>
+			<tr class="bg0">
+				<td class="num tc">tab</td>
+				<td class="tc">Detail페이지 서브메뉴</td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>									
+			<tr class="bg0">
+				<td class="num tc">select</td>
+				<td class="tc">코드마스터(CodeDtl)를 이용한 select박스 </td>				
+				<td class="num tc"><a href='/admin/userLogin' target="_blank" class="viewMember" >A형>회원관리>회원리스트</a></td>		
+				<td class="num tc">Y&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj">리스트  상단 좌측의 검색옵션에서 사용됨</td>				
+			</tr>	
+			<tr class="bg0">
+				<td class="num tc">paging</td>
+				<td class="tc">리스트 하단의 페이징</td>				
+				<td class="num tc"><a href='/admin/userLogin' target="_blank" class="viewMember" >A형>회원관리>회원리스트</a></td>		
+				<td class="num tc">Y&nbsp;</td>
+				<td class="num tc">/public/javascripts/jeicommon.js</td>
+				<td class="subj">리스트  하단의 페이징에 사용됨<br>-function:paging</td>				
+			</tr>	
+			<tr class="bg0">
+				<td class="num tc">검색어</td>
+				<td class="tc">검색어 Validate 체크</td>				
+				<td class="num tc"><a href='/admin/userLogin' target="_blank" class="viewMember" >A형>회원관리>회원리스트</a></td>		
+				<td class="num tc">Y&nbsp;</td>
+				<td class="num tc">/public/javascripts/jeicommon.js</td>
+				<td class="subj">리스트  상단 우측의 검색어에 사용됨<br>-특수문자입력불가,검색어 2글자 이상<br>-function:searchValueCheck</td>				
+			</tr>	
+			<tr class="bg0">
+				<td class="num tc">validation</td>
+				<td class="tc">입력폼 체크</td>				
+				<td class="num tc"><a href='/admin/ui/validation' target="_blank" class="viewMember" >입력값 체크</a></td>		
+				<td class="num tc">Y&nbsp;</td>
+				<td class="num tc">/public/javascripts/jeicommon.js<br>/public/admin/javascripts/validation.js&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>	
+			<tr class="bg0">
+				<td class="num tc">캘린더</td>
+				<td class="tc">기간검색 및 날짜 입력폼에서 날짜 선택용</td>				
+				<td class="num tc"><a href='/admin/ui/validation' target="_blank" class="viewMember" >캘린더 날짜 선택</a></td>		
+				<td class="num tc">Y&nbsp;</td>
+				<td class="num tc">/public/javascripts/calendar2.js&nbsp;</td>
+				<td class="subj">예약에서 사용시 validation.js 하단의 [달력 날짜 선택후 추가로  체크가 필요한 항목이 있다면...] 주석 참조</td>				
+			</tr>								
+			<tr class="bg0">
+				<td class="num tc">이미지뷰어</td>
+				<td class="tc">이미지 클릭시 뷰어 및 썸네일 기능</td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>											
+			<tr class="bg0">
+				<td class="num tc">웹에디터</td>
+				<td class="tc">입력폼 폼에서 내용 입력시 에디터 사용</td>				
+				<td class="num tc"><a href='/admin/ui/smartedit' target="_blank" class="viewMember" >네이버 스마트 에디터</a></td>		
+				<td class="num tc">Y&nbsp;</td>
+				<td class="num tc">/public/javascripts/smarteditor/js/HuskyEZCreator.js<br>/public/admin/javascripts/smarteditor.js</td>
+				<td class="subj"></td>				
+			</tr>					
+			<tr class="bg0">
+				<td class="num tc">프린터</td>
+				<td class="tc"></td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>				
+			<tr class="bg0">
+				<td class="num tc">SNS공유</td>
+				<td class="tc">페북,트윗,me2day로 컨텐츠 공유</td>				
+				<td class="num tc"><a href='/admin/ui/validation#sns' target="_blank" class="viewMember" >SNS 공유</a></td>		
+				<td class="num tc">Y&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>	
+			<tr class="bg0">
+				<td class="num tc">댓글</td>
+				<td class="tc"></td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>	
+			<tr class="bg0">
+				<td class="num tc">메뉴</td>
+				<td class="tc">탑메뉴, left 메뉴 처리</td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>		
+			<tr class="bg0">
+				<td class="num tc">브래드크럼</td>
+				<td class="tc">페이지 뎁스 출력</td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>																		
+			<tr class="bg0">
+				<td class="num tc">슬라이딩바</td>
+				<td class="tc">학습스케줄,진행상태</td>				
+				<td class="num tc"><a href='/study/diary_schedule' target="_blank" class="viewMember" >A형>사용자 학습존</a></td>		
+				<td class="num tc">Y&nbsp;</td>
+				<td class="num tc"></td>
+				<td class="subj"></td>				
+			</tr>			
+			<tr class="bg0">
+				<td class="num tc">이전글/다음글</td>
+				<td class="tc">게시판 뷰페이지 하단에 이전글/다음글</td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>						
+			<tr class="bg0">
+				<td class="num tc">툴팁</td>
+				<td class="tc">마우스 오버시 설명</td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>			
+			<tr class="bg0">
+				<td class="num tc">파일업로드</td>
+				<td class="tc">파일 업로드/다운로드 처리, 첨부파일 추가/삭제기능 같이</td>				
+				<td class="num tc"></td>		
+				<td class="num tc">&nbsp;</td>
+				<td class="num tc">&nbsp;</td>
+				<td class="subj"></td>				
+			</tr>								
+										
+		</tbody>		
+	   </table>
+</div><!-- //board_list -->
+
+</div>
+

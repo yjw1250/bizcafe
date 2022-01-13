@@ -1,0 +1,22 @@
+<a class="skip" href="#content">본문 바로가기</a>                        
+<h1><a href="/admin/booking/businesstate"><img alt="처음" src="@{'/public/admin/images/logo_admin.png'}"></a></h1>
+<div class="lnb">
+	<ul id="topMenu">
+	#{if adminMenu?.menu11 == "1" || adminMenu?.menu12 == "1" || adminMenu?.menu13 == "1" || adminMenu?.menu14 == "1"}
+		<li class="menu01 " id="menu01"><strong><a class="menu01" id="adminMenu01" href="/admin/stats/visit">통계</a></strong></li>
+	#{/if}
+	#{if adminMenu?.menu21 == "1" || adminMenu?.menu22 == "1"}
+		<li class="menu02 " id="menu02"><strong><a class="menu02" id="adminMenu02" href="/admin/booking/businesstate">비즈니스 미팅공간 예약관리</a></strong></li>
+	#{/if}
+	#{if adminMenu?.menu31 == "1" || adminMenu?.menu32 == "1"}
+		<li class="menu03 " id="menu03"><strong><a class="menu03" id="adminMenu03" href="/admin/booking/sohostate">소호사무실 예약관리</a></strong></li>
+	#{/if}
+	#{if adminMenu?.menu41 == "1" || adminMenu?.menu42 == "1" || adminMenu?.menu43 == "1" || adminMenu?.menu44 == "1" || adminMenu?.menu45 == "1" || adminMenu?.menu46 == "1" || adminMenu?.menu47 == "1"}
+		<li class="menu04 " id="menu04"><strong><a class="menu04" id="adminMenu04" href="/admin/user">사이트 관리</a></strong></li>
+	#{/if}
+	#{if adminMenu?.menu51 == "1" || adminMenu?.menu52 == "1" || adminMenu?.menu53 == "1"}
+		<li class="menu05 " id="menu05"><strong><a class="menu05" id="adminMenu05" href="/admin/userAdmin">관리자 설정</a></strong></li>
+	#{/if}
+		<!-- li class="menu06 " id="menu06"><strong><a class="menu06" id="adminMenu06" href="/admin/ui">UI</a></strong></li-->
+	</ul><!-- #topMenu -->
+</div>

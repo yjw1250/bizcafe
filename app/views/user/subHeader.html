@@ -1,0 +1,59 @@
+<!-- 로고 -->
+<h1><a href="/"><img src="@{'/public/images/common/logo_bi.gif'}" alt="BIZ STUDIO"></a></h1>
+<ul class="utilLink">
+	<li class="link01"><a href="/introduce/contact" id="menutop01"><span class="blind">찾아오시는 길</span></a></li>
+	<li class="link02"><a href="/board/recruit" id="menutop02"><span class="blind">채용</span></a></li>
+	#{if memberInfo?.userID == "" }	
+	<li class="link03"><a href="/user/login" id="menutop03"><span class="blind">로그인</span></a></li>
+	#{/if}	
+	#{else}
+	<li class="link04"><a href="/user/modify" id="menutop04"><span class="blind">개인정보수정</span></a></li>
+	<li class="link05"><a href="/user/logout" id="menutop05"><span class="blind">로그아아웃</span></a></li>		
+	#{/else}
+</ul><!-- //utilLink -->
+<div class="lnb">
+	<ul class="qLink">
+		<li class="qm01"><a class="qm01" href="/booking/info"><span class="blind">BIZ STUDIO 소개</span></a></li>
+		<li class="qm02 "><a class="qm02" href="/guide/useInfo"><span class="blind">BIZ STUDIO는 스마트 비즈니스 미팅 공간을 추구합니다.</span></a></li>
+	</ul><!-- qLink -->
+	<div class="nav">
+		<ul id="topMenu">
+			<li class="menu01 selected first-child" id="menu01" ><a class="menu01" href="/introduce"><span class="blind">BIZ STUDIO 소개</span></a></li>
+			<li class="menu02 " id="menu02"><a class="menu02" href="/guide/business/chart"><span class="blind">이용안내</span></a></li>
+			<li class="menu03 " id="menu03"><a class="menu03" href="/booking/info"><span class="blind">예약</span></a></li>
+			<li class="menu04 " id="menu04"><a class="menu04" href="/board/faq"><span class="blind">고객센터</span></a></li>
+			<li class="menu05 " id="menu05"><a class="menu05" href="/board/gallery"><span class="blind">갤러리</span></a></li>
+		</ul>
+	</div><!-- nav -->
+	<div class="nav-open-wrap" style="display: none;">
+		<div class="lnb_sub" id="sub_depth"><!-- /* 2deth메뉴 디자인이 안나옴 */ -->
+			<p class="nav_visual" style="background-image: url(&quot;/public/images/common/nav-open_visual1.png&quot;);"><span class="blind">서브메뉴별 비주얼</span></p>		
+			<ul class="depth1 selectBox" id="sub_depth_1" style="display:; ">
+				<li class=""><a href="/introduce" class="menu11" id="menu11" onfocus="blur();"><span class="blind">BIZ STUDIO 소개</span></a></li>
+				<li><a href="/board/notice" class="menu12" id="menu12" onfocus="blur();"><span class="blind">공지사항</span></a></li>
+				<li><a href="/board/recruit" class="menu13" id="menu13" onfocus="blur();"><span class="blind">채용</span></a></li>
+				<li><a href="/introduce/contact" class="menu14" id="menu14" onfocus="blur();"><span class="blind">찾아오시는 길</span></a></li>
+			</ul>
+			<ul class="depth2 " id="sub_depth_2" style="display:; ">
+				<li class=""><a href="/guide/business/chart" class="menu21" id="menu21" onfocus="blur();"><span class="blind">비즈니스 미팅 공간</span></a></li>
+				<li><a href="/guide/soho/chart" class="menu22" id="menu22" onfocus="blur();"><span class="blind">소호사무실</span></a></li>
+				<li><a href="/guide/cafe" class="menu23" id="menu23" onfocus="blur();"><span class="blind">카페</span></a></li>
+				<li><a href="/guide/useInfo" class="menu24" id="menu24" onfocus="blur();"><span class="blind">이용정보</span></a></li>
+			</ul>
+			<ul class="depth3 " id="sub_depth_3" style="display:; ">
+				<li class=""><a href="/booking/info" class="menu31" id="menu31" onfocus="blur();"><span class="blind">예약안내</span></a></li>
+				<li><a href="/booking/business" class="menu32" id="menu32" onfocus="blur();"><span class="blind">미팅공간 예약하기</span></a></li>
+				<li><a href="/booking/soho" class="menu33" id="menu33" onfocus="blur();"><span class="blind">소호사무실 예약하기</span></a></li>
+				<li><a href="/booking/businesstate" class="menu34" id="menu34" onfocus="blur();"><span class="blind">예약현황</span></a></li>
+			</ul>
+			<ul class="depth4 " id="sub_depth_4" style="display:; ">
+				<li class=""><a href="/board/faq" class="menu41" id="menu41" onfocus="blur();"><span class="blind">FAQ</span></a></li>
+				<li><a href="/board/qna" class="menu42" id="menu42" onfocus="blur();"><span class="blind">1:1문의</span></a></li>
+				<li><a href="/cs/siteMap" class="menu43" id="menu43" onfocus="blur();"><span class="blind">Site Map</span></a></li>
+			</ul>
+			<ul class="depth5 " id="sub_depth_5" style="display:; ">
+				<li class=""><a href="/board/gallery" class="menu51" id="menu51" onfocus="blur();"><span class="blind">갤러리</span></a></li>
+			</ul>
+		</div><!-- #sub_depth -->
+	</div><!-- //nav-open-wrap -->
+</div><!-- //lnb -->

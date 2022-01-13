@@ -1,0 +1,75 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'소호사무실 예약관리 > 현황 관리' /} 
+#{set 'moreScripts'}
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jquery/jquery.validate.min.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/javascripts/jeicommon.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/usersoholist.js'}"></script>
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/user.js'}"></script>
+#{/set}
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="41" />
+<input type="hidden" name="userID" id="userID" value="${user.userID}">
+<h3>회원 관리</h3>
+				<div class="breadcrumb">
+					<ul><li class="home"><a href="/admin">홈</a></li><li><a href="/admin/user">사이트 관리</a></li><li><a href="/admin/booking/soholist/${user.userID}">회원관리</a></li><li class="current">비즈니스 미팅공간 예약내역 조회</li></ul>
+				</div><!-- //breadcrumb -->
+
+				<h4>${user.userName}(${user.userID})님의 <strong>소호사무실 </strong> 예약내역입니다.<a id="${user.userID}" class="innerBtn" href="javascript:;" onclick="$.userReadview('${user.userID}',this)"><span>회원정보</span></a></h4>
+
+				<div class="board_list">
+					<table cellspacing="0" cellpadding="0" summary="faq리스트">
+						<colgroup><col width="5%" /><col width="13%" /><col width="*" /><col width="6%" /><col width="15%" /><col width="10%" /><col width="20%" /></colgroup>
+						<thead>
+						<tr>
+							<th>번호</th>
+							<th>신청일</th>
+							<th>예약일시</th>
+							<th>인원</th>
+							<th>부스</th>
+							<th>예약번호</th>
+							<th>현황&내역보기</th>
+						</tr>
+						</thead>
+						<tbody id="listHeader">
+						</tbody>
+						</table>
+					</div><!-- //board_list -->
+					
+					<div class="pagenavi" id="pageNavi"></div>
+					<!-- //pagenavi -->
+					
+					<!-- Template -->
+					<textarea id="templateList" style="display: none;">
+					{for soho in sohoList}
+					{var idx = count - ((page -1 ) * listNo) - soho_index}
+						<tr>
+							<td class="num tc">＄{idx}</td>
+							<td class="num tc">＄{soho.regDate} (＄{soho.regDatetime})</td>
+							<td class="num tc">＄{soho.resDate} 부터 ＄{soho.resEndDate} 까지 <br /> (＄{soho.resMonthNum} 개월간)</td>
+							<td class="num tc">＄{soho.resPerson}</td>
+							<td class="subj">＄{soho.resRoom}</td>
+							<td class="num tc">＄{soho.resIdx}</td>
+							<td class="num tc">
+								<a href="javascript:;">＄{soho.stateName}</a>
+								<p>
+								{if soho.stateCD == "0"} 
+								<a class="innerBtn" href="/admin/booking/sohodetail/＄{soho.idx}"><span>수정</span></a>
+								<a class="innerBtn" href="/admin/booking/sohodetail/＄{soho.idx}"><span>취소</span></a>
+								{elseif soho.stateCD == "1" }
+								<a class="innerBtn" href="/admin/booking/soho/complete/＄{soho.resIdx}"><span>이용내역</span></a>
+								{/if}
+								</p>
+							</td>
+						</tr>
+					{forelse}	
+						<tr>
+						<td class="comment tc" colspan="7">검색결과가 없습니다.</td>
+						</tr>
+					{/for}
+					</textarea>
+			
+				<div class="board_btnarea">
+					<a class="inputBtn" href="javascript:history.go(-1);"><span style="width:100px;">전페이지로 이동</span></a>
+				</div><!-- //btnArea -->
+				
+				#{include 'user/memberinfo.html'/}

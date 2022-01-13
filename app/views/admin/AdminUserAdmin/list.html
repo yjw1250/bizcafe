@@ -1,0 +1,106 @@
+#{extends 'admin/adminMain.html' /} 
+#{set title:'홈 > 회원관리 > 회원리스트' /}
+
+<script type="text/javascript" charset="UTF-8" src="@{'/public/admin/javascripts/user.js'}"></script>
+
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="adminMenuNum" id="adminMenuNum" value="51" />
+
+<h3>관리자 조회</h3>
+<div class="breadcrumb">
+	<ul><li class="home"><a href="/admin/user">홈</a></li><li><a href="/admin/userAdmin">관리자 설정</a></li><li class="current">관리자 관리</li></ul>
+</div><!-- //breadcrumb -->
+
+<!-- 한줄표현 작업시 -->
+<div class="listHead">
+	#{form @admin.AdminUserAdmin.list(), name:'searchForm',id:'searchForm'}
+		<fieldset class="msearch">
+			<legend>리스트검색</legend>
+			<select name="searchKey" id="searchKey">
+				<option value="adminName" #{if searchKey == "adminName"} selected #{/if}>이름</option>
+				<option value="adminID" #{if searchKey == "adminID"} selected #{/if}">아이디</option>
+				<option value="department" #{if searchKey == "department"} selected #{/if}>부서</option>
+			</select>
+			<input class="input_txt" type="text" value="${searchVal}" name="searchVal" id="searchVal">
+			<a href="javascript:;" class="innerBtn" id="btnSearch"><span>검색</span></a>
+			#{if searchVal > "" }
+			<a href="/admin/userAdmin" class="innerBtn" id="btnInit"><span>초기화</span></a>
+			#{/if}
+		</fieldset>
+	#{/form}
+</div><!-- //listHead -->
+<!-- 한줄표현 작업시 -->
+
+<div class="board_list">
+	<table cellspacing="0" cellpadding="0" summary="faq리스트">
+		<colgroup><col width="8%" /><col width="*" /><col width="12%" /><col width="15%" /></colgroup>
+		<thead>
+		<tr>
+			<th>번호</th>
+			<th><!-- <a href="" class="th_arrow_asc">-->소속사</a></th><!-- //내림차순 th_arrow_dasc -->
+			<th>아이디</th>
+			<th>권한</th>
+			<th>이름</th>
+			<th>최근접속일</th>
+			<th>등록일</th>
+		</tr>
+		</thead>
+		<tbody>
+		#{list items:userAdminList, as:'user'}
+		<tr class="bg0">
+			<td class="num tc">${countNumber--}</td>
+			<td class="tc">#{if user.company == "1"} 재능교육 #{/if}#{else}재능e아카데미 #{/else}</td>
+			<td class="num tc"><a href="/admin/userAdmin/read/${user.adminID}">${user.adminID}</a></td>
+			<td class="num tc">${user.adminLevel}</td>
+			<td class="tc">${user.adminName}</td>
+			<td class="num tc">${user.latestLoginDate}</td>
+			<td class="num tc">${user.regDate}</td>
+		</tr>
+
+		#{/list}
+		#{if userCount==0 }
+		<!-- 검색결과 및 데이타 없음 코멘트 -->
+		<tr><td class="comment" colspan="7">검색결과가 없습니다.</td></tr>
+		<!-- //검색결과 및 데이타 없음 코멘트 -->
+		#{/if}
+	   </tbody>
+	   </table>
+</div><!-- //board_list -->
+
+<div class="board_btnarea">
+	<a class="inputBtn" href="/admin/userAdmin/join"><span style="width:60px;">등록하기</span></a>
+</div><!-- //btnArea -->
+
+<div class="pagenavi" id="pagenavi">
+	#{if userCount > 0}
+		<a class="first" href="javascript:;" onclick="$.page(1)"><img alt="처음" src="/public/admin/images/btn_pagenavi_fist.gif" id="btnPagenaviFirst"></a>	
+		#{if pagination.page > 1}
+	 		<a class="prev" href="javascript:;" onclick="$.page(${pagination.page - 1})"><img alt="이전" src="/public/admin/images/btn_pagenavi_prev.gif"></a>
+	 	#{/if}
+	 	#{else}
+	 		<img alt="이전" src="/public/admin/images/btn_pagenavi_prev.gif">
+	 	#{/else}
+		#{list items:pagination.firstPage + 1..pagination.lastPage, as:'i'}
+	 		#{if pagination.page != i}
+				<a href="javascript:;" onclick="$.page(${i})">${i}</a>
+			#{/if}
+			#{else}
+				<strong>${i}</strong>
+			#{/else}
+		#{/list}
+		#{if pagination.totalPage > pagination.page}
+			<a class="next" href="javascript:;" onclick="$.page(${pagination.page + 1})"><img alt="다음" src="/public/admin/images/btn_pagenavi_next.gif"></a>
+		#{/if}
+	 	#{else}
+	 		<img alt="다음" src="/public/admin/images/btn_pagenavi_next.gif">
+	 	#{/else}
+	 	
+	 	#{if pagination.block <= pagination.totalBlock}
+	 		<a class="end" href="javascript:;" onclick="$.page(${pagination.totalBlock})"><img alt="끝" src="/public/admin/images/btn_pagenavi_end.gif"></a>
+		#{/if}
+		#{else}
+	 		<img alt="끝" src="/public/admin/images/btn_pagenavi_end.gif">
+	 	#{/else}
+	#{/if}
+	
+</div><!-- //pagenavi -->

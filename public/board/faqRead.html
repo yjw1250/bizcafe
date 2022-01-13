@@ -1,0 +1,56 @@
+#{extends 'user/sub.html' /} 
+#{if boardCode == "faq" || boardCode == "qna"}
+#{set title:'홈 > 고객센터' /}
+#{/if}
+<script type="text/javascript" src="@{'/public/javascripts/board.js'}"></script> 
+<div class="sub_title">
+	<h3 class="st1">
+		<strong><span class="blind">FAQ</span></strong>
+		<p><span class="blind">고객님들이 자주 문의하시는 질문입니다.</span></p>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li><a href="/board/faq">고객센터</a></li>
+		<li class="current"><a href="#">FAQ</a></li>
+	</ul>
+</div>
+<input type="hidden" name="boardCode" id="boardCode" value="${boardCode}" />
+<form name="viewForm" id="viewForm" method="post">
+<input type="hidden" name="idx" id="idx" value="${jeiView.idx}" />
+<input type="hidden" name="menuNum" id="menuNum" value="${menuNum}" />
+<input type="hidden" name="page" id="page" value="${page}" />
+<input type="hidden" name="searchKey" id="searchKey" value="${searchKey}" />
+<input type="hidden" name="searchVal" id="searchVal" value="${urlDecodeSearchVal}" />
+<div class="contents">
+	<div class="attend">
+		<p>찾으시는 정보가 없으신가요? <strong><a href="/board/qna">1:1 온라인문의</a></strong>로 문의해 보세요.</p>
+	</div><!-- //attend -->
+	<div class="board_view">
+		<table cellspacing="0" border="1" summary="FAQ">
+		<colgroup><col width="92px"><col width=""></colgroup>
+		<tbody>
+			<tr>
+				<th class="tit"><img src="/public/images/board/th_txt_subject.gif" alt="제목"></th>
+				<td colspan="3"><p class="subjct" style="width:570px">${jeiView.title}</p></td>
+			</tr>
+			<tr>
+				<th class="tit"><img src="/public/images/board/th_txt_writeDate.gif" alt="작성일"></th>
+				<td colspan="3"><p class="regDate" style="width:570px">${jeiView.regDate}</p></td>
+			</tr>
+			<tr class="last">
+				<th class="tit"><img src="/public/images/board/th_txt_contents.gif" alt="내용"></th>
+				<td colspan="3">
+					<div style="width:570px">${jeiView.contents.nl2br()}</div>
+				</td>
+			</tr>
+		</tbody>
+		</table>
+	</div><!-- //board_view  -->
+	<div class="board_btnarea">
+		<p class="f_left"></p>
+		<p class="f_right">
+			<a href="/board/${boardCode}?page=${page}&searchKey=${searchKey}&searchVal=${urlDecodeSearchVal}"><img class="input_btn" alt="목록" src="/public/images/board/btn_list.gif" /></a>
+		</p>
+	</div><!-- //btnArea -->
+</div><!-- //contents -->
+</form>

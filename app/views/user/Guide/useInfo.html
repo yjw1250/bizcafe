@@ -1,0 +1,285 @@
+#{extends '/user/sub.html' /} 
+#{set title:'홈 > 이용안내' /} 
+
+<!-- 메뉴 번호 : 반드시 작성하세요 . -->
+<input type="hidden" name="menuNum" id="menuNum" value="24" />	
+
+<!-- sub title -->
+<div class="sub_title">
+	<h3 class="st6">
+		<strong><span class="blind">이용정보</span></strong>
+		<p><span class="blind">BIZ STUDIO를 빠르고 편리하게 이용해보세요.</span></p>
+	</h3>
+	<ul class="breadcrumb">
+		<li class="home"><a href="/">Home</a></li>
+		<li><a href="/guide/business/chart">이용안내</a></li>
+		<li class="current">이용정보</li>
+	</ul>
+</div>
+<!-- //sub title -->
+
+<div class="contents">
+	<p class="guide_time"><img src="/public/images/guide/guide_time.gif" alt="운영시간" /></p>
+	<h4><img src="/public/images/guide/title_business_price.gif" alt="비즈니스미팅공간 이용 요금" /></h4>
+	<div class="facility_list">
+		<table cellspacing="0" border="0" summary="비즈니스미팅공간 이용 요금">
+		<colgroup><col width="84"><col width="67"><col width="75"><col width="75"><col width="95"><col width="118"><col width="*"></colgroup>
+		<thead>
+		<tr>
+			<th scope="col"><img src="/public/images/guide/th_txt_cafeClass.gif" alt="구분"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_cafeName.gif" alt="명칭"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_minNum.gif" alt="최소정원"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_maxNum.gif" alt="최대정원"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_pricePerson.gif" alt="요금(인당)"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_support.gif" alt="지원사항"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_special.gif" alt="특이사항"></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td class="lb" rowspan="2">1인실</td>
+			<td>P-1</td>
+			<td>1</td>
+			<td>1</td>
+			<td rowspan="2">4,000원/1H</td>
+			<td rowspan="15" style="padding-left:10px;text-align:left;"> - 터치형 올인원 &nbsp;&nbsp;&nbsp;PC(1인실)<br /> - 데스크탑<br />- 유무선인터넷<br />- 고급 사무가구<br />- 컬러유리보드<br />&nbsp;&nbsp;&nbsp;(2인실 이상)<br />- 커피 음료 할인</td>
+			<td rowspan="2">터치형 올인원 PC 무료 사용<br />고급 의자<br />넓은 공간</td>
+		</tr>
+		<tr>
+			<td>P-2</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td class="lb" rowspan="4">2~3인실</td>
+			<td>M-1</td>
+			<td>2</td>
+			<td>3</td>
+			<td rowspan="13">6,000원/2H</td>
+			<td rowspan="8">LED 모니터(32")</td>
+		</tr>
+		<tr>
+			<td>M-2</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>M-3</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>M-4</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td class="lb" rowspan="2">4인실</td>
+			<td>S-1</td>
+			<td>4</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>S-2</td>
+			<td>4</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td class="lb" rowspan="2">4~5인실</td>
+			<td>S-3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>S-4</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td class="lb" rowspan="3">6~7인실</td>
+			<td>C-1</td>
+			<td>6</td>
+			<td>7</td>
+			<td rowspan="5">LED 모니터(42")</td>
+		</tr>
+		<tr>
+			<td>C-2</td>
+			<td>6</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>C-3</td>
+			<td>6</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td class="lb">8인실</td>
+			<td>C-4</td>
+			<td>8</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td class="lb">8~9인실</td>
+			<td>C-5</td>
+			<td>8</td>
+			<td>9</td>
+		</tr>
+		</tbody>
+		</table>
+	</div>
+
+	<h4><img src="/public/images/guide/title_soho_price.gif" alt="소호사무실 이용 요금" /></h4>
+	<div class="facility_list">
+		<table class="soho" cellspacing="0" border="0" summary="소호사무실 이용 요금">
+		<colgroup><col width="84"><col width="67"><col width="75"><col width="170"><col width="118"><col width="*"></colgroup>
+		<thead>
+		<tr>
+			<th scope="col"><img src="/public/images/guide/th_txt_cafeClass.gif" alt="구분"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_cafeName.gif" alt="명칭"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_limit.gif" alt="정원"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_price.gif" alt="요금"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_support.gif" alt="지원사항"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_special.gif" alt="특이사항"></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td class="lb" rowspan="6">1인실</td>
+			<td>R-1</td>
+			<td>1</td>
+			<td rowspan="8">* 별도 전화 문의<br />(02-779-0430~1)</td>
+			<td rowspan="8" style="padding-left:10px;text-align:left;">- 유무선인터넷<br />- 고급 사무가구<br />- 커피 음료 할인</td>
+			<td rowspan="8" style="padding-left:10px;text-align:left;">- 프린터기(종이 별도)<br />- 전화라인(전화설치 별도)<br />- 개별 보안키<br />- 사업자등록<br />- 세미나룸 이용 가능(월 2회)<br />- 외부에 접한 창<br />&nbsp;&nbsp;&nbsp;(R-1, R-2, R-4)</td>
+		</tr>
+		<tr>
+			<td>R-2</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>R-3</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>R-4</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>R-5</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>R-6</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td class="lb" rowspan="2">2인실</td>
+			<td>R-7</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>R-8</td>
+			<td>2</td>
+		</tr>
+		</tbody>
+		</table>
+		<!--<p class="info"><span class="note_attach star">소호사무실 대여요금은 별도 전화 문의(02-3670-0184)</span></p>-->
+	</div>
+
+	<h4><img src="/public/images/guide/title_oa_price.gif" alt="OA기기 이용 요금" /></h4>
+	<div class="facility_list">
+		<table class="oa" cellspacing="0" border="0" summary="OA기기 이용 요금">
+		<colgroup><col width="84"><col width="67"><col width="75"><col width="118"><col width="*"></colgroup>
+		<thead>
+		<tr>
+			<th scope="col"><img src="/public/images/guide/th_txt_cafeClass.gif" alt="구분"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_color.gif" alt="색상"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_size.gif" alt="사이즈"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_number.gif" alt="개수"></th>
+			<th scope="col"><img src="/public/images/guide/th_txt_price.gif" alt="요금"></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td class="lb" rowspan="4">프린터</td>
+			<td rowspan="2">흑백</td>
+			<td>A4</td>
+			<td>1장</td>
+			<td>50원</td>
+		</tr>
+		<tr>
+			<td>A3</td>
+			<td>1장</td>
+			<td>100원</td>
+		</tr>
+		<tr>
+			<td rowspan="2">컬러</td>
+			<td>A4</td>
+			<td>1장</td>
+			<td>300원</td>
+		</tr>
+		<tr>
+			<td>A3</td>
+			<td>1장</td>
+			<td>700원</td>
+		</tr>
+		<tr>
+			<td class="lb" rowspan="4">복사</td>
+			<td rowspan="2">흑백</td>
+			<td>A4</td>
+			<td>1장</td>
+			<td>50원</td>
+		</tr>
+		<tr>
+			<td>A3</td>
+			<td>1장</td>
+			<td>100원</td>
+		</tr>
+		<tr>
+			<td rowspan="2">컬러</td>
+			<td>A4</td>
+			<td>1장</td>
+			<td>300원</td>
+		</tr>
+		<tr>
+			<td>A3</td>
+			<td>1장</td>
+			<td>700원</td>
+		</tr>
+		<tr>
+			<td class="lb" rowspan="2">스캔</td>
+			<td rowspan="2">컬러</td>
+			<td>A4</td>
+			<td>1장</td>
+			<td>300원</td>
+		</tr>
+		<tr>
+			<td>A3</td>
+			<td>1장</td>
+			<td>700원</td>
+		</tr>
+		<tr>
+			<td class="lb" rowspan="2">팩스</td>
+			<td>국내</td>
+			<td>A4</td>
+			<td>1장</td>
+			<td>500원</td>
+		</tr>
+		<tr>
+			<td>해외</td>
+			<td>A4</td>
+			<td>1장</td>
+			<td>1,000원</td>
+		</tr>
+		</tbody>
+		</table>
+	</div>
+	<div class="facility_info">
+		<dl>
+			<dt><img alt="고객지원 서비스" src="/public/images/guide/title_cs_service.gif"></dt>
+			<dd>비즈니스 미팅공간 및 소호사무실 이용고객은 카페 음료 할인</dd>
+			<dd>택배 수발신(비용은 개인 부담, 전화로 하루전 신청 필수)</dd>
+			<dd>택배 물품은 3일간만 보관이 가능합니다.</dd>
+		</dl>
+	</div>
+
+</div><!-- //contents -->
